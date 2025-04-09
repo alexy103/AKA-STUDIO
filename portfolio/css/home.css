@@ -1,0 +1,30 @@
+.home {
+  position: relative;
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+.home .identity {
+  display: flex;
+  gap: 1vh;
+  flex-direction: column;
+  align-items: center;
+}
+.home .identity__logo {
+  max-width: 75vw;
+}
+.home .identity__title {
+  text-transform: uppercase;
+}
+.home .aka {
+  position: absolute;
+  top: 75%;
+  max-width: 25vw;
+}
+.home .aka__cream {
+  left: -11%;
+}
+.home .aka__red {
+  right: -11%;
+}/*# sourceMappingURL=home.css.map */

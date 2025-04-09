@@ -1,0 +1,101 @@
+// <div class="presentation">
+// <h2 class="presentation__title">WORK</h2>
+// <ul class="presentation__links">
+//   <li class="presentation__link">Swohreel</li>
+//   <li class="presentation__link">Sport</li>
+//   <li class="presentation__link">Corporate</li>
+//   <li class="presentation__link">Fiction</li>
+// </ul>
+// </div>
+
+.work {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: flex-end;
+  .presentation {
+    &__title {
+    }
+    &__links {
+    }
+    &__link {
+    }
+  }
+
+  .projects {
+    height: 40vh;
+    display: flex;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    width: 100vw;
+    white-space: nowrap;
+    overflow-x: scroll;
+
+    .project {
+      min-width: 60vw;
+      &__text {
+        display: flex;
+        justify-content: space-between;
+        height: 50%;
+        padding: 0 4vw 2vh;
+        align-items: flex-end;
+        .title {
+        }
+        .number {
+          font-size: 2.5rem;
+          color: rgba(255, 0, 0, 0.5);
+        }
+      }
+      &__image {
+        height: 50%;
+        img {
+          object-fit: cover;
+          object-position: 0 25%;
+          width: 100%;
+          height: 100%;
+        }
+      }
+      &:nth-child(even) {
+        display: flex;
+        flex-direction: column-reverse;
+        .project__text {
+          align-items: flex-start;
+          padding: 2vh 4vw 0;
+        }
+      }
+    }
+
+    // .column {
+    //   &__left {
+    //     width: 60%;
+    //   }
+    //   &__right {
+    //     width: 40%;
+    //   }
+    //   height: 100%;
+    // }
+    // .project {
+    //   display: flex;
+    //   flex-direction: column;
+    //   &__title {
+    //   }
+    //   &__number {
+    //   }
+    //   &__image {
+    //     height: 20vh;
+    //     img {
+    //       object-fit: cover;
+    //       object-position: 0 25%;
+    //       width: 100%;
+    //       height: 20vh;
+    //     }
+    //   }
+    // }
+  }
+
+  .category {
+    font-size: 4rem;
+    text-transform: uppercase;
+    padding: 15vh 0 5vh;
+  }
+}

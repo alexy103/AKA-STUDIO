@@ -1,0 +1,21 @@
+home
+	parler des deux menus en mobile
+	animations du menu desktop ?
+	en desktop on passe d'une page à l'autre en cliquant sur les aka ? en mobile c'est que le menu ou aussi les aka ?
+
+work
+	la grid doit être scrollable ?
+	le petit menu avec les catégories doit changer les images ? on doit arriver sur quelle catégorie ?
+	parler du popup, comment on le ferme sur desktop (pas de croix) ?
+	
+contact
+	le même menu que dans work ?
+	typeform c'est ça le formulaire externe ? ça doit juste être un texte cliquable (lien) ?
+
+about
+	"réseaux" est un peu en conflit avec la page des réseaux sociaux (risque de confusion)
+	menu avec "photographe, son, designer graphique, rédaction" c'est quoi ?
+	le carousel en mobile doit être infini ?
+
+
+voir pour le glow sur les textes du menu

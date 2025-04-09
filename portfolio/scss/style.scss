@@ -1,0 +1,18 @@
+@import "reset";
+@import "base";
+@import "utils";
+@import "menu";
+@import "home";
+@import "work";
+
+body {
+  background-color: black;
+  color: white;
+  overflow: hidden;
+  position: relative;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.slide {
+  height: 100dvh;
+}
