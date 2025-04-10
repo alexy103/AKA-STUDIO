@@ -7,6 +7,28 @@
   color: white;
 }
 
-.hiddenSlide {
+.hidden {
   display: none !important;
+}
+
+.red {
+  color: red;
+}
+
+.submenu {
+  color: rgba(255, 255, 255, 0.418);
+  text-transform: uppercase;
+  &__active {
+    color: white;
+    text-decoration: underline;
+    text-decoration-color: red;
+  }
+}
+
+.slideTitle {
+  font-size: 4rem;
+}
+
+.aka {
+  position: absolute;
 }

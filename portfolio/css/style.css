@@ -169,8 +169,30 @@ img {
   color: white;
 }
 
-.hiddenSlide {
+.hidden {
   display: none !important;
+}
+
+.red {
+  color: red;
+}
+
+.submenu {
+  color: rgba(255, 255, 255, 0.418);
+  text-transform: uppercase;
+}
+.submenu__active {
+  color: white;
+  text-decoration: underline;
+  text-decoration-color: red;
+}
+
+.slideTitle {
+  font-size: 4rem;
+}
+
+.aka {
+  position: absolute;
 }
 
 .menu {
@@ -301,7 +323,6 @@ img {
   text-transform: uppercase;
 }
 .home .aka {
-  position: absolute;
   top: 75%;
   max-width: 25vw;
 }
@@ -317,6 +338,20 @@ img {
   flex-direction: column-reverse;
   align-items: center;
   justify-content: flex-end;
+}
+.work .presentation {
+  align-self: flex-end;
+  margin: 3vh 10vw 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3vh;
+}
+.work .presentation .workMenu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1vh;
 }
 .work .projects {
   height: 40vh;
@@ -359,11 +394,100 @@ img {
 .work .projects .project:nth-child(even) .project__text {
   align-items: flex-start;
   padding: 2vh 4vw 0;
+  border-top: 1px solid white;
+}
+.work .projects .project:nth-child(odd) .project__image {
+  border-top: 1px solid white;
 }
 .work .category {
   font-size: 4rem;
   text-transform: uppercase;
   padding: 15vh 0 5vh;
+}
+.work .aka__cream {
+  max-width: 20vw;
+  top: 83%;
+  left: -10%;
+}
+.work .aka__red {
+  max-width: 32vw;
+  top: 63%;
+  left: -14%;
+}
+
+.about .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-top: 10vh;
+  min-height: 70vh;
+}
+.about .content img {
+  max-width: 40vw;
+}
+.about .content__text {
+  text-align: center;
+  width: 70vw;
+  margin-inline: auto;
+  font-size: 1.1rem;
+  line-height: 1.4rem;
+}
+.about .aboutMenu {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 5vh 0;
+}
+.about .aboutMenu__link:nth-child(1) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4vh;
+}
+.about .slideTitle {
+  text-align: center;
+}
+.about .friendlist {
+  width: 70vw;
+}
+.about .friendlist .friend {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3vh;
+}
+.about .friendlist .friend .slider {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.about .friendlist .friend .slider i {
+  font-size: 3rem;
+  color: rgba(255, 255, 255, 0.418);
+}
+.about .friendlist .friend__description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1vh;
+}
+.about .friendlist .friend__description .name {
+  font-size: 2rem;
+}
+.about .friendlist .friend__description .text {
+  text-align: center;
+}
+.about .aka {
+  max-width: 25vw;
+  bottom: -8%;
+}
+.about .aka__cream {
+  left: 0%;
+}
+.about .aka__red {
+  right: 0;
 }
 
 body {

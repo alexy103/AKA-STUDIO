@@ -1,24 +1,20 @@
-// <div class="presentation">
-// <h2 class="presentation__title">WORK</h2>
-// <ul class="presentation__links">
-//   <li class="presentation__link">Swohreel</li>
-//   <li class="presentation__link">Sport</li>
-//   <li class="presentation__link">Corporate</li>
-//   <li class="presentation__link">Fiction</li>
-// </ul>
-// </div>
-
 .work {
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
   justify-content: flex-end;
   .presentation {
-    &__title {
-    }
-    &__links {
-    }
-    &__link {
+    align-self: flex-end;
+    margin: 3vh 10vw 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 3vh;
+    .workMenu {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 1vh;
     }
   }
 
@@ -61,41 +57,34 @@
         .project__text {
           align-items: flex-start;
           padding: 2vh 4vw 0;
+          border-top: 1px solid white;
+        }
+      }
+      &:nth-child(odd) {
+        .project__image {
+          border-top: 1px solid white;
         }
       }
     }
-
-    // .column {
-    //   &__left {
-    //     width: 60%;
-    //   }
-    //   &__right {
-    //     width: 40%;
-    //   }
-    //   height: 100%;
-    // }
-    // .project {
-    //   display: flex;
-    //   flex-direction: column;
-    //   &__title {
-    //   }
-    //   &__number {
-    //   }
-    //   &__image {
-    //     height: 20vh;
-    //     img {
-    //       object-fit: cover;
-    //       object-position: 0 25%;
-    //       width: 100%;
-    //       height: 20vh;
-    //     }
-    //   }
-    // }
   }
 
   .category {
     font-size: 4rem;
     text-transform: uppercase;
     padding: 15vh 0 5vh;
+  }
+
+  .aka {
+    &__cream {
+      max-width: 20vw;
+      top: 83%;
+      left: -10%;
+    }
+
+    &__red {
+      max-width: 32vw;
+      top: 63%;
+      left: -14%;
+    }
   }
 }
