@@ -76,6 +76,14 @@
     }
   }
 
+  .jobs {
+    display: flex;
+    width: 100vw;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+  }
+
   .aka {
     max-width: 25vw;
     bottom: -8%;

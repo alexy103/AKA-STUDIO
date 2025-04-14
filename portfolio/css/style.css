@@ -479,6 +479,13 @@ img {
 .about .friendlist .friend__description .text {
   text-align: center;
 }
+.about .jobs {
+  display: flex;
+  width: 100vw;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+}
 .about .aka {
   max-width: 25vw;
   bottom: -8%;

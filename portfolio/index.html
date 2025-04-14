@@ -57,14 +57,25 @@
         <div class="presentation">
           <h2 class="slideTitle">WORK<span class="red">.</span></h2>
           <ul class="workMenu submenu">
-            <li class="workMenu__link">Swohreel</li>
-            <li class="workMenu__link submenu__active">Sport</li>
+            <li class="workMenu__link submenu__active">Swohreel</li>
+            <li class="workMenu__link">Sport</li>
             <li class="workMenu__link">Corporate</li>
             <li class="workMenu__link">Fiction</li>
           </ul>
         </div>
 
-        <div class="projects">
+        <div class="projects projects--swohreel">
+          <figure class="project">
+            <figcaption class="project__text">
+              <p class="title">BNTH - League 1</p>
+              <p class="number">1</p>
+            </figcaption>
+            <div class="project__image">
+              <img src="images/BNTH.png" alt="" class="" />
+            </div>
+          </figure>
+        </div>
+        <div class="projects projects--sport hidden">
           <figure class="project">
             <figcaption class="project__text">
               <p class="title">BNTH - League 1</p>
@@ -105,7 +116,50 @@
             </div>
           </figure>
         </div>
-        <h3 class="category">Sport</h3>
+        <div class="projects projects--corporate hidden">
+          <figure class="project">
+            <figcaption class="project__text">
+              <p class="title">BNTH - League 1</p>
+              <p class="number">1</p>
+            </figcaption>
+            <div class="project__image">
+              <img src="images/BNTH.png" alt="" class="" />
+            </div>
+          </figure>
+          <figure class="project">
+            <figcaption class="project__text">
+              <p class="title">713 x FFF - Backstage</p>
+              <p class="number">2</p>
+            </figcaption>
+            <div class="project__image">
+              <img src="images/mbappe.png" alt="" class="" />
+            </div>
+          </figure>
+        </div>
+        <div class="projects projects--fiction hidden">
+          <figure class="project">
+            <figcaption class="project__text">
+              <p class="title">BNTH - League 1</p>
+              <p class="number">1</p>
+            </figcaption>
+            <div class="project__image">
+              <img src="images/BNTH.png" alt="" class="" />
+            </div>
+          </figure>
+          <figure class="project">
+            <figcaption class="project__text">
+              <p class="title">713 x FFF - Backstage</p>
+              <p class="number">2</p>
+            </figcaption>
+            <div class="project__image">
+              <img src="images/mbappe.png" alt="" class="" />
+            </div>
+          </figure>
+        </div>
+        <h3 class="category category--swohreel">Swohreel</h3>
+        <h3 class="category category--sport hidden">Sport</h3>
+        <h3 class="category category--corporate hidden">Corporate</h3>
+        <h3 class="category category--fiction hidden">Fiction</h3>
         <img src="images/aka_cream.png" alt="" class="aka aka__cream" />
         <img src="images/aka_red.png" alt="" class="aka aka__red" />
       </section>
@@ -141,9 +195,16 @@
           </p>
         </div>
         <div class="content hidden content--friends">
-          <img src="images/about.png" alt="" />
-          <h3 class="content__title hidden">
-            Indépendant mais pas solitaire<span class="red">!</span>
+          <ul class="jobs submenu">
+            <li class="jobs__link submenu__active">Photographe</li>
+            <li class="jobs__link">Son</li>
+            <li class="jobs__link">
+              Designer<span class="break">graphique</span>
+            </li>
+            <li class="jobs__link">Rédaction</li>
+          </ul>
+          <h3 class="content__title">
+            Indépendant mais pas solitaire <span class="red">!</span>
           </h3>
           <p class="content__text">
             J'ai eu l'occasion au fil des années de travailler avec une
@@ -194,6 +255,68 @@
               </figcaption>
             </figure>
           </div>
+          <div class="friendlist hidden">
+            <figure class="friend">
+              <div class="slider">
+                <i class="fa-solid fa-chevron-left left"></i>
+                <img src="images/forty.png" alt="" />
+                <i class="fa-solid fa-chevron-right right"></i>
+              </div>
+              <figcaption class="friend__description">
+                <h4 class="name">2</h4>
+                <p class="text">
+                  Lorem 40 dolor sit amet, consectetur adipiscing elit. Cras ex
+                  mi, posuere in velit nec, auctor sagittis purus.
+                </p>
+              </figcaption>
+            </figure>
+            <figure class="friend hidden">
+              <div class="slider">
+                <i class="fa-solid fa-chevron-left left"></i>
+                <img src="images/forty.png" alt="" />
+                <i class="fa-solid fa-chevron-right right"></i>
+              </div>
+              <figcaption class="friend__description">
+                <h4 class="name">22</h4>
+                <p class="text">
+                  Lorem 40 dolor sit amet, consectetur adipiscing elit. Cras ex
+                  mi, posuere in velit nec, auctor sagittis purus.
+                </p>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="friendlist hidden">
+            <figure class="friend">
+              <div class="slider">
+                <i class="fa-solid fa-chevron-left left"></i>
+                <img src="images/forty.png" alt="" />
+                <i class="fa-solid fa-chevron-right right"></i>
+              </div>
+              <figcaption class="friend__description">
+                <h4 class="name">3</h4>
+                <p class="text">
+                  Lorem 40 dolor sit amet, consectetur adipiscing elit. Cras ex
+                  mi, posuere in velit nec, auctor sagittis purus.
+                </p>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="friendlist hidden">
+            <figure class="friend">
+              <div class="slider">
+                <i class="fa-solid fa-chevron-left left"></i>
+                <img src="images/forty.png" alt="" />
+                <i class="fa-solid fa-chevron-right right"></i>
+              </div>
+              <figcaption class="friend__description">
+                <h4 class="name">4</h4>
+                <p class="text">
+                  Lorem 40 dolor sit amet, consectetur adipiscing elit. Cras ex
+                  mi, posuere in velit nec, auctor sagittis purus.
+                </p>
+              </figcaption>
+            </figure>
+          </div>
         </div>
         <ul class="aboutMenu submenu">
           <li class="aboutMenu__link submenu__active">
@@ -217,4 +340,9 @@
     crossorigin="anonymous"
   ></script>
   <script src="js/index.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/about.js"></script>
+  <script src="js/work.js"></script>
+  <script src="js/slider.js"></script>
 </html>
