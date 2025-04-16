@@ -7,6 +7,7 @@ const homeAkaCream = document.querySelector(".home .aka__cream");
 const workAkas = document.querySelectorAll(".work .aka");
 const aboutAkaRed = document.querySelector(".about .aka__red");
 const aboutAkaCream = document.querySelector(".about .aka__cream");
+const contactAkas = document.querySelectorAll(".contact .aka");
 
 menuLinks.forEach((link) => {
   link.addEventListener("click", () => {
@@ -35,6 +36,12 @@ aboutAkaCream.addEventListener("click", () => {
 });
 
 workAkas.forEach((aka) => {
+  aka.addEventListener("click", () => {
+    updateSlide("home");
+  });
+});
+
+contactAkas.forEach((aka) => {
   aka.addEventListener("click", () => {
     updateSlide("home");
   });
