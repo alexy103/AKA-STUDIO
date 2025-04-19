@@ -5,4 +5,6 @@ about
 	le souligné du menu doit aussi slide entre chaque link ?
 	slider infini ou quand c'est sur le premier il y a pas la flèche de gauche ?
 
-voir pour le glow sur les textes du menu
+work
+	pas de titre pour le focus en mode mobile ?
+	voir s'il y a des préconisations pour l'affichage de la vidéo
