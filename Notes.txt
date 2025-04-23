@@ -1,8 +1,7 @@
 about
 	comment doit se comporter le texte de présentation exactement ? si trop grand ? trop petit ?
 	pas de titre au-dessus du texte en mobile ?
-	la navigation doit se remettre sur aka studio si on change de slide ?
-	le souligné du menu doit aussi slide entre chaque link ?
+	le souligné du menu doit aussi slide entre chaque link ? (bizarre si les liens sont sur 2 lignes)
 	slider infini ou quand c'est sur le premier il y a pas la flèche de gauche ?
 
 work

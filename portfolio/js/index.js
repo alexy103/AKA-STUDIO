@@ -25,6 +25,6 @@ function updateContent(state, contentArray, menuLinks, index) {
       ".about .friendlist:not(.hidden) .friend"
     );
 
-    //il faut regler le bug du slider quand on change de sous menu qu'on change de friend et qu'on revient sur le precedent sous menu
+    //revoir
   }
 }

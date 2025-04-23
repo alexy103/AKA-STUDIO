@@ -17,32 +17,32 @@ menuLinks.forEach((link) => {
 });
 
 mainLogo.addEventListener("click", () => {
-  updateSlide("about");
+  updateSlide("about", "up");
 });
 
 homeAkaRed.addEventListener("click", () => {
-  updateSlide("work");
+  updateSlide("work", "right");
 });
 
 homeAkaCream.addEventListener("click", () => {
-  updateSlide("contact");
+  updateSlide("contact", "left");
 });
 
 aboutAkaRed.addEventListener("click", () => {
-  updateSlide("work");
+  updateSlide("work", "down");
 });
 aboutAkaCream.addEventListener("click", () => {
-  updateSlide("contact");
+  updateSlide("contact", "down");
 });
 
 workAkas.forEach((aka) => {
   aka.addEventListener("click", () => {
-    updateSlide("home");
+    updateSlide("home", "left");
   });
 });
 
 contactAkas.forEach((aka) => {
   aka.addEventListener("click", () => {
-    updateSlide("home");
+    updateSlide("home", "right");
   });
 });
