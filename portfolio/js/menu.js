@@ -1,9 +1,15 @@
 function openMenu() {
+  document.querySelector("main").style.transition = "none";
   document.querySelector(".menu").style.left = 0;
 }
 
 function closeMenu() {
   document.querySelector(".menu").style.left = "100%";
+
+  // make sure burger menu changes slide instantly
+  setTimeout(() => {
+    document.querySelector("main").style.transition = "transform 0.75s";
+  }, 10);
 }
 
 document.querySelector(".navigation__burger").addEventListener("click", () => {
@@ -35,11 +41,11 @@ function updateSlide(slideName) {
 
     //swap les commentaires et ça change l'animation
     case "work":
-      document.querySelector(".home").style.opacity = "0";
-      document.querySelector(".work").style.left = "0";
-      document.querySelector("main").style.transform = "";
+      // document.querySelector(".home").style.opacity = "0";
+      // document.querySelector(".work").style.left = "0";
+      // document.querySelector("main").style.transform = "";
 
-      // document.querySelector("main").style.transform = "translateX(-150%)";
+      document.querySelector("main").style.transform = "translateX(-150%)";
       break;
     case "about":
       document.querySelector("main").style.transform = "translateY(150%)";
@@ -48,7 +54,7 @@ function updateSlide(slideName) {
       // document.querySelector("main").style.transform = "";
       // setTimeout(() => {
       document.querySelector("main").style.transform = "translateX(150%)";
-      // }, 1000);
+      // }, 750);
       break;
     default:
       break;

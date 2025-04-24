@@ -239,6 +239,12 @@ img {
   text-decoration-color: red;
 }
 
+.slide {
+  height: 100dvh;
+  width: 100dvw;
+  position: absolute;
+}
+
 .slideTitle {
   font-size: 4rem;
 }
@@ -386,6 +392,8 @@ img {
 }
 
 .work {
+  top: 0;
+  left: 150%;
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
@@ -467,6 +475,10 @@ img {
   left: -14%;
 }
 
+.about {
+  top: -150%;
+  left: 0;
+}
 .about .content {
   display: flex;
   flex-direction: column;
@@ -549,6 +561,10 @@ img {
   right: 0;
 }
 
+.contact {
+  top: 0;
+  left: -150%;
+}
 .contact .content {
   padding: 20vh 0 10vh;
   display: flex;
@@ -657,6 +673,6 @@ body {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
-.slide {
-  height: 100dvh;
+main {
+  transition: transform 0.75s;
 }/*# sourceMappingURL=style.css.map */

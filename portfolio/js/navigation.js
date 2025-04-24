@@ -29,10 +29,18 @@ homeAkaCream.addEventListener("click", () => {
 });
 
 aboutAkaRed.addEventListener("click", () => {
-  updateSlide("work", "down");
+  document.querySelector("main").style.transform = "";
+
+  setTimeout(() => {
+    updateSlide("work", "down");
+  }, 750);
 });
 aboutAkaCream.addEventListener("click", () => {
-  updateSlide("contact", "down");
+  document.querySelector("main").style.transform = "";
+
+  setTimeout(() => {
+    updateSlide("contact", "down");
+  }, 750);
 });
 
 workAkas.forEach((aka) => {
