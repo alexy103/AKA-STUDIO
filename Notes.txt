@@ -7,3 +7,6 @@ about
 work
 	pas de titre pour le focus en mode mobile ?
 	voir s'il y a des préconisations pour l'affichage de la vidéo
+
+wordpress
+	est-ce que les menus doivent être dynamiques ?

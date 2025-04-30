@@ -38,11 +38,11 @@ thumbnails.forEach((thumbnail) => {
   thumbnail.addEventListener("click", () => {
     title.textContent = thumbnail.dataset.title;
     iframe.src = thumbnail.dataset.src;
+    iframe.title = thumbnail.dataset.title;
     description.textContent = thumbnail.dataset.description;
     client.textContent = thumbnail.dataset.client;
     fonction.textContent = thumbnail.dataset.fonction;
     date.textContent = thumbnail.dataset.date;
-
     black.classList.remove("hidden");
   });
 });
