@@ -8,17 +8,10 @@ let activeContactContent = document.querySelector(
   ".contact .content:not(.hidden)"
 );
 
-// const contactTitles = document.querySelectorAll(".contact .category");
-// let activeContactTitle = document.querySelector(
-//   ".contact .category:not(.hidden)"
-// );
-
 const contactState = {
   name: "contact",
   activeContent: contactContent[0],
   activeMenuLink: contactMenuLinks[0],
-  //   activeTitle: activeContactTitle,
-  //   titles: contactTitles,
 };
 
 contactMenuLinks.forEach((link, i) => {

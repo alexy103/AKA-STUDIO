@@ -1,10 +1,5 @@
 const aboutMenuLinks = document.querySelectorAll(".aboutMenu__link");
-
-// let activeAboutMenuLink = document.querySelector(".aboutMenu .submenu__active");
-
 const aboutContent = document.querySelectorAll(".about .content");
-
-// let activeAboutContent = document.querySelector(".about .content:not(.hidden)");
 
 const aboutState = {
   name: "about",
@@ -19,7 +14,6 @@ aboutMenuLinks.forEach((link, i) => {
 });
 
 const jobsMenu = document.querySelectorAll(".about .jobs__link");
-// let activeJobLink = document.querySelector(".about .jobs .submenu__active");
 const friendLists = document.querySelectorAll(".about .friendlist");
 let activeFriendList = document.querySelectorAll(
   ".about .friendlist:not(.hidden)"

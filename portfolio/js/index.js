@@ -14,17 +14,8 @@ function updateContent(state, contentArray, menuLinks, index) {
   }
 
   if (state.name == "friends") {
-    // currentIndex = 0;
-    // contentArray.forEach((e) => {
-    //   e.classList.add("hidden");
-    // });
-    // contentArray[0].classList.remove("hidden");
-    // friendsState.activeContent = friendLists[0];
-    // friendsState.activeMenuLink = jobsMenu[0];
     activeFriendListFriends = document.querySelectorAll(
       ".about .friendlist:not(.hidden) .friend"
     );
-
-    //revoir
   }
 }
