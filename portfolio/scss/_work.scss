@@ -90,3 +90,33 @@
     }
   }
 }
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+@keyframes slideLeft {
+  0% {
+    transform: translateX(100vw);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.anim {
+  animation: slideRight 1s forwards ease-in;
+}
+
+.anim__reverse {
+  animation: slideLeft 1s forwards ease-out;
+}
+
+.hidden-temp {
+  visibility: hidden;
+}

@@ -8,5 +8,9 @@ work
 	pas de titre pour le focus en mode mobile ?
 	voir s'il y a des préconisations pour l'affichage de la vidéo
 
+animations
+	seulement en mode pc ou aussi mobile ?
+	revoir exactement ce qu'il veut
+
 wordpress
-	est-ce que les menus doivent être dynamiques ?
+	qu'est-ce qui doit être dynamique ? et qu'est-ce qui doit ne pas l'être ?
