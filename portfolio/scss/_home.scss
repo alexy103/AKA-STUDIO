@@ -1,3 +1,5 @@
+$tiers: calc((100dvh / 6) / 3);
+
 .home {
   position: relative;
   display: flex;
@@ -6,11 +8,12 @@
   justify-content: center;
   .identity {
     display: flex;
-    gap: 1vh;
+    gap: $tiers;
     flex-direction: column;
     align-items: center;
     &__logo {
       max-width: 75vw;
+      max-height: calc(100dvh / 6 + 40px);
     }
 
     &__title {
@@ -20,7 +23,8 @@
 
   .aka {
     top: 75%;
-    max-width: 25vw;
+    max-width: calc(100dvw / 6 + 20px);
+    max-height: calc(100dvh / 6);
     &__cream {
       left: -11%;
     }

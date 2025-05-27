@@ -3,10 +3,18 @@ about
 	pas de titre au-dessus du texte en mobile ?
 	le souligné du menu doit aussi slide entre chaque link ? (bizarre si les liens sont sur 2 lignes)
 	slider infini ou quand c'est sur le premier il y a pas la flèche de gauche ?
+	on laisse les deux menus l'un au-dessus de l'autre ?
 
 work
 	pas de titre pour le focus en mode mobile ?
 	voir s'il y a des préconisations pour l'affichage de la vidéo
+
+contact
+	il faut les marges ou la width du texte centré au milieu
+	l'espace de 1R est basé sur quoi ? le milieu du paragraphe ?
+	il faut le gap entre les champs du formulaire
+	il faut la width du bouton envoyer
+	si on rajoute le "merci pour votre message", il faut remonter le formulaire/baisser le submenu
 
 animations
 	seulement en mode pc ou aussi mobile ?
@@ -14,3 +22,12 @@ animations
 
 wordpress
 	qu'est-ce qui doit être dynamique ? et qu'est-ce qui doit ne pas l'être ?
+
+responsive
+	une marge de 20px pour le mobile ok mais ça correspond à quoi entre mobile et desktop ?
+
+espacements
+	pour certains trucs ça colle pas (gap du menu work, akas, images)
+
+menu
+	voir si le menu mobile est définitif et si oui essayer de le faire en flex

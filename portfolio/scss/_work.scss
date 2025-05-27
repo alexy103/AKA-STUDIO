@@ -7,21 +7,24 @@
   justify-content: flex-end;
   .presentation {
     align-self: flex-end;
-    margin: 3vh 10vw 0 0;
+    margin: 3vh calc(100dvw / 6) 0 0;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    gap: 3vh;
+    gap: 35px;
+    // revoir les deux gap
     .workMenu {
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      gap: 1vh;
+      gap: 18px;
     }
   }
 
+  $projects-height: calc(((100dvh / 6) + 40px) * 2);
+
   .projects {
-    height: 40vh;
+    height: $projects-height;
     display: flex;
     border-top: 1px solid white;
     border-bottom: 1px solid white;
@@ -35,7 +38,7 @@
         display: flex;
         justify-content: space-between;
         height: 50%;
-        padding: 0 4vw 2vh;
+        padding: 0 15px 15px;
         align-items: flex-end;
         .title {
         }
@@ -58,7 +61,7 @@
         flex-direction: column-reverse;
         .project__text {
           align-items: flex-start;
-          padding: 2vh 4vw 0;
+          padding: 15px 15px 0;
           border-top: 1px solid white;
         }
       }
@@ -70,23 +73,31 @@
     }
   }
 
+  $un-sixieme: 100dvh / 6;
+
   .category {
     font-size: 4rem;
     text-transform: uppercase;
-    padding: 15vh 0 5vh;
+    margin: $un-sixieme 0 0;
+    padding: 2dvh 0;
+    border-top: 1px solid white;
+    width: 100dvw;
+    text-align: center;
   }
 
   .aka {
     &__cream {
-      max-width: 20vw;
-      top: 83%;
-      left: -10%;
+      max-width: calc(100dvw / 12);
+      max-height: calc(100dvh / 12);
+      top: 90%;
+      left: -4%;
     }
 
     &__red {
-      max-width: 32vw;
-      top: 63%;
-      left: -14%;
+      max-width: calc(100dvw / 6 + 20px);
+      max-height: calc(100dvh / 6);
+      top: 72%;
+      left: -10%;
     }
   }
 }

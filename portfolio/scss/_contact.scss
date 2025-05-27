@@ -48,7 +48,7 @@
         flex-direction: column;
         justify-content: space-evenly;
         height: 100%;
-        width: 60vw;
+        width: calc(100dvw / 6 * 4);
         input,
         textarea {
           font-family: "Franklin Gothic Medium", "Arial Narrow", Arial,
@@ -63,34 +63,33 @@
           height: 3rem;
         }
         textarea {
-          height: 15vh;
+          height: calc(100dvh / 6);
           padding-top: 1vh;
           resize: none;
         }
         ::placeholder {
           color: rgba(255, 255, 255, 0.4);
           position: absolute;
-          left: 5%;
+          left: 15px;
         }
         input[type="submit"] {
           width: 60%;
-          margin-left: auto;
         }
       }
     }
   }
 
   .title {
-    margin: 0 0 4vh 15vw;
+    margin: 0 0 35px calc(100dvw / 6);
     text-transform: uppercase;
     font-size: 4rem;
   }
 
   .contactMenu {
-    margin-left: 15vw;
+    margin-left: calc(100dvw / 6);
     display: flex;
     flex-direction: column;
-    gap: 3vh;
+    gap: 18px;
     &__link {
       width: fit-content;
     }
@@ -98,15 +97,17 @@
 
   .aka {
     &__cream {
-      max-width: 32vw;
+      max-width: calc(100dvw / 6 + 20px);
+      max-height: calc(100dvh / 6);
       top: 60%;
-      right: -14%;
+      right: -9%;
     }
 
     &__red {
-      max-width: 25vw;
+      max-width: calc(100dvw / 12);
+      max-height: calc(100dvh / 12);
       top: 80%;
-      right: -11%;
+      right: -4%;
     }
   }
 }
