@@ -86,9 +86,19 @@ function loadContent(
     state.activeTitle = workTitles[index];
   }
 
-  if (state.name === "friends") {
+  const jobsMenu = document.querySelector(".about .menus .jobs");
+  const menus = document.querySelector(".menus");
+
+  if ((state.name === "about" && index === 2) || state.name === "friends") {
+    jobsMenu.classList.remove("hidden");
+    menus.classList.remove("menus--flex");
+    menus.classList.add("menus--grid");
     activeFriendListFriends = document.querySelectorAll(
       ".about .friendlist:not(.hidden) .friend"
     );
+  } else {
+    jobsMenu.classList.add("hidden");
+    menus.classList.remove("menus--grid");
+    menus.classList.add("menus--flex");
   }
 }

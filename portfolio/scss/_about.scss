@@ -1,32 +1,93 @@
+$row: calc((100dvh - (5 * 20px)) / 6);
+$column: calc((100dvw - (5 * 20px)) / 6);
+
 .about {
   top: -150%;
   left: 0;
   .content {
+    height: calc(#{$row} * 4 + 80px);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    padding-top: 10vh;
-    min-height: 70vh;
+    padding-top: calc(#{$row} + 20px);
+    margin-inline: calc(#{$column} + 20px);
+    gap: 20px;
     img {
-      max-width: 40vw;
+      height: $row;
     }
     &__title {
+      text-transform: uppercase;
+      margin-top: 6px;
+      font-family: "Now Black", sans-serif;
+      font-size: 1.2rem;
     }
     &__text {
       text-align: center;
-      width: 70vw;
-      margin-inline: auto;
-      font-size: 1.1rem;
+      height: calc(#{$row} * 2 + 20px);
+      font-size: 1.2rem;
       line-height: 1.4rem;
+    }
+
+    &:nth-child(1) .content__text,
+    &:nth-child(2) .content__text {
+      overflow-y: scroll;
+      mask-image: linear-gradient(#000 50%, transparent 100%);
+      scrollbar-width: none;
+      p {
+        font-size: 1.2rem;
+        line-height: 1.6rem;
+        text-align: justify;
+        padding: 5% 0 35%;
+      }
+    }
+
+    &--friends {
+      .content__text {
+        height: auto;
+      }
+    }
+  }
+
+  .menus {
+    margin: 20px calc(#{$column} + 20px) 0;
+    height: $row;
+
+    &--grid {
+      display: flex;
+      flex-wrap: wrap;
+
+      .jobs,
+      .aboutMenu {
+        width: 100%;
+        display: flex;
+
+        li {
+          text-align: center;
+          margin-block: auto;
+          width: calc(100% / 3);
+        }
+      }
+    }
+
+    &--flex {
+      display: flex;
+
+      .aboutMenu {
+        display: flex;
+        align-items: center;
+        width: 100%;
+
+        li {
+          text-align: center;
+          margin-block: auto;
+          width: calc(100% / 3);
+        }
+      }
     }
   }
 
   .aboutMenu {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    margin: 5vh 0;
     &__link {
       &:nth-child(1) {
         display: flex;
@@ -36,21 +97,21 @@
       }
     }
   }
+
   .slideTitle {
     text-align: center;
   }
 
   .friendlist {
-    width: 70vw;
     .friend {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      gap: 3vh;
+      gap: 20px;
 
       .slider {
         display: flex;
-        width: 100%;
+        height: $row;
+        width: calc(#{$column} * 4 + 60px);
         justify-content: space-between;
         align-items: center;
 
@@ -61,33 +122,33 @@
       }
 
       &__description {
+        height: $row;
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 1vh;
 
         .name {
           font-size: 2rem;
+          font-family: "Bricolage Bold", sans-serif;
         }
 
         .text {
           text-align: center;
+          height: calc(#{$row} / 2);
+          font-size: 1.2rem;
+          line-height: 1.4rem;
+          flex: 1;
+          display: flex;
+          align-items: center;
         }
       }
     }
   }
 
-  .jobs {
-    display: flex;
-    width: 100vw;
-    justify-content: space-evenly;
-    align-items: center;
-    text-align: center;
-  }
-
   .aka {
-    max-width: 25vw;
-    bottom: -8%;
+    bottom: -3%;
+    width: calc(#{$column} * 1.5);
+    height: calc(#{$row} / 2);
     &__cream {
       left: 0%;
     }

@@ -2,6 +2,8 @@ const menuLinks = document.querySelectorAll(".menu .menu__link");
 
 const mainLogo = document.querySelector(".identity__logo");
 
+const navigationLogo = document.querySelector(".navigation__logo");
+
 const homeAkaRed = document.querySelector(".home .aka__red");
 const homeAkaCream = document.querySelector(".home .aka__cream");
 const workAkas = document.querySelectorAll(".work .aka");
@@ -17,40 +19,44 @@ menuLinks.forEach((link) => {
 });
 
 mainLogo.addEventListener("click", () => {
-  updateSlide("about", "up");
+  updateSlide("about");
+});
+
+navigationLogo.addEventListener("click", () => {
+  updateSlide("home");
 });
 
 homeAkaRed.addEventListener("click", () => {
-  updateSlide("work", "right");
+  updateSlide("work");
 });
 
 homeAkaCream.addEventListener("click", () => {
-  updateSlide("contact", "left");
+  updateSlide("contact");
 });
 
 aboutAkaRed.addEventListener("click", () => {
   document.querySelector("main").style.transform = "";
 
   setTimeout(() => {
-    updateSlide("work", "down");
+    updateSlide("work");
   }, 750);
 });
 aboutAkaCream.addEventListener("click", () => {
   document.querySelector("main").style.transform = "";
 
   setTimeout(() => {
-    updateSlide("contact", "down");
+    updateSlide("contact");
   }, 750);
 });
 
 workAkas.forEach((aka) => {
   aka.addEventListener("click", () => {
-    updateSlide("home", "left");
+    updateSlide("home");
   });
 });
 
 contactAkas.forEach((aka) => {
   aka.addEventListener("click", () => {
-    updateSlide("home", "right");
+    updateSlide("home");
   });
 });

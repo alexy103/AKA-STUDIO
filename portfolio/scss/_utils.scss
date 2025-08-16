@@ -1,42 +1,47 @@
+$row: calc((100dvh - (5 * 20px)) / 6);
+$column: calc((100dvw - (5 * 20px)) / 6);
+
 .break {
   display: block;
   text-align: center;
 }
 
 .activeLink {
-  color: white;
+  color: #fcfbf5;
+  text-shadow: 0 0 13px #fcfbf5;
 }
 
 .hidden {
   display: none !important;
 }
 
+.unclickable {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0;
+}
+
 .red {
-  color: red;
+  color: #e41313;
 }
 
 .black {
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(20, 18, 19, 0.9);
   position: absolute;
   top: 0;
   left: 0;
   z-index: 2;
   height: 100vh;
   width: 100vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 0 10vw 5vh;
+  padding: 0 $column 5vh;
 
   &__close {
+    font-family: "Bricolage Bold", sans-serif;
     position: absolute;
-    right: 7vw;
+    right: 50%;
     top: 3vh;
+    transform: translateX(50%);
     font-size: 4rem;
-  }
-
-  .title {
-    display: none;
   }
 
   .video {
@@ -45,40 +50,73 @@
     align-items: center;
     justify-content: center;
     gap: 5vh;
-    flex: 1;
+    margin-top: $row;
+    .title {
+      font-family: "Now Black", sans-serif;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    .iframe__wrapper {
+      display: flex;
+      align-items: center;
+      height: calc(#{$row} * 2);
+    }
     iframe {
-      width: 70vw;
-      height: auto;
-      border: none;
+      width: 100%;
+      max-height: 100%;
     }
     &__description {
       text-align: center;
+      height: $row;
+      width: 100%;
     }
   }
 
   .infos {
     display: flex;
-    flex-direction: column;
-    gap: 3vh;
+    flex-wrap: wrap;
+    height: calc((100dvh - 100px) / 6);
+    margin-top: 20px;
+    font-size: 1.2rem;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: uppercase;
+
+    &__wrapper {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+    }
 
     .info {
       display: flex;
       flex-direction: column;
+      justify-content: center;
       gap: 1vh;
+
       &__title {
         text-transform: uppercase;
+        font-family: "Bricolage Bold", sans-serif;
+      }
+
+      &--fonction {
+        height: 100%;
+        text-align: end;
       }
     }
   }
 }
 
 .submenu {
+  font-family: "Bricolage Bold", sans-serif;
   color: rgba(255, 255, 255, 0.418);
   text-transform: uppercase;
   &__active {
-    color: white;
+    color: #fcfbf5;
+    text-shadow: 0px 0 13px #fcfbf5;
     text-decoration: underline;
-    text-decoration-color: red;
+    text-decoration-color: #e41313;
   }
 }
 
@@ -89,7 +127,9 @@
 }
 
 .slideTitle {
-  font-size: 4rem;
+  text-transform: uppercase;
+  font-size: 3rem;
+  font-family: "Now Black", sans-serif;
 }
 
 .aka {

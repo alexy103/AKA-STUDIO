@@ -1,119 +1,123 @@
+$row: calc((100dvh - (5 * 20px)) / 6);
+$column: calc((100dvw - (5 * 20px)) / 6);
+
 .menu {
   position: absolute;
   left: 100%;
   height: 100vh;
   width: 100vw;
-  background-color: red;
-  color: black;
+  background-color: #e41313;
+  color: #131412;
   transition: 1s all;
   text-transform: uppercase;
   z-index: 2;
-
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(12, 1fr);
-  grid-column-gap: 1px;
-  grid-row-gap: 1px;
-
-  .gridSquare {
-    border: 1px solid black;
-    display: flex;
-    align-items: center;
-    font-size: 4rem;
-    font-weight: bold;
-    transition: 0.5s all;
-
-    h2 {
-      margin-left: 2vw;
-    }
-  }
-
-  &__items {
-    display: flex;
-    flex-direction: column;
-    font-size: 4rem;
-    gap: 8vh;
-    margin: 15vh 0 0 15vw;
-  }
-
-  &__item {
-    cursor: pointer;
-    border: 0.5px solid black;
-    padding: 4vw;
-  }
+  font-size: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1px;
+  font-family: "Now Black", sans-serif;
 
   &__close {
     width: fit-content;
     height: fit-content;
-    position: absolute;
     right: 7vw;
     top: 3vh;
-    color: white;
+    color: #fcfbf5;
   }
 
-  .menu__home {
-    grid-area: 2 / 2 / 4 / 5;
+  &__text {
+    flex: 1;
+    display: flex;
+    text-orientation: upright;
+    writing-mode: vertical-lr;
+    padding-top: 10vh;
+    letter-spacing: 25px;
   }
 
-  .menu__work {
-    grid-area: 4 / 2 / 6 / 5;
+  &__img {
+    max-width: 20px;
   }
 
-  .menu__about {
-    grid-area: 6 / 2 / 8 / 5;
+  .firstcol {
+    width: $column;
+    height: 100%;
+    border-right: 1px solid #131412;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+
+    .gridSquare {
+      width: 100%;
+      height: calc(#{$row} + 20px);
+      border-top: 1px solid #131412;
+      border-bottom: 1px solid #131412;
+
+      &:first-child {
+        border-top: none;
+        height: calc(#{$row} / 2);
+      }
+
+      &:last-child {
+        flex: 1;
+        border-bottom: none;
+      }
+    }
   }
 
-  .menu__contact {
-    grid-area: 8 / 2 / 10 / 5;
+  .secondcol {
+    width: calc(#{$column} * 3 + 78px);
+    height: 100%;
+    border-left: 1px solid #131412;
+    border-right: 1px solid #131412;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+
+    .gridSquare {
+      width: 100%;
+      height: calc(#{$row} + 20px);
+      border-top: 1px solid #131412;
+      border-bottom: 1px solid #131412;
+
+      &:first-child {
+        border-top: none;
+        height: calc(#{$row} / 2);
+      }
+
+      &:last-child {
+        flex: 1;
+        border-bottom: none;
+      }
+    }
+
+    .menu__link {
+      display: flex;
+      align-items: center;
+      transition: 0.5s all;
+
+      h2 {
+        margin-left: 5vw;
+      }
+    }
   }
 
-  :nth-child(1) {
-    grid-area: 1 / 1 / 2 / 2;
-  }
-
-  :nth-child(2) {
-    grid-area: 1 / 2 / 2 / 5;
-  }
-
-  :nth-child(3) {
-    grid-area: 2 / 1 / 4 / 2;
-  }
-
-  :nth-child(5) {
-    grid-area: 4 / 1 / 6 / 2;
-  }
-
-  :nth-child(7) {
-    grid-area: 6 / 1 / 8 / 2;
-  }
-
-  :nth-child(9) {
-    grid-area: 8 / 1 / 10 / 2;
-  }
-
-  :nth-child(11) {
-    grid-area: 10 / 1 / 13 / 2;
-  }
-
-  :nth-child(12) {
-    grid-area: 10 / 2 / 13 / 5;
-  }
-
-  :nth-child(13) {
-    position: relative;
-    background-color: #b21212;
-    grid-area: 1 / 5 / 13 / 7;
+  .thirdcol {
+    border-left: 1px solid #131412;
+    width: calc(#{$column} * 2 + 20px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-block: 5vh;
+    color: #fcfbf5;
   }
 }
-
-$tiers: calc((100dvh / 6) / 3);
 
 .navigation {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: $tiers 10vw $tiers;
-  height: $tiers * 3;
+  padding: calc(#{$row}/ 3) $column;
+  height: $row;
   position: absolute;
   top: 0;
   left: 0;
@@ -127,133 +131,3 @@ $tiers: calc((100dvh / 6) / 3);
     font-size: 20px;
   }
 }
-
-//  OLD VERSION
-// .menu {
-//   position: absolute;
-//   left: 100%;
-//   height: 100vh;
-//   width: 100vw;
-//   background-color: red;
-//   color: black;
-//   transition: 1s all;
-//   text-transform: uppercase;
-//   z-index: 2;
-
-//   display: grid;
-//   grid-template-columns: repeat(10, 1fr);
-//   grid-template-rows: repeat(25, 1fr);
-//   grid-column-gap: 0px;
-//   grid-row-gap: 0px;
-
-//   .gridSquare {
-//     border: 1px solid black;
-//     display: flex;
-//     align-items: center;
-//     font-size: 4rem;
-//     font-weight: bold;
-//     transition: 0.5s all;
-
-//     h2 {
-//       margin-left: 2vw;
-//     }
-//   }
-
-//   &__items {
-//     display: flex;
-//     flex-direction: column;
-//     font-size: 4rem;
-//     gap: 8vh;
-//     margin: 15vh 0 0 15vw;
-//   }
-
-//   &__item {
-//     cursor: pointer;
-//     border: 0.5px solid black;
-//     padding: 4vw;
-//   }
-
-//   &__close {
-//     width: fit-content;
-//     height: fit-content;
-//     position: absolute;
-//     right: 7vw;
-//     top: 3vh;
-//     color: white;
-//   }
-
-//   .menu__home {
-//     grid-area: 3 / 2 / 6 / 8;
-//   }
-
-//   .menu__work {
-//     grid-area: 6 / 2 / 9 / 8;
-//   }
-
-//   .menu__about {
-//     grid-area: 9 / 2 / 12 / 8;
-//   }
-
-//   .menu__contact {
-//     grid-area: 12 / 2 / 15 / 8;
-//   }
-
-//   :nth-child(1) {
-//     grid-area: 1 / 1 / 3 / 2;
-//   }
-
-//   :nth-child(2) {
-//     grid-area: 1 / 2 / 3 / 8;
-//   }
-
-//   :nth-child(3) {
-//     grid-area: 3 / 1 / 6 / 2;
-//   }
-
-//   :nth-child(5) {
-//     grid-area: 6 / 1 / 9 / 2;
-//   }
-
-//   :nth-child(7) {
-//     grid-area: 9 / 1 / 12 / 2;
-//   }
-
-//   :nth-child(9) {
-//     grid-area: 12 / 1 / 15 / 2;
-//   }
-
-//   :nth-child(11) {
-//     grid-area: 15 / 1 / 26 / 2;
-//   }
-
-//   :nth-child(12) {
-//     grid-area: 15 / 2 / 26 / 8;
-//   }
-
-//   :nth-child(13) {
-//     position: relative;
-//     grid-area: 1 / 8 / 26 / 11;
-//   }
-// }
-
-// $tiers: calc((100dvh / 6) / 3);
-
-// .navigation {
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-//   padding: $tiers 10vw $tiers;
-//   height: $tiers * 3;
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   width: 100vw;
-//   z-index: 1;
-
-//   &__logo {
-//     max-width: 20px;
-//   }
-//   &__burger {
-//     font-size: 20px;
-//   }
-// }

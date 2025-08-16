@@ -30,8 +30,8 @@ const title = black.querySelector(".title");
 const iframe = black.querySelector("iframe");
 const description = black.querySelector(".video__description");
 const client = black.querySelectorAll(".info__text")[0];
-const fonction = black.querySelectorAll(".info__text")[1];
-const date = black.querySelectorAll(".info__text")[2];
+const date = black.querySelectorAll(".info__text")[1];
+const fonction = black.querySelectorAll(".info__text")[2];
 const closeBlack = black.querySelector(".black__close");
 
 thumbnails.forEach((thumbnail) => {
@@ -41,7 +41,11 @@ thumbnails.forEach((thumbnail) => {
     iframe.title = thumbnail.dataset.title;
     description.textContent = thumbnail.dataset.description;
     client.textContent = thumbnail.dataset.client;
-    fonction.textContent = thumbnail.dataset.fonction;
+    // Pour faire un retour à la ligne après chaque virgule
+    fonction.innerHTML = thumbnail.dataset.fonction
+      .split(",")
+      .map((item) => item.trim())
+      .join(",<br>");
     date.textContent = thumbnail.dataset.date;
     black.classList.remove("hidden");
   });

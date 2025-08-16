@@ -1,23 +1,28 @@
+$row: calc((100dvh - (5 * 20px)) / 6);
+$column: calc((100dvw - (5 * 20px)) / 6);
+
 .contact {
   top: 0;
   left: -150%;
   .content {
-    padding: 20vh 0 10vh;
+    padding: $row 0 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    gap: 10vh;
-    min-height: 60vh;
+    justify-content: center;
+    height: calc(#{$row} * 4 + 60px);
+    margin: 0 calc(#{$column} + 20px);
 
     .text {
+      display: flex;
+      align-items: center;
       text-align: center;
-      margin: 0 15vw;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
+      height: calc(#{$row} * 2 + 20px);
     }
     &--typeform {
       .subtitle {
-        color: white;
+        color: #fcfbf5;
         text-transform: uppercase;
         font-size: 3rem;
         min-height: 10vh;
@@ -29,7 +34,7 @@
     &--medias {
       .medias {
         display: flex;
-        justify-content: space-evenly;
+        justify-content: space-between;
         align-items: center;
         width: 100%;
         min-height: 10vh;
@@ -40,19 +45,18 @@
     }
 
     &--form {
-      padding: 15vh 0 2vh;
-      height: 50vh;
+      padding: calc(#{$row} + 20px) 0 0;
+      justify-content: flex-start;
 
       form {
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-        height: 100%;
-        width: calc(100dvw / 6 * 4);
+        gap: calc(#{$row} * 0.095);
+        width: calc(#{$column} * 4);
         input,
         textarea {
-          font-family: "Franklin Gothic Medium", "Arial Narrow", Arial,
-            sans-serif;
+          font-family: "Bricolage Bold", sans-serif;
           color: rgba(255, 255, 255, 0.4);
           background-color: #2c2c2c;
           border: none;
@@ -60,9 +64,10 @@
           font-size: 1.5rem;
         }
         input {
-          height: 3rem;
+          height: calc(#{$row} * 0.27);
         }
         textarea {
+          margin-top: calc(20px - #{$row} * 0.095);
           height: calc(100dvh / 6);
           padding-top: 1vh;
           resize: none;
@@ -79,14 +84,13 @@
     }
   }
 
-  .title {
-    margin: 0 0 35px calc(100dvw / 6);
-    text-transform: uppercase;
-    font-size: 4rem;
+  .slideTitle {
+    margin: 0 0 35px $column;
   }
 
   .contactMenu {
-    margin-left: calc(100dvw / 6);
+    font-family: "Bricolage Bold", sans-serif;
+    margin-left: $column;
     display: flex;
     flex-direction: column;
     gap: 18px;
@@ -97,17 +101,16 @@
 
   .aka {
     &__cream {
-      max-width: calc(100dvw / 6 + 20px);
-      max-height: calc(100dvh / 6);
-      top: 60%;
-      right: -9%;
+      width: calc(#{$column} + 20px);
+      top: 63%;
+      right: -8%;
     }
 
     &__red {
-      max-width: calc(100dvw / 12);
-      max-height: calc(100dvh / 12);
+      width: calc(#{$column}/ 2);
+      height: calc(#{$row}/ 2);
       top: 80%;
-      right: -4%;
+      right: -3%;
     }
   }
 }

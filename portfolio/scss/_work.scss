@@ -1,3 +1,6 @@
+$row: calc((100dvh - (5 * 20px)) / 6);
+$column: calc((100dvw - (5 * 20px)) / 6);
+
 .work {
   top: 0;
   left: 150%;
@@ -7,41 +10,38 @@
   justify-content: flex-end;
   .presentation {
     align-self: flex-end;
-    margin: 3vh calc(100dvw / 6) 0 0;
+    margin: 5dvh $column 0 0;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     gap: 35px;
-    // revoir les deux gap
     .workMenu {
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      gap: 18px;
+      gap: 12px;
     }
   }
 
-  $projects-height: calc(((100dvh / 6) + 40px) * 2);
-
   .projects {
-    height: $projects-height;
     display: flex;
-    border-top: 1px solid white;
-    border-bottom: 1px solid white;
+    border-top: 1px solid #fcfbf5;
+    border-bottom: 1px solid #fcfbf5;
     width: 100vw;
     white-space: nowrap;
     overflow: scroll hidden;
+    max-height: calc((#{$row} + 40px) * 2);
 
     .project {
       min-width: 60vw;
+      font-family: "Bricolage Bold", sans-serif;
+
       &__text {
         display: flex;
         justify-content: space-between;
         height: 50%;
         padding: 0 15px 15px;
         align-items: flex-end;
-        .title {
-        }
         .number {
           font-size: 2.5rem;
           color: rgba(255, 0, 0, 0.5);
@@ -62,42 +62,44 @@
         .project__text {
           align-items: flex-start;
           padding: 15px 15px 0;
-          border-top: 1px solid white;
+          border-top: 1px solid #fcfbf5;
         }
       }
       &:nth-child(odd) {
         .project__image {
-          border-top: 1px solid white;
+          border-top: 1px solid #fcfbf5;
         }
       }
     }
   }
 
-  $un-sixieme: 100dvh / 6;
-
   .category {
-    font-size: 4rem;
-    text-transform: uppercase;
-    margin: $un-sixieme 0 0;
-    padding: 2dvh 0;
-    border-top: 1px solid white;
-    width: 100dvw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+    font-size: 3rem;
+    text-transform: uppercase;
+    margin: $row 0 0;
+    border-top: 1px solid #fcfbf5;
+    min-height: calc(#{$row} / 2);
+    width: 100dvw;
+    font-family: "Now Black", sans-serif;
   }
 
   .aka {
-    &__cream {
-      max-width: calc(100dvw / 12);
-      max-height: calc(100dvh / 12);
-      top: 90%;
-      left: -4%;
+    &__red {
+      width: calc(#{$column} + 20px);
+      height: $row;
+      top: 72%;
+      left: -8%;
     }
 
-    &__red {
-      max-width: calc(100dvw / 6 + 20px);
-      max-height: calc(100dvh / 6);
-      top: 72%;
-      left: -10%;
+    &__cream {
+      width: calc(#{$column}/ 2);
+      height: calc(#{$row}/ 2);
+      top: 90%;
+      left: -2%;
     }
   }
 }

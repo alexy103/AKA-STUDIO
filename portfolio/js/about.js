@@ -25,6 +25,10 @@ const friendsState = {
   activeMenuLink: jobsMenu[0],
 };
 
+const sliderLeftArrows = document.querySelectorAll(".slider .left");
+const sliderRightArrows = document.querySelectorAll(".slider .right");
+const sliderArrows = document.querySelectorAll(".slider .left, .slider .right");
+
 jobsMenu.forEach((link, i) => {
   link.addEventListener("click", () => {
     updateContent(friendsState, friendLists, jobsMenu, i);
@@ -33,5 +37,22 @@ jobsMenu.forEach((link, i) => {
     });
     activeFriendListFriends[0].classList.remove("hidden");
     currentIndex = 0;
+
+    // On rend la flèche gauche non cliquable au début
+    sliderLeftArrows.forEach((arrow) => {
+      arrow.classList.add("unclickable");
+    });
+
+    if (activeFriendListFriends.length <= 1) {
+      // Si on n'a qu'un seul ami, on rend les flèches non cliquables
+      sliderArrows.forEach((arrow) => {
+        arrow.classList.add("unclickable");
+      });
+    } else {
+      // Si on a plusieurs amis, on rend les flèches cliquables
+      sliderRightArrows.forEach((arrow) => {
+        arrow.classList.remove("unclickable");
+      });
+    }
   });
 });

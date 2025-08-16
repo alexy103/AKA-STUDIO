@@ -7,12 +7,25 @@
 @import "about";
 @import "contact";
 
+@font-face {
+  font-family: "Now Black";
+  src: url("../fonts/Now-Black.otf");
+}
+@font-face {
+  font-family: "Bricolage Bold";
+  src: url("../fonts/BricolageGrotesque-Bold.woff2");
+}
+@font-face {
+  font-family: "Bricolage Light";
+  src: url("../fonts/BricolageGrotesque-Light.woff2");
+}
+
 body {
-  background-color: black;
-  color: white;
+  background-color: #131412;
+  color: #fcfbf5;
   overflow: hidden;
   position: relative;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: "Bricolage Light", sans-serif;
 }
 
 main {
