@@ -182,6 +182,7 @@ img {
 
 .red {
   color: #e41313;
+  text-shadow: 0px 0 10px #e41313;
 }
 
 .black {
@@ -189,7 +190,7 @@ img {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 2;
+  z-index: 3;
   height: 100vh;
   width: 100vw;
   padding: 0 calc((100dvw - 100px) / 6) 5vh;
@@ -268,14 +269,25 @@ img {
 .submenu__active {
   color: #fcfbf5;
   text-shadow: 0px 0 13px #fcfbf5;
-  text-decoration: underline;
-  text-decoration-color: #e41313;
+  position: relative;
+}
+.submenu__active::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 1px;
+  background-color: #e41313;
 }
 
 .slide {
   height: 100dvh;
   width: 100dvw;
   position: absolute;
+  transition: 2s;
+  background-color: #131412;
 }
 
 .slideTitle {
@@ -286,6 +298,15 @@ img {
 
 .aka {
   position: absolute;
+  transition: 2s;
+}
+
+.left {
+  translate: -150%;
+}
+
+.right {
+  translate: 150%;
 }
 
 .menu {
@@ -297,7 +318,7 @@ img {
   color: #131412;
   transition: 1s all;
   text-transform: uppercase;
-  z-index: 2;
+  z-index: 3;
   font-size: 3rem;
   display: flex;
   flex-wrap: wrap;
@@ -397,7 +418,7 @@ img {
   top: 0;
   left: 0;
   width: 100vw;
-  z-index: 1;
+  z-index: 2;
 }
 .navigation__logo {
   max-width: 20px;
@@ -520,6 +541,9 @@ img {
   width: 100dvw;
   font-family: "Now Black", sans-serif;
 }
+.work .aka {
+  opacity: 0;
+}
 .work .aka__red {
   width: calc(calc((100dvw - 100px) / 6) + 20px);
   height: calc((100dvh - 100px) / 6);
@@ -531,34 +555,6 @@ img {
   height: calc(calc((100dvh - 100px) / 6) / 2);
   top: 90%;
   left: -2%;
-}
-
-@keyframes slideRight {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(100vw);
-  }
-}
-@keyframes slideLeft {
-  0% {
-    transform: translateX(100vw);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-.anim {
-  animation: slideRight 1s forwards ease-in;
-}
-
-.anim__reverse {
-  animation: slideLeft 1s forwards ease-out;
-}
-
-.hidden-temp {
-  visibility: hidden;
 }
 
 .about {
@@ -697,6 +693,10 @@ img {
   top: 0;
   left: -150%;
 }
+.contact--enter {
+  translate: 150%;
+  transition: 2s;
+}
 .contact .content {
   padding: calc((100dvh - 100px) / 6) 0 0;
   display: flex;
@@ -799,6 +799,162 @@ img {
   right: -3%;
 }
 
+.work--enter {
+  animation: slideEnter 2s forwards;
+  transform: translateX(-150%);
+}
+.work--enter .project {
+  animation: slideFromRight 2s forwards;
+}
+.work--enter .category span {
+  animation: slideFromRight 2s;
+}
+.work--enter .workMenu {
+  animation: slideFromBottom 2s, gap 1s 1s;
+}
+.work--enter .red {
+  opacity: 0;
+  animation: rec 0.5s 2.75s forwards;
+}
+.work--enter .submenu__active::after {
+  animation: underline 1s 2s forwards;
+}
+.work--enter .aka {
+  animation: workAkas 1s 2.75s forwards;
+}
+.work--enter .anim {
+  animation: workSliderExit 1s forwards ease-in;
+}
+.work--enter .anim__reverse {
+  animation: workSliderEnter 1s forwards ease-out;
+}
+.work--enter .hidden-temp {
+  visibility: hidden;
+}
+
+.work--exit {
+  animation: slideExit 2s 0.5s forwards;
+}
+.work--exit .project {
+  animation: slideToRight 2s;
+}
+.work--exit .category span {
+  animation: slideToRight 2s;
+}
+.work--exit .workMenu {
+  animation: slideToBottom 2s;
+}
+.work--exit .submenu__active::after {
+  width: 100%;
+}
+
+@keyframes workSliderExit {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
+}
+@keyframes workSliderEnter {
+  0% {
+    transform: translateX(100vw);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes slideToRight {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
+}
+@keyframes slideFromRight {
+  0% {
+    transform: translateX(100vw);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes slideEnter {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-150%);
+  }
+}
+@keyframes slideExit {
+  0% {
+    transform: translateX(-150%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes slideFromBottom {
+  0% {
+    transform: translateY(100vh);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes slideToBottom {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+@keyframes gap {
+  0% {
+    gap: 30px;
+  }
+}
+@keyframes underline {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@keyframes rec {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes workAkas {
+  0% {
+    transform: translateX(-100%);
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 @font-face {
   font-family: "Now Black";
   src: url("../fonts/Now-Black.otf");

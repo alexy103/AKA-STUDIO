@@ -1,0 +1,178 @@
+.work--enter {
+  animation: slideEnter 2s forwards;
+  transform: translateX(-150%);
+  .project {
+    animation: slideFromRight 2s forwards;
+  }
+
+  .category span {
+    animation: slideFromRight 2s;
+  }
+
+  .workMenu {
+    animation: slideFromBottom 2s, gap 1s 1s;
+  }
+
+  .red {
+    opacity: 0;
+    animation: rec 0.5s 2.75s forwards;
+  }
+
+  .submenu__active::after {
+    animation: underline 1s 2s forwards;
+  }
+
+  .aka {
+    animation: workAkas 1s 2.75s forwards;
+  }
+
+  .anim {
+    animation: workSliderExit 1s forwards ease-in;
+  }
+
+  .anim__reverse {
+    animation: workSliderEnter 1s forwards ease-out;
+  }
+
+  .hidden-temp {
+    visibility: hidden;
+  }
+}
+
+.work--exit {
+  animation: slideExit 2s 0.5s forwards;
+  .project {
+    animation: slideToRight 2s;
+  }
+
+  .category span {
+    animation: slideToRight 2s;
+  }
+
+  .workMenu {
+    animation: slideToBottom 2s;
+  }
+
+  .submenu__active::after {
+    width: 100%;
+  }
+}
+
+@keyframes workSliderExit {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+@keyframes workSliderEnter {
+  0% {
+    transform: translateX(100vw);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideToRight {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+@keyframes slideFromRight {
+  0% {
+    transform: translateX(100vw);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideEnter {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-150%);
+  }
+}
+
+@keyframes slideExit {
+  0% {
+    transform: translateX(-150%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideFromBottom {
+  0% {
+    transform: translateY(100vh);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideToBottom {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+@keyframes gap {
+  0% {
+    gap: 30px;
+  }
+}
+
+@keyframes underline {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes rec {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes workAkas {
+  0% {
+    transform: translateX(-100%);
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

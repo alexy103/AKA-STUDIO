@@ -4,6 +4,12 @@ $column: calc((100dvw - (5 * 20px)) / 6);
 .contact {
   top: 0;
   left: -150%;
+
+  &--enter {
+    translate: 150%;
+    transition: 2s;
+  }
+
   .content {
     padding: $row 0 0;
     display: flex;

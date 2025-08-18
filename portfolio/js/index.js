@@ -1,4 +1,4 @@
-const animationBaseDelay = 200;
+const delay = 1000;
 
 function updateContent(state, contentArray, menuLinks, index) {
   const isWork = state.name === "work";
@@ -10,58 +10,26 @@ function updateContent(state, contentArray, menuLinks, index) {
     ? contentArray[index].querySelectorAll(".project")
     : [];
 
-  activeWorkContent.style.overflow = "hidden";
-
   if (isWork) {
-    // Applique un effet d’escalier en sortie, du dernier au premier
-    animateExit(activeProjects, () => {
-      // Changement de contenu après que l’ancienne animation soit finie
-      loadContent(state, contentArray, menuLinks, index, nextActiveProjects);
-      // Applique un effet d’escalier en entrée, du premier au dernier
-      animateEnter(nextActiveProjects);
-    });
+    activeWorkContent.style.overflow = "hidden";
 
-    // Nettoyage des classes après toutes les animations
-    const totalDelay =
-      (activeProjects.length - 1) * animationBaseDelay + 1200 + 1200;
+    activeProjects.forEach((e) => e.classList.add("anim"));
+
+    // On attend 1s pour que l'exit se fasse
     setTimeout(() => {
-      resetAnimations(activeProjects, nextActiveProjects);
+      loadContent(state, contentArray, menuLinks, index);
+      nextActiveProjects.forEach((e) => e.classList.add("anim__reverse"));
+    }, delay);
+
+    // On attend 1s pour que l'enter se fasse
+    setTimeout(() => {
       activeWorkContent.style.overflow = "scroll hidden";
-    }, totalDelay);
+      activeProjects.forEach((el) => el.classList.remove("anim"));
+      nextActiveProjects.forEach((el) => el.classList.remove("anim__reverse"));
+    }, delay);
   } else {
     loadContent(state, contentArray, menuLinks, index);
   }
-}
-
-function animateExit(elements, callback) {
-  // Applique un effet d’escalier en sortie, du dernier au premier
-  elements.forEach((el, i, arr) => {
-    const delay = (arr.length - 1 - i) * animationBaseDelay;
-    setTimeout(() => el.classList.add("anim"), delay);
-  });
-
-  const maxDelay = (elements.length - 1) * animationBaseDelay + 1200; // temps entre le départ et l'arrivée de la prochaine animation
-  setTimeout(callback, maxDelay);
-}
-
-function animateEnter(elements) {
-  // Prépare les éléments pour l’animation d’entrée
-  elements.forEach((el) => el.classList.add("hidden-temp"));
-
-  // Applique un effet d’escalier en entrée, du premier au dernier
-  elements.forEach((el, i) => {
-    const delay = i * animationBaseDelay;
-    setTimeout(() => {
-      el.classList.remove("hidden-temp");
-      el.classList.add("anim__reverse");
-    }, delay);
-  });
-}
-
-// Nettoyage des classes après toutes les animations
-function resetAnimations(outElements, inElements) {
-  outElements.forEach((el) => el.classList.remove("anim"));
-  inElements.forEach((el) => el.classList.remove("anim__reverse"));
 }
 
 function loadContent(

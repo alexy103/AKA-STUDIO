@@ -1,6 +1,8 @@
 work
 	pour les aka il faut me donner la taille du truc entier, pas celle de la photo crop, ou alors me fournir la photo crop (ce qui serait + simple)
 		-> il va mettre sur le drive les kanji crop			
+-------------------------
+	le titre doit slide aussi quand on change de submenu ? sport, corporate... ?
 WORK DONE
 
 CONTACT DONE
