@@ -9,7 +9,7 @@ function closeMenu() {
   // make sure burger menu changes slide instantly
   setTimeout(() => {
     document.querySelector("main").style.transition = "transform 0.75s";
-  }, 10);
+  }, 1);
 }
 
 document.querySelector(".navigation__burger").addEventListener("click", () => {

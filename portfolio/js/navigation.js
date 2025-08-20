@@ -150,7 +150,7 @@ function exitDisplayedSlide() {
   let displayedSlide = document.querySelector("." + displayedSlideName);
   displayedSlide.classList.add(displayedSlideName + "--exit");
 
-  contactSlide.classList.remove("contact--inside");
+  displayedSlide.classList.remove(displayedSlideName + "--inside");
 
   // On attend 2s pour que l'animation de sortie se termine
   setTimeout(() => {
@@ -191,8 +191,8 @@ function updateSlide(slideName) {
       break;
     case "contact":
       displayedSlideName = "contact";
-      // On attend 1s pour que le aka disparaisse
       document.querySelector(".contact").classList.remove("contact--exit");
+      // On attend 1s pour que le aka disparaisse
       setTimeout(() => {
         document.querySelector(".contact").classList.add("contact--enter");
         setTimeout(() => {

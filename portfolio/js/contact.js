@@ -16,6 +16,22 @@ const contactState = {
 
 contactMenuLinks.forEach((link, i) => {
   link.addEventListener("click", () => {
+    let active = document.querySelector(".contact .submenu__active");
+
+    active.classList.remove("underline--enter");
+
+    // Attendre que la classe s'enlève pour commencer l'animation
+    setTimeout(() => {
+      active.classList.add("underline--exit");
+      link.classList.add("underline--enter");
+    }, 1);
+
     updateContent(contactState, contactContent, contactMenuLinks, i);
+
+    setTimeout(() => {
+      contactMenuLinks.forEach((link) => {
+        link.classList.remove("underline--exit");
+      });
+    }, 1000);
   });
 });

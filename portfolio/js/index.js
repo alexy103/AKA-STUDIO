@@ -6,12 +6,15 @@ function updateContent(state, contentArray, menuLinks, index) {
 
   // Gestion du slider de work
   if (isWork) {
+    const workSlide = document.querySelector(".work");
     const activeProjects = document.querySelectorAll(
       ".work .projects:not(.hidden) .project"
     );
     const nextActiveProjects = contentArray[index].querySelectorAll(".project");
 
     activeWorkContent.style.overflow = "hidden";
+
+    workSlide.classList.add("work--inside");
 
     activeProjects.forEach((e) => e.classList.add("anim"));
 
@@ -28,6 +31,7 @@ function updateContent(state, contentArray, menuLinks, index) {
       nextActiveProjects.forEach((el) => el.classList.remove("anim__reverse"));
     }, delay);
   } else if (isContact) {
+    const contactSlide = document.querySelector(".contact");
     const activeContent = document.querySelector(
       ".contact .content:not(.hidden)"
     );
@@ -36,7 +40,6 @@ function updateContent(state, contentArray, menuLinks, index) {
 
     const nextActiveContent = contentArray[index];
 
-    let contactSlide = document.querySelector(".contact");
     contactSlide.classList.remove("contact--enter");
     contactSlide.classList.add("contact--inside");
 
@@ -45,14 +48,12 @@ function updateContent(state, contentArray, menuLinks, index) {
     activeContentTitle.classList.add("content__title--exit");
     activeContentText?.classList.add("content__text--exit");
 
-    // On attend 1s pour que l'exit se fasse
-    setTimeout(() => {
-      loadContent(state, contentArray, menuLinks, index);
-      nextActiveContent.children[0].classList.remove("content__title--exit");
-      nextActiveContent.children[1]?.classList.remove("content__text--exit");
-      nextActiveContent.children[0].classList.add("content__title--enter");
-      nextActiveContent.children[1]?.classList.add("content__text--enter");
-    }, 1000);
+    loadContent(state, contentArray, menuLinks, index);
+
+    nextActiveContent.children[0].classList.remove("content__title--exit");
+    nextActiveContent.children[1]?.classList.remove("content__text--exit");
+    nextActiveContent.children[0].classList.add("content__title--enter");
+    nextActiveContent.children[1]?.classList.add("content__text--enter");
   } else {
     loadContent(state, contentArray, menuLinks, index);
   }

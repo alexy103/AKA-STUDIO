@@ -58,6 +58,16 @@
   }
 }
 
+.work--inside {
+  .submenu__active::after {
+    animation: underline 1s 0.5s forwards;
+    left: 100%;
+    transform: translateX(-100%);
+
+    // TODO: FAIRE LE EXIT DU AFTER
+  }
+}
+
 .contact--enter {
   animation: contactSlideEnter 2s forwards;
   transform: translateX(-150%);
@@ -89,6 +99,7 @@
     animation: contactAkas 1s 2.75s forwards;
   }
 }
+
 .content__title {
   &--exit {
     animation: slideToTop 1s forwards;
@@ -98,6 +109,7 @@
     animation: slideFromBottom 1s forwards, fadeIn 1.5s forwards;
   }
 }
+
 .content__text {
   &--exit {
     animation: fadeOut 1s forwards;
@@ -120,13 +132,39 @@
     opacity: 1;
   }
 
-  .submenu__active::after {
-    animation: underline 1s 0.5s forwards;
-    left: 0;
-    transform: translateX(0);
-    width: 0;
-    height: 1px;
-    background-color: #e41313;
+  .contactMenu__link {
+    &.underline--exit {
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        transform: translateX(0);
+        width: 100%;
+        height: 1px;
+        background-color: #e41313;
+        width: 100%;
+        animation: underline 1s forwards reverse;
+      }
+    }
+    &.underline--enter {
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        transform: translateX(0);
+        width: 0;
+        height: 1px;
+        background-color: #e41313;
+        width: 0%;
+        animation: underline 1s forwards;
+      }
+    }
   }
 }
 
