@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu animé</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: #f8f8f8;
+      }
+
+      .menu-container {
+        position: relative;
+      }
+
+      .menu {
+        display: flex;
+        gap: 30px;
+        padding: 10px 0;
+        position: relative;
+        list-style: none;
+        margin: 0;
+      }
+
+      .menu li {
+        position: relative;
+        cursor: pointer;
+      }
+
+      .menu li a {
+        text-decoration: none;
+        color: #333;
+        font-size: 18px;
+        padding: 5px;
+        transition: font-weight 0.3s;
+      }
+
+      .menu li a.active {
+        font-weight: bold;
+      }
+
+      .underline {
+        position: absolute;
+        bottom: 0;
+        height: 2px;
+        background-color: #007bff;
+        transition: left 0.3s, width 0.3s;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="menu-container">
+      <ul class="menu" id="menu">
+        <li><a href="#" class="active">Accueil</a></li>
+        <li><a href="#">À propos</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <div class="underline" id="underline"></div>
+    </div>
+
+    <script>
+      const menu = document.getElementById("menu");
+      const underline = document.getElementById("underline");
+      const links = menu.querySelectorAll("a");
+
+      const setUnderline = (link) => {
+        const rect = link.getBoundingClientRect();
+        const menuRect = menu.getBoundingClientRect();
+        underline.style.left = `${rect.left - menuRect.left}px`;
+        underline.style.width = `${rect.width}px`;
+      };
+
+      const activeLink = menu.querySelector("a.active");
+      if (activeLink) setUnderline(activeLink);
+
+      menu.addEventListener("mouseover", (e) => {
+        const link = e.target.closest("a");
+        if (link) setUnderline(link);
+      });
+
+      menu.addEventListener("mouseleave", () => {
+        const current = menu.querySelector("a.active");
+        if (current) setUnderline(current);
+      });
+
+      links.forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          menu.querySelector("a.active")?.classList.remove("active");
+          link.classList.add("active");
+          setUnderline(link);
+        });
+      });
+    </script>
+  </body>
+</html>

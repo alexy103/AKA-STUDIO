@@ -1,5 +1,5 @@
 .work--enter {
-  animation: slideEnter 2s forwards;
+  animation: workSlideEnter 2s forwards;
   transform: translateX(-150%);
   .project {
     animation: slideFromRight 2s forwards;
@@ -10,7 +10,7 @@
   }
 
   .workMenu {
-    animation: slideFromBottom 2s, gap 1s 1s;
+    animation: slideFromBottom 2s, smallGap 1s 1s;
   }
 
   .red {
@@ -40,7 +40,7 @@
 }
 
 .work--exit {
-  animation: slideExit 2s 0.5s forwards;
+  animation: workSlideExit 2s 0.5s forwards;
   .project {
     animation: slideToRight 2s;
   }
@@ -55,6 +55,105 @@
 
   .submenu__active::after {
     width: 100%;
+  }
+}
+
+.contact--enter {
+  animation: contactSlideEnter 2s forwards;
+  transform: translateX(-150%);
+
+  .red {
+    opacity: 0;
+    animation: rec 0.5s 2.75s forwards;
+  }
+
+  .submenu__active::after {
+    animation: underline 1s 2s forwards;
+  }
+
+  .contactMenu {
+    animation: slideFromBottom 2s, mediumGap 1s 1s;
+  }
+
+  .content {
+    .subtitle {
+      animation: slideFromLeft 2s forwards;
+    }
+
+    .text {
+      animation: slideFromLeft 2s 0.25s forwards;
+    }
+  }
+
+  .aka {
+    animation: contactAkas 1s 2.75s forwards;
+  }
+}
+.content__title {
+  &--exit {
+    animation: slideToTop 1s forwards;
+  }
+
+  &--enter {
+    animation: slideFromBottom 1s forwards, fadeIn 1.5s forwards;
+  }
+}
+.content__text {
+  &--exit {
+    animation: fadeOut 1s forwards;
+  }
+
+  &--enter {
+    animation: fadeIn 1.5s forwards;
+  }
+}
+
+.contact--inside {
+  transition: none;
+  transform: translateX(150%);
+
+  .content {
+    overflow: hidden;
+  }
+
+  .aka {
+    opacity: 1;
+  }
+
+  .submenu__active::after {
+    animation: underline 1s 0.5s forwards;
+    left: 0;
+    transform: translateX(0);
+    width: 0;
+    height: 1px;
+    background-color: #e41313;
+  }
+}
+
+.contact--exit {
+  animation: contactSlideExit 2s 0.5s forwards;
+  transform: translateX(150%);
+
+  .content {
+    .subtitle {
+      animation: slideToLeft 2s forwards;
+    }
+
+    .text {
+      animation: slideToLeft 2s 0.25s forwards;
+    }
+  }
+
+  .contactMenu {
+    animation: slideToBottom 2s;
+  }
+
+  .submenu__active::after {
+    width: 100%;
+  }
+
+  .aka {
+    animation: contactAkas 1s 0.5s reverse;
   }
 }
 
@@ -94,7 +193,25 @@
   }
 }
 
-@keyframes slideEnter {
+@keyframes slideToLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100vw);
+  }
+}
+
+@keyframes slideFromLeft {
+  0% {
+    transform: translateX(-100vw);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes workSlideEnter {
   0% {
     transform: translateX(0);
   }
@@ -103,9 +220,27 @@
   }
 }
 
-@keyframes slideExit {
+@keyframes workSlideExit {
   0% {
     transform: translateX(-150%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes contactSlideEnter {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(150%);
+  }
+}
+
+@keyframes contactSlideExit {
+  0% {
+    transform: translateX(150%);
   }
   100% {
     transform: translateX(0);
@@ -116,6 +251,7 @@
   0% {
     transform: translateY(100vh);
   }
+
   100% {
     transform: translateY(0);
   }
@@ -130,9 +266,24 @@
   }
 }
 
-@keyframes gap {
+@keyframes slideToTop {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100vh);
+  }
+}
+
+@keyframes smallGap {
   0% {
     gap: 30px;
+  }
+}
+
+@keyframes mediumGap {
+  0% {
+    gap: 50px;
   }
 }
 
@@ -142,6 +293,27 @@
   }
   100% {
     width: 100%;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    pointer-events: none;
+    cursor: default;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    pointer-events: all;
+    opacity: 1;
   }
 }
 
@@ -169,6 +341,17 @@
 @keyframes workAkas {
   0% {
     transform: translateX(-100%);
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes contactAkas {
+  0% {
+    transform: translateX(100%);
     opacity: 1;
   }
   100% {

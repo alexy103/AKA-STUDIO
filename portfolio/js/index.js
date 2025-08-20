@@ -2,15 +2,15 @@ const delay = 1000;
 
 function updateContent(state, contentArray, menuLinks, index) {
   const isWork = state.name === "work";
+  const isContact = state.name === "contact";
 
-  const activeProjects = isWork
-    ? document.querySelectorAll(".work .projects:not(.hidden) .project")
-    : [];
-  const nextActiveProjects = isWork
-    ? contentArray[index].querySelectorAll(".project")
-    : [];
-
+  // Gestion du slider de work
   if (isWork) {
+    const activeProjects = document.querySelectorAll(
+      ".work .projects:not(.hidden) .project"
+    );
+    const nextActiveProjects = contentArray[index].querySelectorAll(".project");
+
     activeWorkContent.style.overflow = "hidden";
 
     activeProjects.forEach((e) => e.classList.add("anim"));
@@ -27,18 +27,38 @@ function updateContent(state, contentArray, menuLinks, index) {
       activeProjects.forEach((el) => el.classList.remove("anim"));
       nextActiveProjects.forEach((el) => el.classList.remove("anim__reverse"));
     }, delay);
+  } else if (isContact) {
+    const activeContent = document.querySelector(
+      ".contact .content:not(.hidden)"
+    );
+    const activeContentTitle = activeContent.children[0];
+    const activeContentText = activeContent.children[1];
+
+    const nextActiveContent = contentArray[index];
+
+    let contactSlide = document.querySelector(".contact");
+    contactSlide.classList.remove("contact--enter");
+    contactSlide.classList.add("contact--inside");
+
+    activeContentTitle.classList.remove("content__title--enter");
+    activeContentText?.classList.remove("content__text--enter");
+    activeContentTitle.classList.add("content__title--exit");
+    activeContentText?.classList.add("content__text--exit");
+
+    // On attend 1s pour que l'exit se fasse
+    setTimeout(() => {
+      loadContent(state, contentArray, menuLinks, index);
+      nextActiveContent.children[0].classList.remove("content__title--exit");
+      nextActiveContent.children[1]?.classList.remove("content__text--exit");
+      nextActiveContent.children[0].classList.add("content__title--enter");
+      nextActiveContent.children[1]?.classList.add("content__text--enter");
+    }, 1000);
   } else {
     loadContent(state, contentArray, menuLinks, index);
   }
 }
 
-function loadContent(
-  state,
-  contentArray,
-  menuLinks,
-  index,
-  nextActiveProjects = []
-) {
+function loadContent(state, contentArray, menuLinks, index) {
   state.activeContent.classList.add("hidden");
   contentArray[index].classList.remove("hidden");
 

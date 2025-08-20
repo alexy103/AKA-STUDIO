@@ -5,11 +5,6 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   top: 0;
   left: -150%;
 
-  &--enter {
-    translate: 150%;
-    transition: 2s;
-  }
-
   .content {
     padding: $row 0 0;
     display: flex;
@@ -106,6 +101,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   }
 
   .aka {
+    opacity: 0;
     &__cream {
       width: calc(#{$column} + 20px);
       top: 63%;

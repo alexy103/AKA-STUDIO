@@ -21,7 +21,6 @@ document.querySelector(".menu__close").addEventListener("click", () => {
 });
 
 let activeLink = document.querySelector(".activeLink");
-let activeSlide = document.querySelector(".home");
 
 function updateMenuLink(slideName) {
   activeLink.classList.remove("activeLink");
