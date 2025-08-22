@@ -2,16 +2,16 @@ $row: calc((100dvh - (5 * 20px)) / 6);
 $column: calc((100dvw - (5 * 20px)) / 6);
 
 .contact {
-  top: 0;
-  left: -150%;
+  top: calc(-200dvh + $row + $row);
+  left: -100dvw;
 
   .content {
-    padding: $row calc(#{$column} + 20px) 0;
+    padding-inline: calc(#{$column} + 20px);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: calc(#{$row} * 4 + 60px);
+    height: calc(#{$row} * 3 + 60px);
 
     .text {
       display: flex;
@@ -45,7 +45,6 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     }
 
     &--form {
-      padding: calc(#{$row} + 20px) 0 0;
       justify-content: flex-start;
 
       form {
@@ -102,16 +101,17 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   .aka {
     opacity: 0;
     &__cream {
-      width: calc(#{$column} + 20px);
-      top: 63%;
+      width: calc($column + 20px);
+      height: $row;
+      top: calc($row * 3 + 80px);
       right: -8%;
     }
 
     &__red {
-      width: calc(#{$column}/ 2);
-      height: calc(#{$row}/ 2);
-      top: 80%;
-      right: -3%;
+      width: calc($column/ 2);
+      height: calc($row/ 2);
+      top: calc($row * 4 + $row / 3 + 80px);
+      right: -2%;
     }
   }
 }

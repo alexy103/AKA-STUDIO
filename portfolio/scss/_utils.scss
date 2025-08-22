@@ -136,9 +136,9 @@ $column: calc((100dvw - (5 * 20px)) / 6);
 }
 
 .slide {
-  height: 100dvh;
+  height: calc(#{$row} * 5 + 100px);
   width: 100dvw;
-  position: absolute;
+  position: relative;
   transition: 2s;
   background-color: #131412;
 }

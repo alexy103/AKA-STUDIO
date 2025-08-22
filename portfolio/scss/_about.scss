@@ -2,6 +2,7 @@ $row: calc((100dvh - (5 * 20px)) / 6);
 $column: calc((100dvw - (5 * 20px)) / 6);
 
 .about {
+  display: none;
   top: -150%;
   left: 0;
   .content {

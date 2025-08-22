@@ -51,7 +51,7 @@
 
 .work--inside {
   transition: none;
-  transform: translateX(-150%);
+  transform: translateX(-100%);
 
   .aka {
     opacity: 1;
@@ -103,7 +103,7 @@
 
 .contact--enter {
   animation: contactSlideEnter 2s forwards;
-  transform: translateX(-150%);
+  transform: translateX(-100%);
 
   .red {
     opacity: 0;
@@ -155,7 +155,7 @@
 
 .contact--inside {
   transition: none;
-  transform: translateX(150%);
+  transform: translateX(100%);
 
   .content {
     overflow: hidden;
@@ -283,13 +283,13 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-150%);
+    transform: translateX(-100%);
   }
 }
 
 @keyframes workSlideExit {
   0% {
-    transform: translateX(-150%);
+    transform: translateX(-100%);
   }
   100% {
     transform: translateX(0);
@@ -301,13 +301,13 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(150%);
+    transform: translateX(100%);
   }
 }
 
 @keyframes contactSlideExit {
   0% {
-    transform: translateX(150%);
+    transform: translateX(100%);
   }
   100% {
     transform: translateX(0);
@@ -344,7 +344,7 @@
 
 @keyframes smallGap {
   0% {
-    gap: 30px;
+    gap: 28px;
   }
 }
 

@@ -1,18 +1,18 @@
+$row: calc((100dvh - (5 * 20px)) / 6);
+$column: calc((100dvw - (5 * 20px)) / 6);
+
 .home {
   position: relative;
-  display: flex;
-  height: 100vh;
-  align-items: center;
-  justify-content: center;
 
   .identity {
+    padding: calc(#{$row} + 20px) 0 0 0;
     display: flex;
     gap: 2vh;
     flex-direction: column;
     align-items: center;
     &__logo {
       max-width: 75vw;
-      max-height: calc(100dvh / 6 + 40px);
+      max-height: calc(#{$row} + 40px);
     }
 
     &__title {
@@ -21,15 +21,14 @@
   }
 
   .aka {
-    top: 75%;
-    max-width: calc(100dvw / 6 + 20px);
-    max-height: calc(100dvh / 6);
+    top: calc(#{$row} * 3 + 80px);
+    height: $row;
     &__cream {
-      left: -11%;
+      left: -10%;
     }
 
     &__red {
-      right: -11%;
+      right: -10%;
     }
   }
 }

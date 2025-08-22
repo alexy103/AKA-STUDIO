@@ -4,7 +4,8 @@ const navigationLogo = document.querySelector(".navigation__logo");
 
 menuLinks.forEach((link) => {
   link.addEventListener("click", () => {
-    updateSlide(link.textContent.toLowerCase().trim());
+    let nextSlideName = link.textContent.toLowerCase().trim();
+    updateSlide(nextSlideName);
     closeMenu();
   });
 });
@@ -23,6 +24,9 @@ mainLogo.addEventListener("click", () => {
 });
 
 homeAkaRed.addEventListener("click", () => {
+  console.log("la");
+  console.log(homeAkaRed);
+
   homeAkaRed.classList.add("right");
 
   // Cache le rouge après 1s
@@ -182,6 +186,8 @@ function updateSlide(slideName) {
       displayedSlideName = "work";
       document.querySelector(".home").classList.remove("front");
       document.querySelector(".work").classList.remove("work--exit");
+      workAkaRed.classList.remove("hidden");
+      workAkaCream.classList.remove("hidden");
       // On attend 1s pour que le aka disparaisse
       setTimeout(() => {
         document.querySelector(".work").classList.add("work--enter");
@@ -201,6 +207,8 @@ function updateSlide(slideName) {
       displayedSlideName = "contact";
       document.querySelector(".home").classList.remove("front");
       document.querySelector(".contact").classList.remove("contact--exit");
+      contactAkaRed.classList.remove("hidden");
+      contactAkaCream.classList.remove("hidden");
       // On attend 1s pour que le aka disparaisse
       setTimeout(() => {
         document.querySelector(".contact").classList.add("contact--enter");
