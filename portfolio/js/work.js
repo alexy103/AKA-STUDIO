@@ -19,7 +19,23 @@ const workState = {
 
 workMenuLinks.forEach((link, i) => {
   link.addEventListener("click", () => {
+    let active = document.querySelector(".work .submenu__active");
+
+    active.classList.remove("underline--enter");
+
+    // Attendre que la classe s'enlève pour commencer l'animation
+    setTimeout(() => {
+      active.classList.add("underline--exit");
+      link.classList.add("underline--enter");
+    }, 1);
+
     updateContent(workState, workContent, workMenuLinks, i);
+
+    setTimeout(() => {
+      workMenuLinks.forEach((link) => {
+        link.classList.remove("underline--exit");
+      });
+    }, 1000);
   });
 });
 

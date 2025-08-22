@@ -14,13 +14,13 @@ function updateContent(state, contentArray, menuLinks, index) {
 
     activeWorkContent.style.overflow = "hidden";
 
-    workSlide.classList.add("work--inside");
-
     activeProjects.forEach((e) => e.classList.add("anim"));
 
     // On attend 1s pour que l'exit se fasse
     setTimeout(() => {
       loadContent(state, contentArray, menuLinks, index);
+      console.log(nextActiveProjects[0]);
+
       nextActiveProjects.forEach((e) => e.classList.add("anim__reverse"));
     }, delay);
 
@@ -29,7 +29,7 @@ function updateContent(state, contentArray, menuLinks, index) {
       activeWorkContent.style.overflow = "scroll hidden";
       activeProjects.forEach((el) => el.classList.remove("anim"));
       nextActiveProjects.forEach((el) => el.classList.remove("anim__reverse"));
-    }, delay);
+    }, delay * 2);
   } else if (isContact) {
     const contactSlide = document.querySelector(".contact");
     const activeContent = document.querySelector(
@@ -41,19 +41,19 @@ function updateContent(state, contentArray, menuLinks, index) {
     const nextActiveContent = contentArray[index];
 
     contactSlide.classList.remove("contact--enter");
-    contactSlide.classList.add("contact--inside");
 
     activeContentTitle.classList.remove("content__title--enter");
     activeContentText?.classList.remove("content__text--enter");
     activeContentTitle.classList.add("content__title--exit");
     activeContentText?.classList.add("content__text--exit");
 
-    loadContent(state, contentArray, menuLinks, index);
-
-    nextActiveContent.children[0].classList.remove("content__title--exit");
-    nextActiveContent.children[1]?.classList.remove("content__text--exit");
-    nextActiveContent.children[0].classList.add("content__title--enter");
-    nextActiveContent.children[1]?.classList.add("content__text--enter");
+    setTimeout(() => {
+      loadContent(state, contentArray, menuLinks, index);
+      nextActiveContent.children[0].classList.remove("content__title--exit");
+      nextActiveContent.children[0].classList.add("content__title--enter");
+      nextActiveContent.children[1]?.classList.remove("content__text--exit");
+      nextActiveContent.children[1]?.classList.add("content__text--enter");
+    }, 500);
   } else {
     loadContent(state, contentArray, menuLinks, index);
   }

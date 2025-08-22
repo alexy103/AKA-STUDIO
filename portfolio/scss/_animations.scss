@@ -1,6 +1,5 @@
 .work--enter {
   animation: workSlideEnter 2s forwards;
-  transform: translateX(-150%);
   .project {
     animation: slideFromRight 2s forwards;
   }
@@ -26,21 +25,13 @@
     animation: workAkas 1s 2.75s forwards;
   }
 
-  .anim {
-    animation: workSliderExit 1s forwards ease-in;
-  }
-
-  .anim__reverse {
-    animation: workSliderEnter 1s forwards ease-out;
-  }
-
   .hidden-temp {
     visibility: hidden;
   }
 }
 
 .work--exit {
-  animation: workSlideExit 2s 0.5s forwards;
+  animation: workSlideExit 1s 5s forwards;
   .project {
     animation: slideToRight 2s;
   }
@@ -59,13 +50,55 @@
 }
 
 .work--inside {
-  .submenu__active::after {
-    animation: underline 1s 0.5s forwards;
-    left: 100%;
-    transform: translateX(-100%);
+  transition: none;
+  transform: translateX(-150%);
 
-    // TODO: FAIRE LE EXIT DU AFTER
+  .aka {
+    opacity: 1;
   }
+
+  .submenu__active::after {
+    width: 100%;
+  }
+
+  .workMenu__link {
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      right: 0;
+      left: auto;
+      transform: translateX(0);
+      height: 1px;
+      background-color: #e41313;
+    }
+    &.underline--exit {
+      position: relative;
+      animation: shineOut 1s forwards;
+
+      &::after {
+        width: 100%;
+        animation: underline 1s forwards reverse;
+      }
+    }
+    &.underline--enter {
+      position: relative;
+      animation: shineOut 0.5s forwards reverse;
+
+      &::after {
+        width: 0;
+        animation: underline 1s forwards;
+      }
+    }
+  }
+}
+
+.anim {
+  animation: workSliderExit 1s forwards ease-in;
+}
+
+.anim__reverse {
+  animation: workSliderEnter 1s forwards ease-out;
 }
 
 .contact--enter {
@@ -102,21 +135,21 @@
 
 .content__title {
   &--exit {
-    animation: slideToTop 1s forwards;
+    animation: slideToTop 0.5s forwards;
   }
 
   &--enter {
-    animation: slideFromBottom 1s forwards, fadeIn 1.5s forwards;
+    animation: slideFromBottom 0.5s forwards, fadeIn 1s forwards;
   }
 }
 
 .content__text {
   &--exit {
-    animation: fadeOut 1s forwards;
+    animation: fadeOut 0.5s forwards;
   }
 
   &--enter {
-    animation: fadeIn 1.5s forwards;
+    animation: fadeIn 0.75s forwards;
   }
 }
 
@@ -132,36 +165,35 @@
     opacity: 1;
   }
 
+  .submenu__active::after {
+    width: 100%;
+  }
+
   .contactMenu__link {
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      transform: translateX(0);
+      height: 1px;
+      background-color: #e41313;
+    }
     &.underline--exit {
       position: relative;
+      animation: shineOut 1s forwards;
 
       &::after {
-        content: "";
-        position: absolute;
-        bottom: -2px;
-        left: 0;
-        transform: translateX(0);
-        width: 100%;
-        height: 1px;
-        background-color: #e41313;
         width: 100%;
         animation: underline 1s forwards reverse;
       }
     }
     &.underline--enter {
       position: relative;
+      animation: shineOut 0.5s forwards reverse;
 
       &::after {
-        content: "";
-        position: absolute;
-        bottom: -2px;
-        left: 0;
-        transform: translateX(0);
         width: 0;
-        height: 1px;
-        background-color: #e41313;
-        width: 0%;
         animation: underline 1s forwards;
       }
     }
@@ -169,9 +201,6 @@
 }
 
 .contact--exit {
-  animation: contactSlideExit 2s 0.5s forwards;
-  transform: translateX(150%);
-
   .content {
     .subtitle {
       animation: slideToLeft 2s forwards;
@@ -309,7 +338,7 @@
     transform: translateY(0);
   }
   100% {
-    transform: translateY(-100vh);
+    transform: translateY(-50vh);
   }
 }
 
@@ -352,6 +381,18 @@
   100% {
     pointer-events: all;
     opacity: 1;
+  }
+}
+
+@keyframes shineOut {
+  0% {
+    text-shadow: 0px 0 13px #fcfbf5;
+    color: #fcfbf5;
+  }
+
+  100% {
+    text-shadow: none;
+    color: rgba(255, 255, 255, 0.418);
   }
 }
 

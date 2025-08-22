@@ -28,13 +28,12 @@ homeAkaRed.addEventListener("click", () => {
   // Cache le rouge après 1s
   setTimeout(() => {
     homeAkaRed.classList.add("hidden");
+    setTimeout(() => {
+      homeAkaCream.classList.add("hidden");
+      homeAkaCream.classList.add("left");
+    }, 2000);
   }, 1000);
 
-  // Le remet à sa place après 2s
-  setTimeout(() => {
-    homeAkaRed.classList.remove("right");
-    homeAkaRed.classList.remove("hidden");
-  }, 2000);
   updateSlide("work");
 });
 
@@ -44,13 +43,12 @@ homeAkaCream.addEventListener("click", () => {
   // Cache le blanc après 1s
   setTimeout(() => {
     homeAkaCream.classList.add("hidden");
+    setTimeout(() => {
+      homeAkaRed.classList.add("hidden");
+      homeAkaRed.classList.add("right");
+    }, 2000);
   }, 1000);
 
-  // Le remet à sa place après 2s
-  setTimeout(() => {
-    homeAkaCream.classList.remove("left");
-    homeAkaCream.classList.remove("hidden");
-  }, 2000);
   updateSlide("contact");
 });
 
@@ -150,10 +148,9 @@ function exitDisplayedSlide() {
   let displayedSlide = document.querySelector("." + displayedSlideName);
   displayedSlide.classList.add(displayedSlideName + "--exit");
 
-  displayedSlide.classList.remove(displayedSlideName + "--inside");
-
   // On attend 2s pour que l'animation de sortie se termine
   setTimeout(() => {
+    displayedSlide.classList.remove(displayedSlideName + "--inside");
     displayedSlide.classList.remove(displayedSlideName + "--enter");
     displayedSlide.classList.remove(displayedSlideName + "--exit");
   }, 2000);
@@ -166,39 +163,55 @@ function updateSlide(slideName) {
     case "home":
       // On attend 1s pour que le aka disparaisse
       setTimeout(() => {
-        exitDisplayedSlide();
-
+        document.querySelector(".home").classList.add("front");
         document.querySelector(".home").classList.remove("left");
         document.querySelector(".home").classList.remove("right");
+        exitDisplayedSlide();
       }, 1000);
-
+      setTimeout(() => {
+        homeAkaRed.classList.remove("hidden");
+        homeAkaCream.classList.remove("hidden");
+        setTimeout(() => {
+          homeAkaRed.classList.remove("right");
+          homeAkaCream.classList.remove("left");
+        }, 100);
+      }, 2200);
       break;
 
     case "work":
       displayedSlideName = "work";
-      // On attend 1s pour que le aka disparaisse
+      document.querySelector(".home").classList.remove("front");
       document.querySelector(".work").classList.remove("work--exit");
+      // On attend 1s pour que le aka disparaisse
       setTimeout(() => {
         document.querySelector(".work").classList.add("work--enter");
         setTimeout(() => {
           document.querySelector(".home").classList.add("left");
-        }, 100);
+        }, 1900);
       }, 1000);
-
+      setTimeout(() => {
+        document.querySelector(".work").classList.remove("work--enter");
+        document.querySelector(".work").classList.add("work--inside");
+      }, 5000);
       break;
     case "about":
       document.querySelector("main").style.transform = "translateY(150%)";
       break;
     case "contact":
       displayedSlideName = "contact";
+      document.querySelector(".home").classList.remove("front");
       document.querySelector(".contact").classList.remove("contact--exit");
       // On attend 1s pour que le aka disparaisse
       setTimeout(() => {
         document.querySelector(".contact").classList.add("contact--enter");
         setTimeout(() => {
           document.querySelector(".home").classList.add("right");
-        }, 100);
+        }, 1900);
       }, 1000);
+      setTimeout(() => {
+        document.querySelector(".contact").classList.remove("contact--enter");
+        document.querySelector(".contact").classList.add("contact--inside");
+      }, 5000);
       break;
     default:
       break;

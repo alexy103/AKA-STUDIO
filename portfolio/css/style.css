@@ -180,6 +180,10 @@ img {
   opacity: 0;
 }
 
+.front {
+  z-index: 7;
+}
+
 .red {
   color: #e41313;
   text-shadow: 0px 0 10px #e41313;
@@ -190,7 +194,7 @@ img {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 3;
+  z-index: 9;
   height: 100vh;
   width: 100vw;
   padding: 0 calc((100dvw - 100px) / 6) 5vh;
@@ -318,7 +322,7 @@ img {
   color: #131412;
   transition: 1s all;
   text-transform: uppercase;
-  z-index: 3;
+  z-index: 10;
   font-size: 3rem;
   display: flex;
   flex-wrap: wrap;
@@ -418,7 +422,7 @@ img {
   top: 0;
   left: 0;
   width: 100vw;
-  z-index: 2;
+  z-index: 8;
 }
 .navigation__logo {
   max-width: 20px;
@@ -694,13 +698,12 @@ img {
   left: -150%;
 }
 .contact .content {
-  padding: calc((100dvh - 100px) / 6) 0 0;
+  padding: calc((100dvh - 100px) / 6) calc(calc((100dvw - 100px) / 6) + 20px) 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: calc(calc((100dvh - 100px) / 6) * 4 + 60px);
-  margin: 0 calc(calc((100dvw - 100px) / 6) + 20px);
 }
 .contact .content .text {
   display: flex;
@@ -800,7 +803,6 @@ img {
 
 .work--enter {
   animation: workSlideEnter 2s forwards;
-  transform: translateX(-150%);
 }
 .work--enter .project {
   animation: slideFromRight 2s forwards;
@@ -821,18 +823,12 @@ img {
 .work--enter .aka {
   animation: workAkas 1s 2.75s forwards;
 }
-.work--enter .anim {
-  animation: workSliderExit 1s forwards ease-in;
-}
-.work--enter .anim__reverse {
-  animation: workSliderEnter 1s forwards ease-out;
-}
 .work--enter .hidden-temp {
   visibility: hidden;
 }
 
 .work--exit {
-  animation: workSlideExit 2s 0.5s forwards;
+  animation: workSlideExit 1s 5s forwards;
 }
 .work--exit .project {
   animation: slideToRight 2s;
@@ -847,10 +843,49 @@ img {
   width: 100%;
 }
 
+.work--inside {
+  transition: none;
+  transform: translateX(-150%);
+}
+.work--inside .aka {
+  opacity: 1;
+}
 .work--inside .submenu__active::after {
-  animation: underline 1s 0.5s forwards;
-  left: 100%;
-  transform: translateX(-100%);
+  width: 100%;
+}
+.work--inside .workMenu__link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  right: 0;
+  left: auto;
+  transform: translateX(0);
+  height: 1px;
+  background-color: #e41313;
+}
+.work--inside .workMenu__link.underline--exit {
+  position: relative;
+  animation: shineOut 1s forwards;
+}
+.work--inside .workMenu__link.underline--exit::after {
+  width: 100%;
+  animation: underline 1s forwards reverse;
+}
+.work--inside .workMenu__link.underline--enter {
+  position: relative;
+  animation: shineOut 0.5s forwards reverse;
+}
+.work--inside .workMenu__link.underline--enter::after {
+  width: 0;
+  animation: underline 1s forwards;
+}
+
+.anim {
+  animation: workSliderExit 1s forwards ease-in;
+}
+
+.anim__reverse {
+  animation: workSliderEnter 1s forwards ease-out;
 }
 
 .contact--enter {
@@ -878,17 +913,17 @@ img {
 }
 
 .content__title--exit {
-  animation: slideToTop 1s forwards;
+  animation: slideToTop 0.5s forwards;
 }
 .content__title--enter {
-  animation: slideFromBottom 1s forwards, fadeIn 1.5s forwards;
+  animation: slideFromBottom 0.5s forwards, fadeIn 1s forwards;
 }
 
 .content__text--exit {
-  animation: fadeOut 1s forwards;
+  animation: fadeOut 0.5s forwards;
 }
 .content__text--enter {
-  animation: fadeIn 1.5s forwards;
+  animation: fadeIn 0.75s forwards;
 }
 
 .contact--inside {
@@ -901,41 +936,35 @@ img {
 .contact--inside .aka {
   opacity: 1;
 }
-.contact--inside .contactMenu__link.underline--exit {
-  position: relative;
+.contact--inside .submenu__active::after {
+  width: 100%;
 }
-.contact--inside .contactMenu__link.underline--exit::after {
+.contact--inside .contactMenu__link::after {
   content: "";
   position: absolute;
   bottom: -2px;
   left: 0;
   transform: translateX(0);
-  width: 100%;
   height: 1px;
   background-color: #e41313;
+}
+.contact--inside .contactMenu__link.underline--exit {
+  position: relative;
+  animation: shineOut 1s forwards;
+}
+.contact--inside .contactMenu__link.underline--exit::after {
   width: 100%;
   animation: underline 1s forwards reverse;
 }
 .contact--inside .contactMenu__link.underline--enter {
   position: relative;
+  animation: shineOut 0.5s forwards reverse;
 }
 .contact--inside .contactMenu__link.underline--enter::after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  transform: translateX(0);
   width: 0;
-  height: 1px;
-  background-color: #e41313;
-  width: 0%;
   animation: underline 1s forwards;
 }
 
-.contact--exit {
-  animation: contactSlideExit 2s 0.5s forwards;
-  transform: translateX(150%);
-}
 .contact--exit .content .subtitle {
   animation: slideToLeft 2s forwards;
 }
@@ -1053,7 +1082,7 @@ img {
     transform: translateY(0);
   }
   100% {
-    transform: translateY(-100vh);
+    transform: translateY(-50vh);
   }
 }
 @keyframes smallGap {
@@ -1091,6 +1120,16 @@ img {
   100% {
     pointer-events: all;
     opacity: 1;
+  }
+}
+@keyframes shineOut {
+  0% {
+    text-shadow: 0px 0 13px #fcfbf5;
+    color: #fcfbf5;
+  }
+  100% {
+    text-shadow: none;
+    color: rgba(255, 255, 255, 0.418);
   }
 }
 @keyframes rec {
