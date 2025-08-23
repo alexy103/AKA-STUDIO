@@ -1,18 +1,50 @@
-function openMenu() {
-  document.querySelector(".menu").classList.remove("hidden");
+const menu = document.querySelector(".menu");
 
-  // On attend que la classe s'applique
-  setTimeout(() => {
-    document.querySelector(".menu").style.left = 0;
-  }, 1);
+function openMenu() {
+  // On enlève front de toutes les slides
+  document
+    .querySelectorAll(".slide")
+    .forEach((slide) => slide.classList.remove("front"));
+
+  // Nettoyage de la navbar
+  const nav = document.querySelector(".navigation");
+  nav.classList.remove(
+    "front",
+    "navigation--enter--right",
+    "navigation--enter--left"
+  );
+
+  // Nettoyage du menu et ajout de front
+  menu.classList.remove("behind", "unclickable");
+  menu.classList.add("front");
+
+  // Enter des cases et de la partie droite du menu
+  menu.querySelector(".firstcol").classList.add("firstcol--enter");
+  menu.querySelector(".secondcol").classList.add("secondcol--enter");
+  menu.querySelector(".menu__text").classList.add("text--enter");
+  menu.querySelector(".menu__img").classList.add("logo--enter");
+
+  // Enter des liens du menu
+  menu.querySelectorAll("h2").forEach((e) => e.classList.add("link--enter"));
 }
 
 function closeMenu() {
-  document.querySelector(".menu").style.left = "100%";
+  // On cache le menu
+  menu.classList.add("unclickable");
 
-  // On attend que l'animation se fasse puis on cache le menu
+  // On attend la fin de l'animation et on nettoie les éléments dedans
   setTimeout(() => {
-    document.querySelector(".menu").classList.add("hidden");
+    document
+      .querySelector(".menu .firstcol")
+      .classList.remove("firstcol--enter");
+    document
+      .querySelector(".menu .secondcol")
+      .classList.remove("secondcol--enter");
+    document.querySelectorAll(".menu h2").forEach((e) => {
+      e.classList.remove("link--enter");
+    });
+    document.querySelector(".menu .menu__text").classList.remove("text--enter");
+    document.querySelector(".menu .menu__img").classList.remove("logo--enter");
   }, 1000);
 }
 

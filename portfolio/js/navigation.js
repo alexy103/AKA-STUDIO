@@ -47,14 +47,27 @@ function handleAkas(akas, direction) {
 
 // MENU ----------------------------------------------------------
 const menuLinks = document.querySelectorAll(".menu .menu__link");
+const navbar = document.querySelector(".navigation");
 const navigationLogo = document.querySelector(".navigation__logo");
 
 // Mettre à jour la slide en cliquant sur un lien du menu
 menuLinks.forEach((link) => {
   link.addEventListener("click", () => {
     let nextSlideName = link.textContent.toLowerCase().trim();
-    updateSlide(nextSlideName);
-    closeMenu();
+
+    menu.classList.remove("front");
+    menu.classList.add("behind");
+    document.querySelector("." + nextSlideName).classList.add("front");
+    updateSlideFromMenu(nextSlideName);
+
+    // On cache les akas de HOME
+    document.querySelectorAll(".home .aka").forEach((aka) => {
+      aka.classList.add("hidden");
+    });
+
+    setTimeout(() => {
+      closeMenu();
+    }, 2000);
   });
 });
 
@@ -103,6 +116,8 @@ aboutAkaCream.addEventListener("click", () => {
 });
 
 // WORK ----------------------------------------------------------
+const workSlide = document.querySelector(".work");
+
 const workAkaRed = document.querySelector(".work .aka__red");
 const workAkaCream = document.querySelector(".work .aka__cream");
 const workAkas = document.querySelectorAll(".work .aka");
@@ -151,15 +166,70 @@ function exitDisplayedSlide() {
   }, 2000);
 }
 
+function updateSlideFromMenu(slideName) {
+  updateMenuLink(slideName);
+  switch (slideName) {
+    case "home":
+      // On fait l'enter de HOME
+      navbar.classList.add("front", "navigation--enter--left");
+      document.querySelector(".home").classList.add("front");
+      document.querySelector(".home").classList.remove("left");
+      document.querySelector(".home").classList.remove("right");
+      exitDisplayedSlide();
+
+      // On enlève hidden des akas de HOME
+      setTimeout(() => {
+        homeAkas.forEach((aka) => {
+          aka.classList.remove("hidden");
+        });
+      }, 1000);
+
+      // On fait le enter des akas de HOME après l'animation de l'ancienne slide
+      setTimeout(() => {
+        homeAkaRed.classList.remove("right");
+        homeAkaCream.classList.remove("left");
+      }, 1500);
+
+      break;
+
+    case "work":
+      displayedSlideName = "work";
+
+      // On nettoie la classe et on cache les akas pour préparer l'animation d'enter
+      workSlide.classList.remove("work--exit");
+      workAkas.forEach((aka) => {
+        aka.classList.remove("hidden");
+      });
+
+      navbar.classList.add("front", "navigation--enter--right");
+      workSlide.classList.add("work--enter");
+
+      // On prépare HOME pour son enter
+      homeAkaRed.classList.add("right");
+      homeAkaCream.classList.add("left");
+      document.querySelector(".home").classList.add("left");
+
+      // On attend la fin de l'enter puis on prépare les classes pour les animations de submenu dans WORK
+      setTimeout(() => {
+        workSlide.classList.remove("work--enter");
+        workSlide.classList.remove("front");
+        workSlide.classList.add("work--inside");
+      }, 5000);
+      break;
+
+    default:
+      break;
+  }
+}
+
 function updateSlide(slideName) {
   updateMenuLink(slideName);
-
   switch (slideName) {
     // Afficher HOME
     case "home":
       // On attend 1s pour que le aka de l'ancienne slide disparaisse puis on centre HOME
       setTimeout(() => {
-        document.querySelector(".home").classList.add("front"); //TODO: revoir l'utilité de front
+        document.querySelector(".home").classList.add("front");
         document.querySelector(".home").classList.remove("left");
         document.querySelector(".home").classList.remove("right");
         exitDisplayedSlide();

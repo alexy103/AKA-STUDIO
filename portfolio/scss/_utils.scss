@@ -25,6 +25,10 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   z-index: 7;
 }
 
+.behind {
+  z-index: 6;
+}
+
 .red {
   color: #e41313;
   text-shadow: 0px 0 10px #e41313;

@@ -224,6 +224,92 @@
   }
 }
 
+.menu {
+  .firstcol--enter,
+  .secondcol--enter {
+    animation: menuEnter 1s forwards;
+  }
+
+  .link--enter {
+    animation: menuLinkEnter 1s 1s forwards;
+  }
+
+  .text--enter {
+    animation: menuTextEnter 1.5s 1s forwards;
+  }
+
+  .logo--enter {
+    animation: menuLogoEnter 0.5s 2s forwards;
+  }
+}
+
+.navigation {
+  &.navigation--enter--right {
+    animation: navigationEnterRight 2s forwards;
+    position: relative;
+    transform: translateX(100%);
+  }
+
+  &.navigation--enter--left {
+    animation: navigationEnterLeft 2s forwards;
+    position: relative;
+    transform: translateX(-150%);
+  }
+}
+
+@keyframes navigationEnterRight {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes navigationEnterLeft {
+  0% {
+    transform: translateX(-150%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes menuEnter {
+  0% {
+    transform: translate(-100%, -100%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes menuLinkEnter {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes menuTextEnter {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes menuLogoEnter {
+  0% {
+    transform: translateY(10vh);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 @keyframes workSliderExit {
   0% {
     transform: translateX(0);
