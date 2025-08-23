@@ -1,3 +1,5 @@
+// TODO: revoir ce js une fois que about sera fait
+
 const aboutMenuLinks = document.querySelectorAll(".aboutMenu__link");
 const aboutContent = document.querySelectorAll(".about .content");
 

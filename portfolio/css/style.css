@@ -198,6 +198,7 @@ img {
   height: 100vh;
   width: 100vw;
   padding: 0 calc((100dvw - 100px) / 6) 5vh;
+  transition: 0.5s;
 }
 .black__close {
   font-family: "Bricolage Bold", sans-serif;
@@ -311,6 +312,10 @@ img {
 
 .right {
   translate: 150%;
+}
+
+.noOverflow {
+  overflow: hidden;
 }
 
 .menu {
@@ -434,9 +439,9 @@ img {
   position: relative;
 }
 .home .identity {
-  padding: calc(calc((100dvh - 100px) / 6) + 20px) 0 0 0;
+  padding: calc((100dvh - 100px) / 6 + 20px) 0 0 0;
   display: flex;
-  gap: 2vh;
+  gap: calc((100dvh - 100px) / 6 / 3);
   flex-direction: column;
   align-items: center;
 }
@@ -1188,7 +1193,6 @@ body {
 }
 
 main {
-  transition: transform 0.75s;
   height: 100dvh;
   width: 100dvw;
 }/*# sourceMappingURL=style.css.map */

@@ -1,15 +1,19 @@
 function openMenu() {
-  document.querySelector("main").style.transition = "none";
-  document.querySelector(".menu").style.left = 0;
+  document.querySelector(".menu").classList.remove("hidden");
+
+  // On attend que la classe s'applique
+  setTimeout(() => {
+    document.querySelector(".menu").style.left = 0;
+  }, 1);
 }
 
 function closeMenu() {
   document.querySelector(".menu").style.left = "100%";
 
-  // make sure burger menu changes slide instantly
+  // On attend que l'animation se fasse puis on cache le menu
   setTimeout(() => {
-    document.querySelector("main").style.transition = "transform 0.75s";
-  }, 1);
+    document.querySelector(".menu").classList.add("hidden");
+  }, 1000);
 }
 
 document.querySelector(".navigation__burger").addEventListener("click", () => {
@@ -20,6 +24,7 @@ document.querySelector(".menu__close").addEventListener("click", () => {
   closeMenu();
 });
 
+// Gestion du lien actif du menu
 let activeLink = document.querySelector(".activeLink");
 
 function updateMenuLink(slideName) {

@@ -5,9 +5,9 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   position: relative;
 
   .identity {
-    padding: calc(#{$row} + 20px) 0 0 0;
+    padding: calc($row + 20px) 0 0 0;
     display: flex;
-    gap: 2vh;
+    gap: calc($row / 3);
     flex-direction: column;
     align-items: center;
     &__logo {

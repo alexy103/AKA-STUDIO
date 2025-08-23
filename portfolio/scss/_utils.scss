@@ -39,6 +39,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   height: 100vh;
   width: 100vw;
   padding: 0 $column 5vh;
+  transition: 0.5s;
 
   &__close {
     font-family: "Bricolage Bold", sans-serif;
@@ -160,4 +161,8 @@ $column: calc((100dvw - (5 * 20px)) / 6);
 
 .right {
   translate: 150%;
+}
+
+.noOverflow {
+  overflow: hidden;
 }

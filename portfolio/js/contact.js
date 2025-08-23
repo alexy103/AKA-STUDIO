@@ -1,9 +1,7 @@
 const contactMenuLinks = document.querySelectorAll(".contactMenu__link");
-
 let activeContactMenuLink = document.querySelector(".contact .submenu__active");
 
 const contactContent = document.querySelectorAll(".contact .content");
-
 let activeContactContent = document.querySelector(
   ".contact .content:not(.hidden)"
 );
@@ -28,6 +26,7 @@ contactMenuLinks.forEach((link, i) => {
 
     updateContent(contactState, contactContent, contactMenuLinks, i);
 
+    // Attendre la fin de l'animation pour enlever la classe
     setTimeout(() => {
       contactMenuLinks.forEach((link) => {
         link.classList.remove("underline--exit");

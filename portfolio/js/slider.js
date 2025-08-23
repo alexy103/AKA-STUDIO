@@ -1,3 +1,5 @@
+// TODO: revoir une fois que about sera fait
+
 let activeFriendListFriends = document.querySelectorAll(
   ".about .friendlist:not(.hidden) .friend"
 );
