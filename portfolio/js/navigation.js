@@ -24,6 +24,8 @@ function handleHomeAkas(
 }
 
 function handleAkas(akas, direction) {
+  workSlide.classList.remove("front");
+  contactSlide.classList.remove("front");
   // On lance l'exit des akas
   akas.forEach((aka) => {
     aka.classList.add(direction);
@@ -53,6 +55,10 @@ const navigationLogo = document.querySelector(".navigation__logo");
 // Mettre à jour la slide en cliquant sur un lien du menu
 menuLinks.forEach((link) => {
   link.addEventListener("click", () => {
+    // On nettoie les classes pour la double navigation
+    contactSlide.classList.remove("contact--inside");
+    contactSlide.classList.remove("work--inside");
+
     let nextSlideName = link.textContent.toLowerCase().trim();
 
     menu.classList.remove("front");
@@ -77,6 +83,7 @@ navigationLogo.addEventListener("click", () => {
 });
 
 // HOME ----------------------------------------------------------
+const homeSlide = document.querySelector(".home");
 const mainLogo = document.querySelector(".identity__logo");
 const homeAkaRed = document.querySelector(".home .aka__red");
 const homeAkaCream = document.querySelector(".home .aka__cream");
@@ -129,7 +136,12 @@ workAkaRed.addEventListener("click", () => {
 
 workAkaCream.addEventListener("click", () => {
   handleAkas(workAkas, "left");
+  contactSlide.classList.add("front");
   updateSlide("contact");
+  setTimeout(() => {
+    workSlide.classList.remove("work--inside");
+    homeSlide.classList.remove("left");
+  }, 3500);
 });
 
 // CONTACT ----------------------------------------------------------
@@ -141,7 +153,12 @@ const contactAkas = document.querySelectorAll(".contact .aka");
 
 contactAkaRed.addEventListener("click", () => {
   handleAkas(contactAkas, "right");
+  workSlide.classList.add("front");
   updateSlide("work");
+  setTimeout(() => {
+    contactSlide.classList.remove("contact--inside");
+    homeSlide.classList.remove("right");
+  }, 3500);
 });
 
 contactAkaCream.addEventListener("click", () => {
@@ -167,8 +184,6 @@ function exitDisplayedSlide() {
 }
 
 function updateSlideFromMenu(slideName) {
-  let actualSlide = document,
-    t;
   updateMenuLink(slideName);
   switch (slideName) {
     case "home":
@@ -179,9 +194,9 @@ function updateSlideFromMenu(slideName) {
       } else if (displayedSlideName === "contact") {
         navbar.classList.add("front", "navigation--enter--right");
       }
-      document.querySelector(".home").classList.add("front");
-      document.querySelector(".home").classList.remove("left");
-      document.querySelector(".home").classList.remove("right");
+      homeSlide.classList.add("front");
+      homeSlide.classList.remove("left");
+      homeSlide.classList.remove("right");
       exitDisplayedSlide();
 
       // On enlève hidden des akas de HOME
@@ -214,7 +229,7 @@ function updateSlideFromMenu(slideName) {
       // On prépare HOME pour son enter
       homeAkaRed.classList.add("right");
       homeAkaCream.classList.add("left");
-      document.querySelector(".home").classList.add("left");
+      homeSlide.classList.add("left");
 
       // On attend la fin de l'enter puis on prépare les classes pour les animations de submenu dans WORK
       setTimeout(() => {
@@ -241,7 +256,7 @@ function updateSlideFromMenu(slideName) {
 
       homeAkaRed.classList.add("right");
       homeAkaCream.classList.add("left");
-      document.querySelector(".home").classList.add("right");
+      homeSlide.classList.add("right");
 
       // On attend la fin de l'enter puis on prépare les classes pour les animations de submenu dans CONTACT
       setTimeout(() => {
@@ -264,9 +279,9 @@ function updateSlide(slideName) {
     case "home":
       // On attend 1s pour que le aka de l'ancienne slide disparaisse puis on centre HOME
       setTimeout(() => {
-        document.querySelector(".home").classList.add("front");
-        document.querySelector(".home").classList.remove("left");
-        document.querySelector(".home").classList.remove("right");
+        homeSlide.classList.add("front");
+        homeSlide.classList.remove("left");
+        homeSlide.classList.remove("right");
         exitDisplayedSlide();
       }, 1000);
 
@@ -288,28 +303,27 @@ function updateSlide(slideName) {
     case "work":
       displayedSlideName = "work";
 
-      document.querySelector(".home").classList.remove("front"); //TODO: revoir ici aussi
-
+      homeSlide.classList.remove("front");
       // On nettoie la classe et on cache les akas pour préparer l'animation d'enter
-      document.querySelector(".work").classList.remove("work--exit");
+      workSlide.classList.remove("work--exit");
       workAkas.forEach((aka) => {
         aka.classList.remove("hidden");
       });
 
       // On attend 1s pour que le aka disparaisse puis on lance l'animation d'enter
       setTimeout(() => {
-        document.querySelector(".work").classList.add("work--enter");
+        workSlide.classList.add("work--enter");
       }, 1000);
 
       // On fait slide HOME après l'enter pour préparer l'animation d'exit
       setTimeout(() => {
-        document.querySelector(".home").classList.add("left");
+        homeSlide.classList.add("left");
       }, 2900);
 
       // On attend la fin de l'enter puis on prépare les classes pour les animations de submenu dans WORK
       setTimeout(() => {
-        document.querySelector(".work").classList.remove("work--enter");
-        document.querySelector(".work").classList.add("work--inside");
+        workSlide.classList.remove("work--enter");
+        workSlide.classList.add("work--inside");
       }, 5000);
       break;
     case "about":
@@ -320,7 +334,7 @@ function updateSlide(slideName) {
     case "contact":
       displayedSlideName = "contact";
 
-      document.querySelector(".home").classList.remove("front"); //TODO: revoir ici aussi
+      homeSlide.classList.remove("front"); //TODO: revoir ici aussi
 
       // On nettoie la classe et on cache les akas pour préparer l'animation d'enter
       document.querySelector(".contact").classList.remove("contact--exit");
@@ -334,7 +348,7 @@ function updateSlide(slideName) {
 
       // On fait slide HOME après l'enter pour préparer l'animation d'exit
       setTimeout(() => {
-        document.querySelector(".home").classList.add("right");
+        homeSlide.classList.add("right");
       }, 2900);
 
       // On attend la fin de l'enter puis on prépare les classes pour les animations de submenu dans CONTACT
