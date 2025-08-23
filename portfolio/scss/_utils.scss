@@ -160,11 +160,11 @@ $column: calc((100dvw - (5 * 20px)) / 6);
 }
 
 .left {
-  translate: -150%;
+  translate: -100dvw;
 }
 
 .right {
-  translate: 150%;
+  translate: 100dvw;
 }
 
 .noOverflow {

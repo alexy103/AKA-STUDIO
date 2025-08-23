@@ -247,19 +247,19 @@
   &.navigation--enter--right {
     animation: navigationEnterRight 2s forwards;
     position: relative;
-    transform: translateX(100%);
+    transform: translateX(100dvw);
   }
 
   &.navigation--enter--left {
     animation: navigationEnterLeft 2s forwards;
     position: relative;
-    transform: translateX(-150%);
+    transform: translateX(-100dvw);
   }
 }
 
 @keyframes navigationEnterRight {
   0% {
-    transform: translateX(100%);
+    transform: translateX(100dvw);
   }
   100% {
     transform: translateX(0);
@@ -268,7 +268,7 @@
 
 @keyframes navigationEnterLeft {
   0% {
-    transform: translateX(-150%);
+    transform: translateX(-100dvw);
   }
   100% {
     transform: translateX(0);

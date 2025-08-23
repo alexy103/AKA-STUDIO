@@ -167,11 +167,18 @@ function exitDisplayedSlide() {
 }
 
 function updateSlideFromMenu(slideName) {
+  let actualSlide = document,
+    t;
   updateMenuLink(slideName);
   switch (slideName) {
     case "home":
       // On fait l'enter de HOME
-      navbar.classList.add("front", "navigation--enter--left");
+      // TODO: revoir ici pour enter--left ou right
+      if (displayedSlideName === "work") {
+        navbar.classList.add("front", "navigation--enter--left");
+      } else if (displayedSlideName === "contact") {
+        navbar.classList.add("front", "navigation--enter--right");
+      }
       document.querySelector(".home").classList.add("front");
       document.querySelector(".home").classList.remove("left");
       document.querySelector(".home").classList.remove("right");
@@ -214,6 +221,34 @@ function updateSlideFromMenu(slideName) {
         workSlide.classList.remove("work--enter");
         workSlide.classList.remove("front");
         workSlide.classList.add("work--inside");
+      }, 5000);
+      break;
+
+    case "about":
+      break;
+
+    case "contact":
+      displayedSlideName = "contact";
+
+      // On nettoie la classe et on cache les akas pour préparer l'animation d'enter
+      contactSlide.classList.remove("contact--exit");
+      contactAkas.forEach((aka) => {
+        aka.classList.remove("hidden");
+      });
+
+      navbar.classList.add("front", "navigation--enter--left");
+      contactSlide.classList.add("contact--enter");
+
+      homeAkaRed.classList.add("right");
+      homeAkaCream.classList.add("left");
+      document.querySelector(".home").classList.add("right");
+
+      // On attend la fin de l'enter puis on prépare les classes pour les animations de submenu dans CONTACT
+      setTimeout(() => {
+        contactSlide.classList.remove("contact--enter");
+        contactSlide.classList.remove("front");
+
+        contactSlide.classList.add("contact--inside");
       }, 5000);
       break;
 
