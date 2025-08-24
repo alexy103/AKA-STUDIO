@@ -132,14 +132,22 @@ const aboutAkaCream = document.querySelector(".about .aka__cream");
 const aboutAkas = document.querySelectorAll(".about .aka");
 
 aboutAkaRed.addEventListener("click", () => {
+  handleAkas(aboutAkas, "down");
+  updateSlide("work", true);
+
   setTimeout(() => {
-    updateSlide("work");
-  }, 750);
+    aboutSlide.classList.remove("about--inside");
+    homeSlide.classList.remove("down");
+  }, 2900);
 });
 aboutAkaCream.addEventListener("click", () => {
+  handleAkas(aboutAkas, "down");
+  updateSlide("contact", true);
+
   setTimeout(() => {
-    updateSlide("contact");
-  }, 750);
+    aboutSlide.classList.remove("about--inside");
+    homeSlide.classList.remove("down");
+  }, 2900);
 });
 
 // WORK ----------------------------------------------------------
@@ -349,7 +357,7 @@ function cleanOtherClasses(slideName) {
   });
 }
 
-function updateSlide(slideName) {
+function updateSlide(slideName, doubleNavigation) {
   updateMenuLink(slideName);
   switch (slideName) {
     // Afficher HOME
@@ -381,6 +389,10 @@ function updateSlide(slideName) {
     // Afficher WORK
     case "work":
       displayedSlideName = "work";
+
+      if (doubleNavigation) {
+        workSlide.classList.add("front");
+      }
 
       homeSlide.classList.remove("front");
       // On nettoie la classe et on cache les akas pour préparer l'animation d'enter
