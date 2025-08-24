@@ -264,14 +264,17 @@ function updateSlideFromMenu(slideName) {
         workSlide.classList.remove("work--enter");
         workSlide.classList.remove("front");
         workSlide.classList.add("work--inside");
-      }, 5000);
+
+        homeSlide.classList.remove("right");
+        homeSlide.classList.remove("down");
+        cleanOtherClasses(displayedSlideName);
+      }, 4000);
       break;
 
     case "about":
       displayedSlideName = "about";
 
       // On nettoie la classe et on cache les akas pour préparer l'animation d'enter
-      // aboutSlide.classList.remove("about--exit");
       aboutAkas.forEach((aka) => {
         aka.classList.remove("hidden");
       });
@@ -289,7 +292,12 @@ function updateSlideFromMenu(slideName) {
         aboutSlide.classList.remove("about--enter");
         aboutSlide.classList.remove("front");
         aboutSlide.classList.add("about--inside");
-      }, 5000);
+
+        // On nettoie toutes les autres classes pour la double navigation
+        homeSlide.classList.remove("left");
+        homeSlide.classList.remove("right");
+        cleanOtherClasses(displayedSlideName);
+      }, 4000);
       break;
 
     case "contact":
@@ -312,14 +320,33 @@ function updateSlideFromMenu(slideName) {
       setTimeout(() => {
         contactSlide.classList.remove("contact--enter");
         contactSlide.classList.remove("front");
-
         contactSlide.classList.add("contact--inside");
-      }, 5000);
+
+        homeSlide.classList.remove("left");
+        homeSlide.classList.remove("down");
+        cleanOtherClasses(displayedSlideName);
+      }, 4000);
       break;
 
     default:
       break;
   }
+}
+
+// Nettoyer toutes les autres classes
+function cleanOtherClasses(slideName) {
+  // On récupère toutes les slides
+  document.querySelectorAll(".slide").forEach((slide) => {
+    // Si cette slide n'est pas celle en paramètre
+    if (!slide.classList.contains(slideName)) {
+      // On enlève toutes les classes d'animation
+      slide.classList.forEach((className) => {
+        if (className.includes("--")) {
+          slide.classList.remove(className);
+        }
+      });
+    }
+  });
 }
 
 function updateSlide(slideName) {
@@ -384,7 +411,6 @@ function updateSlide(slideName) {
       homeSlide.classList.remove("front");
 
       // On nettoie la classe et on cache les akas pour préparer l'animation d'enter
-      aboutSlide.classList.remove("about--exit");
       aboutAkas.forEach((aka) => {
         aka.classList.remove("hidden");
       });
@@ -411,7 +437,7 @@ function updateSlide(slideName) {
     case "contact":
       displayedSlideName = "contact";
 
-      homeSlide.classList.remove("front"); //TODO: revoir ici aussi
+      homeSlide.classList.remove("front");
 
       // On nettoie la classe et on cache les akas pour préparer l'animation d'enter
       document.querySelector(".contact").classList.remove("contact--exit");
