@@ -90,6 +90,12 @@ menuLinks.forEach((link) => {
 navigationLogo.addEventListener("click", () => {
   if (displayedSlideName != "home") {
     navbar.classList.add("front");
+    navbar.classList.remove(
+      "navigation--enter--right",
+      "navigation--enter--left",
+      "navigation--enter--down",
+      "navigation--enter--up"
+    );
     handleAkas(workAkas, "left");
     handleAkas(contactAkas, "right");
     handleAkas(aboutAkas, "down");
@@ -264,6 +270,26 @@ function updateSlideFromMenu(slideName) {
     case "about":
       displayedSlideName = "about";
 
+      // On nettoie la classe et on cache les akas pour préparer l'animation d'enter
+      // aboutSlide.classList.remove("about--exit");
+      aboutAkas.forEach((aka) => {
+        aka.classList.remove("hidden");
+      });
+
+      navbar.classList.add("front", "navigation--enter--up");
+      aboutSlide.classList.add("about--enter");
+
+      // On prépare HOME pour son enter
+      homeAkaRed.classList.add("right");
+      homeAkaCream.classList.add("left");
+      homeSlide.classList.add("down");
+
+      // On attend la fin de l'enter puis on prépare les classes pour les animations de submenu dans WORK
+      setTimeout(() => {
+        aboutSlide.classList.remove("about--enter");
+        aboutSlide.classList.remove("front");
+        aboutSlide.classList.add("about--inside");
+      }, 5000);
       break;
 
     case "contact":

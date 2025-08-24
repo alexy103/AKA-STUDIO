@@ -12,7 +12,8 @@ function openMenu() {
     "front",
     "navigation--enter--right",
     "navigation--enter--left",
-    "navigation--enter--up"
+    "navigation--enter--up",
+    "navigation--enter--down"
   );
 
   // Nettoyage du menu et ajout de front
