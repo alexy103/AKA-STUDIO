@@ -243,6 +243,10 @@
     animation: menuEnter 1s forwards;
   }
 
+  .thirdcol--enter {
+    animation: menuBorderEnter 1s 1s forwards;
+  }
+
   .link--enter {
     animation: menuLinkEnter 1s 1s forwards;
   }
@@ -344,6 +348,15 @@
   }
   100% {
     transform: translate(0, 0);
+  }
+}
+
+@keyframes menuBorderEnter {
+  0% {
+    border-left: 1px solid #13141200;
+  }
+  100% {
+    border-left: 1px solid #131412;
   }
 }
 

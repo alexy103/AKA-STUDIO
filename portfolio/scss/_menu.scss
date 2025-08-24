@@ -41,7 +41,6 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   .firstcol {
     width: $column;
     height: 100%;
-    border-right: 1px solid #131412;
     display: flex;
     flex-direction: column;
     gap: 1px;
@@ -49,11 +48,9 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     .gridSquare {
       width: 100%;
       height: calc(#{$row} + 20px);
-      border-top: 1px solid #131412;
-      border-bottom: 1px solid #131412;
+      border-bottom: 3px double #131412;
 
       &:first-child {
-        border-top: none;
         height: calc(#{$row} / 2);
       }
 
@@ -67,8 +64,8 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   .secondcol {
     width: calc(#{$column} * 3 + 78px);
     height: 100%;
-    border-left: 1px solid #131412;
-    border-right: 1px solid #131412;
+    border-left: 3px double #131412;
+    border-right: 3px double #131412;
     display: flex;
     flex-direction: column;
     gap: 1px;
@@ -76,8 +73,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     .gridSquare {
       width: 100%;
       height: calc(#{$row} + 20px);
-      border-top: 1px solid #131412;
-      border-bottom: 1px solid #131412;
+      border-bottom: 3px double #131412;
 
       &:first-child {
         border-top: none;
@@ -105,7 +101,6 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   }
 
   .thirdcol {
-    border-left: 1px solid #131412;
     width: calc(#{$column} * 2 + 20px);
     display: flex;
     flex-direction: column;

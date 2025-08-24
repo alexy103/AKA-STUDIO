@@ -146,8 +146,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
 
   .aka {
     opacity: 0;
-    bottom: -3%;
-    width: calc(#{$column} * 1.5);
+    bottom: 0;
     height: calc(#{$row} / 2);
     &__cream {
       left: 0%;

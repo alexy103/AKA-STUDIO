@@ -27,9 +27,13 @@ const friendsState = {
   activeMenuLink: jobsMenu[0],
 };
 
-const sliderLeftArrows = document.querySelectorAll(".slider .left");
-const sliderRightArrows = document.querySelectorAll(".slider .right");
-const sliderArrows = document.querySelectorAll(".slider .left, .slider .right");
+const sliderLeftArrows = document.querySelectorAll(".slider .fa-chevron-left");
+const sliderRightArrows = document.querySelectorAll(
+  ".slider .fa-chevron-right"
+);
+const sliderArrows = document.querySelectorAll(
+  ".slider .fa-chevron-left, .slider .fa-chevron-right"
+);
 
 jobsMenu.forEach((link, i) => {
   link.addEventListener("click", () => {

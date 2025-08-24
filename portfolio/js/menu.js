@@ -23,6 +23,7 @@ function openMenu() {
   // Enter des cases et de la partie droite du menu
   menu.querySelector(".firstcol").classList.add("firstcol--enter");
   menu.querySelector(".secondcol").classList.add("secondcol--enter");
+  // menu.querySelector(".thirdcol").classList.add("thirdcol--enter");
   menu.querySelector(".menu__text").classList.add("text--enter");
   menu.querySelector(".menu__img").classList.add("logo--enter");
 
@@ -42,6 +43,9 @@ function closeMenu() {
     document
       .querySelector(".menu .secondcol")
       .classList.remove("secondcol--enter");
+    document
+      .querySelector(".menu .thirdcol")
+      .classList.remove("thircol--enter");
     document.querySelectorAll(".menu h2").forEach((e) => {
       e.classList.remove("link--enter");
     });

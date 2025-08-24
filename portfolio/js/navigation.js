@@ -7,37 +7,68 @@ function handleHomeAkas(
   otherDirection,
   about
 ) {
+  // Pas de timeout si on va vers ABOUT
+  if (about) {
+    // TODO: lui demander s'il faut que les aka partent ou pas
+    // clickedAka.classList.add("aka--" + direction);
+    // otherAka.classList.add("aka--" + otherDirection);
+    setTimeout(() => {
+      clickedAka.classList.add("hidden");
+      otherAka.classList.add("hidden");
+    }, 3000);
+    updateSlide(nextSlide);
+    return;
+  }
+
   // On lance l'animation
-  clickedAka.classList.add(direction);
+  clickedAka.classList.add("aka--" + direction);
 
   // On cache le aka cliqué après son animation (1s)
   setTimeout(() => {
     clickedAka.classList.add("hidden");
   }, 1000);
 
-  // Pas de timeout si on va vers ABOUT
-  if (about) {
-    otherAka.classList.add("hidden");
-    otherAka.classList.add(otherDirection);
-    updateSlide(nextSlide);
-    return;
-  }
-
   // On cache l'autre aka après les animations (3s)
   setTimeout(() => {
     otherAka.classList.add("hidden");
-    otherAka.classList.add(otherDirection);
+    otherAka.classList.add("aka--" + otherDirection);
   }, 3000);
 
   updateSlide(nextSlide);
 }
 
+function handleAkasDelayed(clickedAka, direction, otherAka) {
+  workSlide.classList.remove("front");
+  contactSlide.classList.remove("front");
+
+  // On lance l'exit des akas
+  clickedAka.classList.add("aka--" + direction);
+  setTimeout(() => {
+    otherAka.classList.add("aka--" + direction);
+  }, 200);
+
+  // On cache les akas après leur exit
+  setTimeout(() => {
+    clickedAka.classList.add("hidden");
+    otherAka.classList.add("hidden");
+  }, 1000);
+
+  // On remet les aka dès que l'animation est terminée
+  setTimeout(() => {
+    [clickedAka, otherAka].forEach((aka) => {
+      aka.classList.remove("aka--" + direction);
+      aka.classList.remove("hidden");
+    });
+  }, 4000);
+}
+
 function handleAkas(akas, direction) {
   workSlide.classList.remove("front");
   contactSlide.classList.remove("front");
+
   // On lance l'exit des akas
   akas.forEach((aka) => {
-    aka.classList.add(direction);
+    aka.classList.add("aka--" + direction);
   });
 
   // On cache les akas après leur exit
@@ -50,7 +81,7 @@ function handleAkas(akas, direction) {
   // On remet les aka dès que l'animation est terminée
   setTimeout(() => {
     akas.forEach((aka) => {
-      aka.classList.remove(direction);
+      aka.classList.remove("aka--" + direction);
       aka.classList.remove("hidden");
     });
   }, 4000);
@@ -132,7 +163,7 @@ const aboutAkaCream = document.querySelector(".about .aka__cream");
 const aboutAkas = document.querySelectorAll(".about .aka");
 
 aboutAkaRed.addEventListener("click", () => {
-  handleAkas(aboutAkas, "down");
+  handleAkasDelayed(aboutAkaRed, "down", aboutAkaCream);
   updateSlide("work", true);
 
   setTimeout(() => {
@@ -141,7 +172,7 @@ aboutAkaRed.addEventListener("click", () => {
   }, 2900);
 });
 aboutAkaCream.addEventListener("click", () => {
-  handleAkas(aboutAkas, "down");
+  handleAkasDelayed(aboutAkaCream, "down", aboutAkaRed);
   updateSlide("contact", true);
 
   setTimeout(() => {
@@ -158,12 +189,12 @@ const workAkaCream = document.querySelector(".work .aka__cream");
 const workAkas = document.querySelectorAll(".work .aka");
 
 workAkaRed.addEventListener("click", () => {
-  handleAkas(workAkas, "left");
+  handleAkasDelayed(workAkaRed, "left", workAkaCream);
   updateSlide("home");
 });
 
 workAkaCream.addEventListener("click", () => {
-  handleAkas(workAkas, "left");
+  handleAkasDelayed(workAkaCream, "left", workAkaRed);
   contactSlide.classList.add("front");
   updateSlide("contact");
   setTimeout(() => {
@@ -180,7 +211,7 @@ const contactAkaCream = document.querySelector(".contact .aka__cream");
 const contactAkas = document.querySelectorAll(".contact .aka");
 
 contactAkaRed.addEventListener("click", () => {
-  handleAkas(contactAkas, "right");
+  handleAkasDelayed(contactAkaRed, "right", contactAkaCream);
   workSlide.classList.add("front");
   updateSlide("work");
   setTimeout(() => {
@@ -189,7 +220,7 @@ contactAkaRed.addEventListener("click", () => {
 });
 
 contactAkaCream.addEventListener("click", () => {
-  handleAkas(contactAkas, "right");
+  handleAkasDelayed(contactAkaCream, "right", contactAkaRed);
   updateSlide("home");
   setTimeout(() => {
     contactSlide.classList.remove("contact--inside");
@@ -244,8 +275,8 @@ function updateSlideFromMenu(slideName) {
 
       // On fait le enter des akas de HOME après l'animation de l'ancienne slide
       setTimeout(() => {
-        homeAkaRed.classList.remove("right");
-        homeAkaCream.classList.remove("left");
+        homeAkaRed.classList.remove("aka--right");
+        homeAkaCream.classList.remove("aka--left");
       }, 1500);
 
       break;
@@ -263,8 +294,8 @@ function updateSlideFromMenu(slideName) {
       workSlide.classList.add("work--enter");
 
       // On prépare HOME pour son enter
-      homeAkaRed.classList.add("right");
-      homeAkaCream.classList.add("left");
+      homeAkaRed.classList.add("aka--right");
+      homeAkaCream.classList.add("aka--left");
       homeSlide.classList.add("left");
 
       // On attend la fin de l'enter puis on prépare les classes pour les animations de submenu dans WORK
@@ -291,8 +322,8 @@ function updateSlideFromMenu(slideName) {
       aboutSlide.classList.add("about--enter");
 
       // On prépare HOME pour son enter
-      homeAkaRed.classList.add("right");
-      homeAkaCream.classList.add("left");
+      homeAkaRed.classList.add("aka--right");
+      homeAkaCream.classList.add("aka--left");
       homeSlide.classList.add("down");
 
       // On attend la fin de l'enter puis on prépare les classes pour les animations de submenu dans WORK
@@ -320,8 +351,8 @@ function updateSlideFromMenu(slideName) {
       navbar.classList.add("front", "navigation--enter--left");
       contactSlide.classList.add("contact--enter");
 
-      homeAkaRed.classList.add("right");
-      homeAkaCream.classList.add("left");
+      homeAkaRed.classList.add("aka--right");
+      homeAkaCream.classList.add("aka--left");
       homeSlide.classList.add("right");
 
       // On attend la fin de l'enter puis on prépare les classes pour les animations de submenu dans CONTACT
@@ -372,18 +403,18 @@ function updateSlide(slideName, doubleNavigation) {
         exitDisplayedSlide();
       }, 1000);
 
-      // On fait enlève hidden des akas de HOME
+      // On enlève hidden des akas de HOME
       setTimeout(() => {
         homeAkas.forEach((aka) => {
           aka.classList.remove("hidden");
         });
-      }, 2200);
+      }, 2500);
 
       // On fait le enter des akas de HOME après l'animation de l'ancienne slide
       setTimeout(() => {
-        homeAkaRed.classList.remove("right");
-        homeAkaCream.classList.remove("left");
-      }, 2500);
+        homeAkaRed.classList.remove("aka--right");
+        homeAkaCream.classList.remove("aka--left");
+      }, 2800);
       break;
 
     // Afficher WORK

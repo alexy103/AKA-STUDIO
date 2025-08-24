@@ -1,4 +1,5 @@
 // TODO: passer le HTML au W3C
+// TODO: ajouter le slider sur home
 function updateContent(state, contentArray, menuLinks, index) {
   if (state.name === "work") {
     // Délai de l'animation d'exit du slider de WORK

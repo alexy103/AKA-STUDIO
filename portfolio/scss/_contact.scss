@@ -28,6 +28,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
         min-height: 10vh;
         display: flex;
         align-items: flex-end;
+        font-family: "Now Black", sans-serif;
       }
     }
 
@@ -100,18 +101,15 @@ $column: calc((100dvw - (5 * 20px)) / 6);
 
   .aka {
     opacity: 0;
+    right: 0;
     &__cream {
-      width: calc($column + 20px);
       height: $row;
       top: calc($row * 3 + 80px);
-      right: -8%;
     }
 
     &__red {
-      width: calc($column/ 2);
       height: calc($row/ 2);
       top: calc($row * 4 + $row / 3 + 80px);
-      right: -2%;
     }
   }
 }

@@ -11,12 +11,12 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     flex-direction: column;
     align-items: center;
     &__logo {
-      max-width: 75vw;
-      max-height: calc(#{$row} + 40px);
+      height: calc($row + 40px);
     }
 
     &__title {
       text-transform: uppercase;
+      font-size: 1.7rem;
     }
   }
 
@@ -24,11 +24,11 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     top: calc(#{$row} * 3 + 80px);
     height: $row;
     &__cream {
-      left: -10%;
+      left: 0;
     }
 
     &__red {
-      right: -10%;
+      right: 0;
     }
   }
 }

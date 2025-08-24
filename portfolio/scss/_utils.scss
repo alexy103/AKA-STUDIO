@@ -157,6 +157,16 @@ $column: calc((100dvw - (5 * 20px)) / 6);
 .aka {
   position: absolute;
   transition: 2s;
+
+  &.aka--left {
+    transform: translateX(-20vw);
+  }
+  &.aka--right {
+    transform: translateX(20vw);
+  }
+  &.aka--down {
+    transform: translateY(10vh);
+  }
 }
 
 .left {
