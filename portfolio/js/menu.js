@@ -11,7 +11,8 @@ function openMenu() {
   nav.classList.remove(
     "front",
     "navigation--enter--right",
-    "navigation--enter--left"
+    "navigation--enter--left",
+    "navigation--enter--up"
   );
 
   // Nettoyage du menu et ajout de front

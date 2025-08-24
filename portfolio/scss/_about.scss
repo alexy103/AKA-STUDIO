@@ -2,16 +2,14 @@ $row: calc((100dvh - (5 * 20px)) / 6);
 $column: calc((100dvw - (5 * 20px)) / 6);
 
 .about {
-  display: none;
-  top: -150%;
+  top: calc(-300dvh + $row + $row);
   left: 0;
   .content {
-    height: calc(#{$row} * 4 + 80px);
+    height: calc(#{$row} * 3 + 80px);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    padding-top: calc(#{$row} + 20px);
     margin-inline: calc(#{$column} + 20px);
     gap: 20px;
     img {
@@ -147,6 +145,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   }
 
   .aka {
+    opacity: 0;
     bottom: -3%;
     width: calc(#{$column} * 1.5);
     height: calc(#{$row} / 2);

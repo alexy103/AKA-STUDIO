@@ -167,6 +167,10 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   translate: 100dvw;
 }
 
+.down {
+  transform: translateY(100dvh);
+}
+
 .noOverflow {
   overflow: hidden;
 }

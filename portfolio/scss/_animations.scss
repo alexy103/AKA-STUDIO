@@ -31,7 +31,6 @@
 }
 
 .work--exit {
-  animation: workSlideExit 1s 5s forwards;
   .project {
     animation: slideToRight 2s;
   }
@@ -224,6 +223,20 @@
   }
 }
 
+.about--enter {
+  animation: aboutSlideEnter 2s forwards;
+  .aka {
+    animation: aboutAkas 1s 2.75s forwards;
+  }
+}
+
+.about--inside {
+  top: calc(-200dvh + $row + $row);
+  .aka {
+    opacity: 1;
+  }
+}
+
 .menu {
   .firstcol--enter,
   .secondcol--enter {
@@ -255,6 +268,38 @@
     position: relative;
     transform: translateX(-100dvw);
   }
+
+  &.navigation--enter--up {
+    animation: navigationEnterUp 2s forwards;
+    position: relative;
+    transform: translateY(-100dvh);
+  }
+
+  &.navigation--enter--down {
+    animation: navigationEnterDown 2s 0.05s forwards;
+    position: relative;
+    transform: translateY(100dvh);
+  }
+}
+
+@keyframes aboutSlideEnter {
+  0% {
+    top: calc(-300dvh + $row + $row);
+  }
+  100% {
+    top: calc(-200dvh + $row + $row);
+  }
+}
+
+@keyframes aboutAkas {
+  0% {
+    transform: translateY(5vh);
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes navigationEnterRight {
@@ -272,6 +317,24 @@
   }
   100% {
     transform: translateX(0);
+  }
+}
+
+@keyframes navigationEnterUp {
+  0% {
+    transform: translateY(-100dvh);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes navigationEnterDown {
+  0% {
+    transform: translateY(100dvh);
+  }
+  100% {
+    transform: translateY(0);
   }
 }
 
@@ -373,30 +436,12 @@
   }
 }
 
-@keyframes workSlideExit {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
 @keyframes contactSlideEnter {
   0% {
     transform: translateX(0);
   }
   100% {
     transform: translateX(100%);
-  }
-}
-
-@keyframes contactSlideExit {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(0);
   }
 }
 

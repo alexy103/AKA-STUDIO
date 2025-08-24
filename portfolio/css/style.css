@@ -318,6 +318,10 @@ img {
   translate: 100dvw;
 }
 
+.down {
+  transform: translateY(100dvh);
+}
+
 .noOverflow {
   overflow: hidden;
 }
@@ -569,17 +573,15 @@ img {
 }
 
 .about {
-  display: none;
-  top: -150%;
+  top: calc(-300dvh + (100dvh - 100px) / 6 + (100dvh - 100px) / 6);
   left: 0;
 }
 .about .content {
-  height: calc(calc((100dvh - 100px) / 6) * 4 + 80px);
+  height: calc(calc((100dvh - 100px) / 6) * 3 + 80px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  padding-top: calc(calc((100dvh - 100px) / 6) + 20px);
   margin-inline: calc(calc((100dvw - 100px) / 6) + 20px);
   gap: 20px;
 }
@@ -690,6 +692,7 @@ img {
   align-items: center;
 }
 .about .aka {
+  opacity: 0;
   bottom: -3%;
   width: calc(calc((100dvw - 100px) / 6) * 1.5);
   height: calc(calc((100dvh - 100px) / 6) / 2);
@@ -702,7 +705,7 @@ img {
 }
 
 .contact {
-  top: calc(-200dvh + (100dvh - 100px) / 6 + (100dvh - 100px) / 6);
+  top: calc(-300dvh + (100dvh - 100px) / 6 + (100dvh - 100px) / 6 + (100dvh - 100px) / 6);
   left: -100dvw;
 }
 .contact .content {
@@ -835,9 +838,6 @@ img {
   visibility: hidden;
 }
 
-.work--exit {
-  animation: workSlideExit 1s 5s forwards;
-}
 .work--exit .project {
   animation: slideToRight 2s;
 }
@@ -989,6 +989,20 @@ img {
   animation: contactAkas 1s 0.5s reverse;
 }
 
+.about--enter {
+  animation: aboutSlideEnter 2s forwards;
+}
+.about--enter .aka {
+  animation: aboutAkas 1s 2.75s forwards;
+}
+
+.about--inside {
+  top: calc(-200dvh + (100dvh - 100px) / 6 + (100dvh - 100px) / 6);
+}
+.about--inside .aka {
+  opacity: 1;
+}
+
 .menu .firstcol--enter,
 .menu .secondcol--enter {
   animation: menuEnter 1s forwards;
@@ -1013,7 +1027,35 @@ img {
   position: relative;
   transform: translateX(-100dvw);
 }
+.navigation.navigation--enter--up {
+  animation: navigationEnterUp 2s forwards;
+  position: relative;
+  transform: translateY(-100dvh);
+}
+.navigation.navigation--enter--down {
+  animation: navigationEnterDown 2s 0.05s forwards;
+  position: relative;
+  transform: translateY(100dvh);
+}
 
+@keyframes aboutSlideEnter {
+  0% {
+    top: calc(-300dvh + (100dvh - 100px) / 6 + (100dvh - 100px) / 6);
+  }
+  100% {
+    top: calc(-200dvh + (100dvh - 100px) / 6 + (100dvh - 100px) / 6);
+  }
+}
+@keyframes aboutAkas {
+  0% {
+    transform: translateY(5vh);
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 @keyframes navigationEnterRight {
   0% {
     transform: translateX(100dvw);
@@ -1028,6 +1070,22 @@ img {
   }
   100% {
     transform: translateX(0);
+  }
+}
+@keyframes navigationEnterUp {
+  0% {
+    transform: translateY(-100dvh);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes navigationEnterDown {
+  0% {
+    transform: translateY(100dvh);
+  }
+  100% {
+    transform: translateY(0);
   }
 }
 @keyframes menuEnter {
@@ -1118,28 +1176,12 @@ img {
     transform: translateX(-100%);
   }
 }
-@keyframes workSlideExit {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
 @keyframes contactSlideEnter {
   0% {
     transform: translateX(0);
   }
   100% {
     transform: translateX(100%);
-  }
-}
-@keyframes contactSlideExit {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(0);
   }
 }
 @keyframes slideFromBottom {
