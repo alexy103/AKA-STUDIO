@@ -24,9 +24,9 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     animation: underline 1s 2s forwards;
   }
 
-  .aka {
-    animation: workAkas 1s 2.75s forwards;
-  }
+  // .aka {
+  //   animation: workAkas 1s 2.75s forwards;
+  // }
 
   .hidden-temp {
     visibility: hidden;
@@ -57,6 +57,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
 
   .aka {
     opacity: 1;
+    animation: workAkas 1s;
   }
 
   .submenu__active::after {
@@ -152,9 +153,9 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     }
   }
 
-  .aka {
-    animation: contactAkas 1s 2.75s forwards;
-  }
+  // .aka {
+  //   animation: contactAkas 1s 2.75s forwards;
+  // }
 }
 
 .contact--inside {
@@ -167,6 +168,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
 
   .aka {
     opacity: 1;
+    animation: contactAkas 1s;
   }
 
   .submenu__active::after {
@@ -278,9 +280,9 @@ $column: calc((100dvw - (5 * 20px)) / 6);
 
 .about--enter {
   animation: aboutSlideEnter 2s forwards;
-  .aka {
-    animation: aboutAkas 1s 2.75s forwards;
-  }
+  // .aka {
+  //   animation: aboutAkas 1s 2.75s forwards;
+  // }
   .menus {
     animation: slideFromLeft 2s forwards;
   }
@@ -295,6 +297,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   top: calc(-200dvh + $row + $row);
   .aka {
     opacity: 1;
+    animation: aboutAkas 1s;
   }
   .submenu__active {
     color: #fcfbf5;

@@ -844,9 +844,6 @@ img {
 .work--enter .submenu__active::after {
   animation: underline 1s 2s forwards;
 }
-.work--enter .aka {
-  animation: workAkas 1s 2.75s forwards;
-}
 .work--enter .hidden-temp {
   visibility: hidden;
 }
@@ -870,6 +867,7 @@ img {
 }
 .work--inside .aka {
   opacity: 1;
+  animation: workAkas 1s;
 }
 .work--inside .submenu__active::after {
   width: 100%;
@@ -942,9 +940,6 @@ img {
 .contact--enter .content .text {
   animation: slideFromLeft 2s 0.25s forwards;
 }
-.contact--enter .aka {
-  animation: contactAkas 1s 2.75s forwards;
-}
 
 .contact--inside {
   transition: none;
@@ -955,6 +950,7 @@ img {
 }
 .contact--inside .aka {
   opacity: 1;
+  animation: contactAkas 1s;
 }
 .contact--inside .submenu__active::after {
   width: 100%;
@@ -1037,9 +1033,6 @@ img {
 .about--enter {
   animation: aboutSlideEnter 2s forwards;
 }
-.about--enter .aka {
-  animation: aboutAkas 1s 2.75s forwards;
-}
 .about--enter .menus {
   animation: slideFromLeft 2s forwards;
 }
@@ -1052,6 +1045,7 @@ img {
 }
 .about--inside .aka {
   opacity: 1;
+  animation: aboutAkas 1s;
 }
 .about--inside .submenu__active {
   color: #fcfbf5;

@@ -1,6 +1,6 @@
 // TODO: passer le HTML au W3C
 // TODO: ajouter le slider sur home
-// TODO: essayer de mettre l'apparition des aka dans le --inside
+// TODO: faire les animations de friends
 function updateContent(state, contentArray, menuLinks, index) {
   if (state.name === "work") {
     // Délai de l'animation d'exit du slider de WORK
@@ -81,11 +81,10 @@ function updateContent(state, contentArray, menuLinks, index) {
       aboutMenu.classList.add("aboutMenu--down");
     } else {
       aboutMenu.classList.remove("aboutMenu--down");
-      // aboutMenu.classList.add("aboutMenu--up");
     }
 
     // On attend que l'exit se fasse puis on fait l'enter
-    loadContent(state, contentArray, menuLinks, index, true);
+    loadContent(state, contentArray, menuLinks, index, 1000); // modifier ici pour le submenu d'ABOUT
     setTimeout(() => {
       nextActiveContent.children[0].classList.remove("content__img--exit");
       nextActiveContent.children[0].classList.add("content__img--enter");
@@ -101,8 +100,8 @@ function updateContent(state, contentArray, menuLinks, index) {
 
 let inFriends = false;
 
-function loadContent(state, contentArray, menuLinks, index, fromAbout) {
-  if (fromAbout) {
+function loadContent(state, contentArray, menuLinks, index, delay) {
+  if (delay) {
     state.activeMenuLink.classList.remove("submenu__active");
     menuLinks[index].classList.add("submenu__active");
     state.activeMenuLink = menuLinks[index];
@@ -110,7 +109,7 @@ function loadContent(state, contentArray, menuLinks, index, fromAbout) {
     // Décaler la suite de 500ms
     setTimeout(() => {
       executeContentUpdate(state, contentArray, menuLinks, index);
-    }, 1000); // modifier ici pour le submenu d'ABOUT
+    }, delay);
   } else {
     executeContentUpdate(state, contentArray, menuLinks, index);
   }

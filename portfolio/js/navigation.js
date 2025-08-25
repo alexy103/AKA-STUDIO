@@ -10,9 +10,9 @@ function handleHomeAkas(
   // Pas de timeout si on va vers ABOUT
   if (about) {
     // TODO: lui demander s'il faut que les aka partent ou pas
-    // clickedAka.classList.add("aka--" + direction);
-    // otherAka.classList.add("aka--" + otherDirection);
     setTimeout(() => {
+      clickedAka.classList.add("aka--" + direction); //mettre cette ligne hors du timeout, au dessus s'il doivent partir
+      otherAka.classList.add("aka--" + otherDirection); // elle aussi
       clickedAka.classList.add("hidden");
       otherAka.classList.add("hidden");
     }, 3000);
@@ -336,7 +336,7 @@ function updateSlideFromMenu(slideName) {
         homeSlide.classList.remove("left");
         homeSlide.classList.remove("right");
         cleanOtherClasses(displayedSlideName);
-      }, 4000);
+      }, 3000);
       break;
 
     case "contact":
@@ -447,7 +447,7 @@ function updateSlide(slideName, doubleNavigation) {
       setTimeout(() => {
         workSlide.classList.remove("work--enter");
         workSlide.classList.add("work--inside");
-      }, 5000);
+      }, 4250);
       break;
     case "about":
       displayedSlideName = "about";
@@ -459,10 +459,10 @@ function updateSlide(slideName, doubleNavigation) {
       });
 
       // On attend 1s pour que le aka disparaisse puis on lance l'animation d'enter
-      setTimeout(() => {
-        navbar.classList.add("front", "navigation--enter--up");
-        aboutSlide.classList.add("about--enter");
-      }, 1000);
+      // setTimeout(() => {
+      navbar.classList.add("front", "navigation--enter--up");
+      aboutSlide.classList.add("about--enter"); //TODO: toggle le settimeout pour ajouter du delai sur le depart vers ABOUt
+      // }, 1000);
 
       // On fait slide HOME après l'enter pour préparer l'animation d'exit
       setTimeout(() => {
@@ -473,7 +473,7 @@ function updateSlide(slideName, doubleNavigation) {
       setTimeout(() => {
         aboutSlide.classList.remove("about--enter");
         aboutSlide.classList.add("about--inside");
-      }, 5000);
+      }, 2200); //TODO: changer ici pour dire quand on met ABOUT--inside
       break;
 
     // Afficher CONTACT
@@ -502,7 +502,7 @@ function updateSlide(slideName, doubleNavigation) {
       setTimeout(() => {
         document.querySelector(".contact").classList.remove("contact--enter");
         document.querySelector(".contact").classList.add("contact--inside");
-      }, 5000);
+      }, 4250);
       break;
     default:
       break;
