@@ -1031,7 +1031,7 @@ img {
     transform: translateY(0);
   }
   100% {
-    transform: translateY(calc((100dvh - 100px) / 6 / 3.75));
+    transform: translateY(calc((100dvh - 100px) / 6 / 3.9));
   }
 }
 .about--enter {

@@ -272,7 +272,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     transform: translateY(0);
   }
   100% {
-    transform: translateY(calc($row / 3.75));
+    transform: translateY(calc($row / 3.9));
   }
 }
 
