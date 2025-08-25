@@ -279,6 +279,7 @@ img {
   color: #fcfbf5;
   text-shadow: 0px 0 13px #fcfbf5;
   position: relative;
+  pointer-events: none;
 }
 .submenu__active::after {
   content: "";
@@ -371,60 +372,51 @@ img {
   max-width: 20px;
   transform: translateY(10vh);
 }
-.menu .firstcol {
-  width: calc((100dvw - 100px) / 6);
+.menu .menu__border {
+  width: 3px;
+  height: 100%;
+  border: 1px solid #131412;
+  position: absolute;
+}
+.menu .menu__border:nth-child(1) {
+  left: calc((100dvw - 100px) / 6);
+}
+.menu .menu__border:nth-child(3) {
+  right: calc((100dvw - 100px) / 6 * 2 + 20px);
+}
+.menu .mainColumn {
+  width: calc(calc((100dvw - 100px) / 6) * 4 + 78px);
   height: 100%;
   display: flex;
   flex-direction: column;
   gap: 1px;
 }
-.menu .firstcol .gridSquare {
+.menu .mainColumn .menu__square {
   width: 100%;
   height: calc(calc((100dvh - 100px) / 6) + 20px);
   border-bottom: 3px double #131412;
 }
-.menu .firstcol .gridSquare:first-child {
-  height: calc(calc((100dvh - 100px) / 6) / 2);
-}
-.menu .firstcol .gridSquare:last-child {
-  flex: 1;
-  border-bottom: none;
-}
-.menu .secondcol {
-  width: calc(calc((100dvw - 100px) / 6) * 3 + 78px);
-  height: 100%;
-  border-left: 3px double #131412;
-  border-right: 3px double #131412;
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-}
-.menu .secondcol .gridSquare {
-  width: 100%;
-  height: calc(calc((100dvh - 100px) / 6) + 20px);
-  border-bottom: 3px double #131412;
-}
-.menu .secondcol .gridSquare:first-child {
+.menu .mainColumn .menu__square:first-child {
   border-top: none;
   height: calc(calc((100dvh - 100px) / 6) / 2);
 }
-.menu .secondcol .gridSquare:last-child {
+.menu .mainColumn .menu__square:last-child {
   flex: 1;
   border-bottom: none;
 }
-.menu .secondcol .menu__link {
+.menu .mainColumn .menu__link {
   display: flex;
   align-items: center;
   transition: 0.5s all;
   overflow: hidden;
 }
-.menu .secondcol .menu__link h2 {
-  margin-left: 5vw;
+.menu .mainColumn .menu__link h2 {
+  margin-left: calc((100dvw - 100px) / 6 + 20px);
   flex: 1;
   transform: translateX(100vw);
 }
 .menu .thirdcol {
-  width: calc(calc((100dvw - 100px) / 6) * 2 + 20px);
+  width: calc(calc((100dvw - 100px) / 6) * 2 + 20px - 8px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -620,30 +612,34 @@ img {
   margin: 20px calc(calc((100dvw - 100px) / 6) + 20px) 0;
   height: calc((100dvh - 100px) / 6);
 }
-.about .menus--grid {
+.about .menus--double {
   display: flex;
   flex-wrap: wrap;
 }
-.about .menus--grid .jobs,
-.about .menus--grid .aboutMenu {
+.about .menus--double .jobs,
+.about .menus--double .aboutMenu {
   width: 100%;
   display: flex;
 }
-.about .menus--grid .jobs li,
-.about .menus--grid .aboutMenu li {
+.about .menus--double .jobs li,
+.about .menus--double .aboutMenu li {
   text-align: center;
   margin-block: auto;
   width: 33.3333333333%;
 }
-.about .menus--flex {
+.about .menus--double .aboutMenu {
+  transform: translateY(0);
+}
+.about .menus--single {
   display: flex;
 }
-.about .menus--flex .aboutMenu {
+.about .menus--single .aboutMenu {
   display: flex;
   align-items: center;
   width: 100%;
+  transform: translateY(0);
 }
-.about .menus--flex .aboutMenu li {
+.about .menus--single .aboutMenu li {
   text-align: center;
   margin-block: auto;
   width: 33.3333333333%;
@@ -653,6 +649,25 @@ img {
   flex-direction: column;
   align-items: center;
   gap: 0.4vh;
+}
+.about .aboutMenu__link::after {
+  display: none;
+}
+.about .aboutMenu .submenu__active p {
+  position: relative;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+}
+.about .aboutMenu .submenu__active p::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 1px;
+  background-color: #e41313;
 }
 .about .slideTitle {
   text-align: center;
@@ -894,6 +909,19 @@ img {
   animation: workSliderEnter 1s forwards ease-out;
 }
 
+.contact .content__title--exit {
+  animation: slideToTop 0.5s forwards;
+}
+.contact .content__title--enter {
+  animation: slideFromBottom 0.5s forwards, fadeIn 1s forwards;
+}
+.contact .content__text--exit {
+  animation: fadeOut 0.5s forwards;
+}
+.contact .content__text--enter {
+  animation: fadeIn 0.75s forwards;
+}
+
 .contact--enter {
   animation: contactSlideEnter 2s forwards;
   transform: translateX(-100%);
@@ -916,20 +944,6 @@ img {
 }
 .contact--enter .aka {
   animation: contactAkas 1s 2.75s forwards;
-}
-
-.content__title--exit {
-  animation: slideToTop 0.5s forwards;
-}
-.content__title--enter {
-  animation: slideFromBottom 0.5s forwards, fadeIn 1s forwards;
-}
-
-.content__text--exit {
-  animation: fadeOut 0.5s forwards;
-}
-.content__text--enter {
-  animation: fadeIn 0.75s forwards;
 }
 
 .contact--inside {
@@ -987,11 +1001,50 @@ img {
   animation: contactAkas 1s 0.5s reverse;
 }
 
+.about .content__img--exit {
+  animation: aboutSlideToLeft 1s forwards ease-in-out;
+}
+.about .content__img--enter {
+  animation: aboutSlideFromRight 1s forwards ease-in-out, fadeIn 0.75s forwards;
+}
+.about .content__text--exit {
+  animation: fadeOut 1s forwards;
+}
+.about .content__text--enter {
+  animation: fadeIn 2.5s forwards;
+}
+.about .aboutMenu--down {
+  animation: aboutMenuDown 1s forwards;
+}
+.about .aboutMenu--up {
+  animation: aboutMenuDown 1s forwards reverse;
+}
+.about .jobsMenu--enter {
+  animation: fadeIn 1s forwards;
+}
+.about .jobsMenu--exit {
+  animation: fadeOut 1s forwards;
+}
+
+@keyframes aboutMenuDown {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(calc((100dvh - 100px) / 6 / 3.75));
+  }
+}
 .about--enter {
   animation: aboutSlideEnter 2s forwards;
 }
 .about--enter .aka {
   animation: aboutAkas 1s 2.75s forwards;
+}
+.about--enter .menus {
+  animation: slideFromLeft 2s forwards;
+}
+.about--enter .submenu__active p::after {
+  width: 100% !important;
 }
 
 .about--inside {
@@ -1000,22 +1053,53 @@ img {
 .about--inside .aka {
   opacity: 1;
 }
-
-.menu .firstcol--enter,
-.menu .secondcol--enter {
-  animation: menuEnter 1s forwards;
+.about--inside .submenu__active {
+  color: #fcfbf5;
+  text-shadow: 0px 0 13px #fcfbf5;
+  position: relative;
+  pointer-events: none;
 }
-.menu .thirdcol--enter {
-  animation: menuBorderEnter 1s 1s forwards;
+.about--inside .underline--enter {
+  animation: shineOut 0.5s forwards reverse;
+}
+.about--inside .underline--enter p::after {
+  animation: underline 0.75s forwards !important;
+}
+.about--inside .underline--exit {
+  animation: shineOut 0.75s forwards;
+}
+.about--inside .underline--exit p {
+  position: relative;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+}
+.about--inside .underline--exit p::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 1px;
+  background-color: #e41313;
+  animation: underline 0.75s forwards reverse;
+}
+
+.menu .mainColumn--enter {
+  animation: menuEnter 1.25s forwards;
+}
+.menu .menu__border--enter {
+  animation: menuBorderEnter 1.25s forwards;
 }
 .menu .link--enter {
-  animation: menuLinkEnter 1s 1s forwards;
+  animation: menuLinkEnter 1s 1.25s forwards;
 }
 .menu .text--enter {
-  animation: menuTextEnter 1.5s 1s forwards;
+  animation: menuTextEnter 1.5s 1.25s forwards;
 }
 .menu .logo--enter {
-  animation: menuLogoEnter 0.5s 2s forwards;
+  animation: menuLogoEnter 0.5s 2.25s forwards;
 }
 
 .navigation.navigation--enter--right {
@@ -1091,18 +1175,18 @@ img {
 }
 @keyframes menuEnter {
   0% {
-    transform: translate(-100%, -100%);
+    transform: translateY(-100%);
   }
   100% {
-    transform: translate(0, 0);
+    transform: translateY(0);
   }
 }
 @keyframes menuBorderEnter {
   0% {
-    border-left: 1px solid rgba(19, 20, 18, 0);
+    transform: translateX(-100dvw);
   }
   100% {
-    border-left: 1px solid #131412;
+    transform: translateX(0);
   }
 }
 @keyframes menuLinkEnter {
@@ -1161,12 +1245,28 @@ img {
     transform: translateX(0);
   }
 }
+@keyframes aboutSlideFromRight {
+  0% {
+    transform: translateX(85vw);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
 @keyframes slideToLeft {
   0% {
     transform: translateX(0);
   }
   100% {
     transform: translateX(-100vw);
+  }
+}
+@keyframes aboutSlideToLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-85vw);
   }
 }
 @keyframes slideFromLeft {

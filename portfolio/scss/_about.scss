@@ -13,7 +13,8 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     margin-inline: calc(#{$column} + 20px);
     gap: 20px;
     img {
-      height: $row;
+      // max-height: $row;
+      height: $row; // TODO: voir avec lui s'il faut que la height fasse toujours 1R
     }
     &__title {
       text-transform: uppercase;
@@ -52,7 +53,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     margin: 20px calc(#{$column} + 20px) 0;
     height: $row;
 
-    &--grid {
+    &--double {
       display: flex;
       flex-wrap: wrap;
 
@@ -67,15 +68,20 @@ $column: calc((100dvw - (5 * 20px)) / 6);
           width: calc(100% / 3);
         }
       }
+
+      .aboutMenu {
+        transform: translateY(0);
+      }
     }
 
-    &--flex {
+    &--single {
       display: flex;
 
       .aboutMenu {
         display: flex;
         align-items: center;
         width: 100%;
+        transform: translateY(0);
 
         li {
           text-align: center;
@@ -93,6 +99,26 @@ $column: calc((100dvw - (5 * 20px)) / 6);
         flex-direction: column;
         align-items: center;
         gap: 0.4vh;
+      }
+      &::after {
+        display: none;
+      }
+    }
+    .submenu__active {
+      p {
+        position: relative;
+        width: fit-content;
+        margin: 0 auto;
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: -2px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 100%;
+          height: 1px;
+          background-color: #e41313;
+        }
       }
     }
   }

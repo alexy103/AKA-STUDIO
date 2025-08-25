@@ -1,5 +1,3 @@
-// TODO: revoir une fois que about sera fait
-
 let activeFriendListFriends = document.querySelectorAll(
   ".about .friendlist:not(.hidden) .friend"
 );
@@ -23,8 +21,8 @@ sliderRightArrows.forEach((arrow) => {
       arrow.classList.remove("unclickable");
     });
 
+    // Si c'est le dernier élément, on rend la flèche droite non cliquable
     if (currentIndex === activeFriendListFriends.length - 1) {
-      // Si c'est le dernier élément, on rend la flèche droite non cliquable
       sliderRightArrows.forEach((arrow) => {
         arrow.classList.add("unclickable");
       });
@@ -51,6 +49,7 @@ sliderLeftArrows.forEach((arrow) => {
       arrow.classList.remove("unclickable");
     });
 
+    // Si c'est le premier élément, on rend la flèche gauche non cliquable
     if (currentIndex === 0) {
       sliderLeftArrows.forEach((arrow) => {
         arrow.classList.add("unclickable");

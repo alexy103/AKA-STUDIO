@@ -126,6 +126,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     color: #fcfbf5;
     text-shadow: 0px 0 13px #fcfbf5;
     position: relative;
+    pointer-events: none;
 
     &::after {
       content: "";

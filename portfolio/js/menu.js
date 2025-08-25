@@ -21,14 +21,15 @@ function openMenu() {
   menu.classList.add("front");
 
   // Enter des cases et de la partie droite du menu
-  menu.querySelector(".firstcol").classList.add("firstcol--enter");
-  menu.querySelector(".secondcol").classList.add("secondcol--enter");
-  // menu.querySelector(".thirdcol").classList.add("thirdcol--enter");
+  menu.querySelector(".mainColumn").classList.add("mainColumn--enter");
   menu.querySelector(".menu__text").classList.add("text--enter");
   menu.querySelector(".menu__img").classList.add("logo--enter");
 
   // Enter des liens du menu
   menu.querySelectorAll("h2").forEach((e) => e.classList.add("link--enter"));
+  menu
+    .querySelectorAll(".menu__border")
+    .forEach((e) => e.classList.add("menu__border--enter"));
 }
 
 function closeMenu() {
@@ -38,11 +39,8 @@ function closeMenu() {
   // On attend la fin de l'animation et on nettoie les éléments dedans
   setTimeout(() => {
     document
-      .querySelector(".menu .firstcol")
-      .classList.remove("firstcol--enter");
-    document
-      .querySelector(".menu .secondcol")
-      .classList.remove("secondcol--enter");
+      .querySelector(".menu .mainColumn")
+      .classList.remove("mainColumn--enter");
     document
       .querySelector(".menu .thirdcol")
       .classList.remove("thircol--enter");
@@ -51,6 +49,9 @@ function closeMenu() {
     });
     document.querySelector(".menu .menu__text").classList.remove("text--enter");
     document.querySelector(".menu .menu__img").classList.remove("logo--enter");
+    document.querySelectorAll(".menu .menu__border").forEach((e) => {
+      e.classList.remove("menu__border--enter");
+    });
   }, 1000);
 }
 

@@ -1,5 +1,3 @@
-// TODO: revoir ce js une fois que about sera fait
-
 const aboutMenuLinks = document.querySelectorAll(".aboutMenu__link");
 const aboutContent = document.querySelectorAll(".about .content");
 
@@ -9,9 +7,31 @@ const aboutState = {
   activeMenuLink: aboutMenuLinks[0],
 };
 
+// Gestion du submenu
 aboutMenuLinks.forEach((link, i) => {
   link.addEventListener("click", () => {
-    updateContent(aboutState, aboutContent, aboutMenuLinks, i);
+    let active = document.querySelector(".about .aboutMenu .submenu__active");
+    active.classList.remove("underline--enter");
+    link.classList.add("underline--enter");
+
+    // Si on vient de friends
+    if (link !== aboutMenuLinks[2] && inFriends) {
+      document
+        .querySelector(".about .menus .jobs")
+        .classList.add("jobsMenu--exit");
+    }
+
+    // animations
+    setTimeout(() => {
+      if (active) active.classList.add("underline--exit");
+      updateContent(aboutState, aboutContent, aboutMenuLinks, i);
+    }, 1);
+
+    setTimeout(() => {
+      aboutMenuLinks.forEach((link) => {
+        link.classList.remove("underline--exit");
+      });
+    }, 1000); // modifier ici pour le submenu d'ABOUT
   });
 });
 
@@ -35,6 +55,7 @@ const sliderArrows = document.querySelectorAll(
   ".slider .fa-chevron-left, .slider .fa-chevron-right"
 );
 
+// Gestion du submenu avec slider
 jobsMenu.forEach((link, i) => {
   link.addEventListener("click", () => {
     updateContent(friendsState, friendLists, jobsMenu, i);
@@ -49,8 +70,8 @@ jobsMenu.forEach((link, i) => {
       arrow.classList.add("unclickable");
     });
 
+    // Si on n'a qu'un seul ami, on rend les flèches non cliquables
     if (activeFriendListFriends.length <= 1) {
-      // Si on n'a qu'un seul ami, on rend les flèches non cliquables
       sliderArrows.forEach((arrow) => {
         arrow.classList.add("unclickable");
       });

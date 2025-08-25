@@ -1,5 +1,6 @@
 // TODO: passer le HTML au W3C
 // TODO: ajouter le slider sur home
+// TODO: essayer de mettre l'apparition des aka dans le --inside
 function updateContent(state, contentArray, menuLinks, index) {
   if (state.name === "work") {
     // Délai de l'animation d'exit du slider de WORK
@@ -52,12 +53,70 @@ function updateContent(state, contentArray, menuLinks, index) {
       nextActiveContent.children[1]?.classList.remove("content__text--exit");
       nextActiveContent.children[1]?.classList.add("content__text--enter");
     }, 500);
+  } else if (state.name === "about") {
+    // Gestion des animations de la page about
+    const aboutSlide = document.querySelector(".about");
+    const aboutMenu = document.querySelector(".about .menus .aboutMenu");
+    const activeContent = document.querySelector(
+      ".about .content:not(.hidden)"
+    );
+    const activeContentImg = activeContent.children[0];
+    const activeContentTitle = activeContent.children[1];
+    const activeContentText = activeContent.children[2];
+
+    aboutSlide.classList.remove("about--enter");
+
+    // On fait l'exit
+    activeContentImg.classList.remove("content__img--enter");
+    activeContentTitle?.classList.remove("content__title--enter");
+    activeContentText?.classList.remove("content__text--enter");
+    activeContentImg.classList.add("content__img--exit");
+    activeContentTitle?.classList.add("content__title--exit");
+    activeContentText?.classList.add("content__text--exit");
+
+    const nextActiveContent = contentArray[index];
+
+    if (index === 2 || state.name === "friends") {
+      aboutMenu.classList.remove("aboutMenu--up");
+      aboutMenu.classList.add("aboutMenu--down");
+    } else {
+      aboutMenu.classList.remove("aboutMenu--down");
+      // aboutMenu.classList.add("aboutMenu--up");
+    }
+
+    // On attend que l'exit se fasse puis on fait l'enter
+    loadContent(state, contentArray, menuLinks, index, true);
+    setTimeout(() => {
+      nextActiveContent.children[0].classList.remove("content__img--exit");
+      nextActiveContent.children[0].classList.add("content__img--enter");
+      nextActiveContent.children[1]?.classList.remove("content__title--exit");
+      nextActiveContent.children[1]?.classList.add("content__title--enter");
+      nextActiveContent.children[2]?.classList.remove("content__text--exit");
+      nextActiveContent.children[2]?.classList.add("content__text--enter");
+    }, 700);
   } else {
     loadContent(state, contentArray, menuLinks, index);
   }
 }
 
-function loadContent(state, contentArray, menuLinks, index) {
+let inFriends = false;
+
+function loadContent(state, contentArray, menuLinks, index, fromAbout) {
+  if (fromAbout) {
+    state.activeMenuLink.classList.remove("submenu__active");
+    menuLinks[index].classList.add("submenu__active");
+    state.activeMenuLink = menuLinks[index];
+
+    // Décaler la suite de 500ms
+    setTimeout(() => {
+      executeContentUpdate(state, contentArray, menuLinks, index);
+    }, 1000); // modifier ici pour le submenu d'ABOUT
+  } else {
+    executeContentUpdate(state, contentArray, menuLinks, index);
+  }
+}
+
+function executeContentUpdate(state, contentArray, menuLinks, index) {
   // Actualisation du contenu
   state.activeContent.classList.add("hidden");
   contentArray[index].classList.remove("hidden");
@@ -75,20 +134,35 @@ function loadContent(state, contentArray, menuLinks, index) {
     state.activeTitle = workTitles[index];
   }
 
-  // TODO: revoir une fois que la page about est faite
   const jobsMenu = document.querySelector(".about .menus .jobs");
+  const aboutMenu = document.querySelector(".about .menus .aboutMenu");
   const menus = document.querySelector(".menus");
 
+  // Gestion du submenu avec slider
   if ((state.name === "about" && index === 2) || state.name === "friends") {
+    aboutMenu.classList.remove("aboutMenu--down");
     jobsMenu.classList.remove("hidden");
-    menus.classList.remove("menus--flex");
-    menus.classList.add("menus--grid");
+    jobsMenu.classList.add("jobsMenu--enter");
+    menus.classList.remove("menus--single");
+    menus.classList.add("menus--double");
     activeFriendListFriends = document.querySelectorAll(
       ".about .friendlist:not(.hidden) .friend"
     );
-  } else {
+    inFriends = true;
+
+    setTimeout(() => {
+      jobsMenu.classList.remove("jobsMenu--enter");
+    }, 1000);
+  } else if (state.activeMenuLink !== menuLinks[2] && inFriends) {
+    jobsMenu.classList.remove("jobsMenu--exit");
+    aboutMenu.classList.add("aboutMenu--up");
     jobsMenu.classList.add("hidden");
-    menus.classList.remove("menus--grid");
-    menus.classList.add("menus--flex");
+
+    setTimeout(() => {
+      aboutMenu.classList.remove("aboutMenu--up");
+      inFriends = false;
+      menus.classList.remove("menus--double");
+      menus.classList.add("menus--single");
+    }, 1000);
   }
 }

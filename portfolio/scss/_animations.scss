@@ -1,3 +1,6 @@
+$row: calc((100dvh - (5 * 20px)) / 6);
+$column: calc((100dvw - (5 * 20px)) / 6);
+
 .work--enter {
   animation: workSlideEnter 2s forwards;
   .project {
@@ -100,6 +103,28 @@
   animation: workSliderEnter 1s forwards ease-out;
 }
 
+.contact {
+  .content__title {
+    &--exit {
+      animation: slideToTop 0.5s forwards;
+    }
+
+    &--enter {
+      animation: slideFromBottom 0.5s forwards, fadeIn 1s forwards;
+    }
+  }
+
+  .content__text {
+    &--exit {
+      animation: fadeOut 0.5s forwards;
+    }
+
+    &--enter {
+      animation: fadeIn 0.75s forwards;
+    }
+  }
+}
+
 .contact--enter {
   animation: contactSlideEnter 2s forwards;
   transform: translateX(-100%);
@@ -129,26 +154,6 @@
 
   .aka {
     animation: contactAkas 1s 2.75s forwards;
-  }
-}
-
-.content__title {
-  &--exit {
-    animation: slideToTop 0.5s forwards;
-  }
-
-  &--enter {
-    animation: slideFromBottom 0.5s forwards, fadeIn 1s forwards;
-  }
-}
-
-.content__text {
-  &--exit {
-    animation: fadeOut 0.5s forwards;
-  }
-
-  &--enter {
-    animation: fadeIn 0.75s forwards;
   }
 }
 
@@ -223,10 +228,66 @@
   }
 }
 
+.about {
+  .content__img {
+    &--exit {
+      animation: aboutSlideToLeft 1s forwards ease-in-out;
+    }
+
+    &--enter {
+      animation: aboutSlideFromRight 1s forwards ease-in-out,
+        fadeIn 0.75s forwards;
+    }
+  }
+
+  .content__text {
+    &--exit {
+      animation: fadeOut 1s forwards;
+    }
+
+    &--enter {
+      animation: fadeIn 2.5s forwards;
+    }
+  }
+
+  .aboutMenu--down {
+    animation: aboutMenuDown 1s forwards;
+  }
+
+  .aboutMenu--up {
+    animation: aboutMenuDown 1s forwards reverse;
+  }
+
+  .jobsMenu--enter {
+    animation: fadeIn 1s forwards;
+  }
+
+  .jobsMenu--exit {
+    animation: fadeOut 1s forwards;
+  }
+}
+
+@keyframes aboutMenuDown {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(calc($row / 3.75));
+  }
+}
+
 .about--enter {
   animation: aboutSlideEnter 2s forwards;
   .aka {
     animation: aboutAkas 1s 2.75s forwards;
+  }
+  .menus {
+    animation: slideFromLeft 2s forwards;
+  }
+  .submenu__active {
+    p::after {
+      width: 100% !important;
+    }
   }
 }
 
@@ -235,28 +296,62 @@
   .aka {
     opacity: 1;
   }
+  .submenu__active {
+    color: #fcfbf5;
+    text-shadow: 0px 0 13px #fcfbf5;
+    position: relative;
+    pointer-events: none;
+  }
+  .underline--enter {
+    animation: shineOut 0.5s forwards reverse;
+    p {
+      &::after {
+        animation: underline 0.75s forwards !important;
+      }
+    }
+  }
+  .underline--exit {
+    animation: shineOut 0.75s forwards;
+    p {
+      position: relative;
+      width: fit-content;
+      margin: 0 auto;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        height: 1px;
+        background-color: #e41313;
+
+        animation: underline 0.75s forwards reverse;
+      }
+    }
+  }
 }
 
 .menu {
-  .firstcol--enter,
-  .secondcol--enter {
-    animation: menuEnter 1s forwards;
+  .mainColumn--enter {
+    animation: menuEnter 1.25s forwards;
   }
 
-  .thirdcol--enter {
-    animation: menuBorderEnter 1s 1s forwards;
+  .menu__border--enter {
+    animation: menuBorderEnter 1.25s forwards;
   }
 
   .link--enter {
-    animation: menuLinkEnter 1s 1s forwards;
+    animation: menuLinkEnter 1s 1.25s forwards;
   }
 
   .text--enter {
-    animation: menuTextEnter 1.5s 1s forwards;
+    animation: menuTextEnter 1.5s 1.25s forwards;
   }
 
   .logo--enter {
-    animation: menuLogoEnter 0.5s 2s forwards;
+    animation: menuLogoEnter 0.5s 2.25s forwards;
   }
 }
 
@@ -344,19 +439,19 @@
 
 @keyframes menuEnter {
   0% {
-    transform: translate(-100%, -100%);
+    transform: translateY(-100%);
   }
   100% {
-    transform: translate(0, 0);
+    transform: translateY(0);
   }
 }
 
 @keyframes menuBorderEnter {
   0% {
-    border-left: 1px solid #13141200;
+    transform: translateX(-100dvw);
   }
   100% {
-    border-left: 1px solid #131412;
+    transform: translateX(0);
   }
 }
 
@@ -422,12 +517,30 @@
   }
 }
 
+@keyframes aboutSlideFromRight {
+  0% {
+    transform: translateX(85vw);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 @keyframes slideToLeft {
   0% {
     transform: translateX(0);
   }
   100% {
     transform: translateX(-100vw);
+  }
+}
+
+@keyframes aboutSlideToLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-85vw);
   }
 }
 
