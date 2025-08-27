@@ -55,31 +55,37 @@ const sliderArrows = document.querySelectorAll(
   ".slider .fa-chevron-left, .slider .fa-chevron-right"
 );
 
+activeFriendListFriends = document.querySelectorAll(
+  ".about .friendlist:not(.hidden) .friend"
+);
+
 // Gestion du submenu avec slider
 jobsMenu.forEach((link, i) => {
   link.addEventListener("click", () => {
-    updateContent(friendsState, friendLists, jobsMenu, i);
     activeFriendListFriends.forEach((friend) => {
-      friend.classList.add("hidden");
+      friend.querySelectorAll("img, .name, .text").forEach((e) => {
+        e.classList.remove("slider--exit--right");
+        e.classList.remove("slider--exit--left");
+        e.classList.remove("slider--enter--right");
+        e.classList.remove("slider--enter--left");
+      });
     });
-    activeFriendListFriends[0].classList.remove("hidden");
-    currentIndex = 0;
 
+    updateContent(friendsState, friendLists, jobsMenu, i);
+
+    setTimeout(() => {
+      activeFriendListFriends.forEach((friend) => {
+        friend.classList.add("hidden");
+      });
+      activeFriendListFriends[0].classList.remove("hidden");
+
+      // Actualiser le premier élément du nouveau friends pour préparer l'exit du slider
+      activeFriend = activeFriendListFriends[0];
+      currentIndex = 0;
+    }, 500);
     // On rend la flèche gauche non cliquable au début
     sliderLeftArrows.forEach((arrow) => {
       arrow.classList.add("unclickable");
     });
-
-    // Si on n'a qu'un seul ami, on rend les flèches non cliquables
-    if (activeFriendListFriends.length <= 1) {
-      sliderArrows.forEach((arrow) => {
-        arrow.classList.add("unclickable");
-      });
-    } else {
-      // Si on a plusieurs amis, on rend les flèches cliquables
-      sliderRightArrows.forEach((arrow) => {
-        arrow.classList.remove("unclickable");
-      });
-    }
   });
 });

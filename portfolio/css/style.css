@@ -687,6 +687,7 @@ img {
 .about .friendlist .friend .slider i {
   font-size: 3rem;
   color: rgba(255, 255, 255, 0.418);
+  transition: 1s;
 }
 .about .friendlist .friend__description {
   height: calc((100dvh - 100px) / 6);
@@ -755,7 +756,7 @@ img {
   min-height: 10vh;
 }
 .contact .content--medias img {
-  max-width: 15vw;
+  width: calc((100dvw - 100px) / 6);
 }
 .contact .content--form {
   justify-content: flex-start;
@@ -826,6 +827,7 @@ img {
 }
 
 .work--enter {
+  pointer-events: none;
   animation: workSlideEnter 2s forwards;
 }
 .work--enter .project {
@@ -839,7 +841,6 @@ img {
 }
 .work--enter .red {
   opacity: 0;
-  animation: rec 0.5s 2.75s forwards;
 }
 .work--enter .submenu__active::after {
   animation: underline 1s 2s forwards;
@@ -868,6 +869,10 @@ img {
 .work--inside .aka {
   opacity: 1;
   animation: workAkas 1s;
+}
+.work--inside .red {
+  opacity: 0;
+  animation: rec 0.5s forwards;
 }
 .work--inside .submenu__active::after {
   width: 100%;
@@ -922,11 +927,11 @@ img {
 
 .contact--enter {
   animation: contactSlideEnter 2s forwards;
+  pointer-events: none;
   transform: translateX(-100%);
 }
 .contact--enter .red {
   opacity: 0;
-  animation: rec 0.5s 2.75s forwards;
 }
 .contact--enter .submenu__active::after {
   animation: underline 1s 2s forwards;
@@ -951,6 +956,10 @@ img {
 .contact--inside .aka {
   opacity: 1;
   animation: contactAkas 1s;
+}
+.contact--inside .red {
+  opacity: 0;
+  animation: rec 0.5s forwards;
 }
 .contact--inside .submenu__active::after {
   width: 100%;
@@ -997,17 +1006,47 @@ img {
   animation: contactAkas 1s 0.5s reverse;
 }
 
-.about .content__img--exit {
-  animation: aboutSlideToLeft 1s forwards ease-in-out;
+.about .content__img--exit--right {
+  animation: slideToRight 1s forwards;
 }
-.about .content__img--enter {
-  animation: aboutSlideFromRight 1s forwards ease-in-out, fadeIn 0.75s forwards;
+.about .content__img--exit--left {
+  animation: slideToLeft 1s forwards;
+}
+.about .content__img--enter--right {
+  animation: aboutSlideFromRight 1s forwards, fadeIn 0.75s forwards;
+}
+.about .content__img--enter--left {
+  animation: slideFromLeft 1s forwards, fadeIn 0.75s forwards;
 }
 .about .content__text--exit {
   animation: fadeOut 1s forwards;
 }
 .about .content__text--enter {
   animation: fadeIn 2.5s forwards;
+}
+.about .content--friends--enter {
+  animation: aboutSlideFromRight 1s forwards;
+}
+.about .content--friends--exit {
+  animation: slideToRight 1s forwards;
+}
+.about .friendlist--exit {
+  animation: aboutSlideToTop 0.5s forwards, fadeOut 0.5s forwards;
+}
+.about .friendlist--enter {
+  animation: aboutSlideToTop 0.5s forwards reverse, fadeIn 0.5s forwards;
+}
+.about .slider--exit--right {
+  animation: slideToRight 1s forwards;
+}
+.about .slider--exit--left {
+  animation: slideToLeft 1s forwards;
+}
+.about .slider--enter--right {
+  animation: aboutSlideFromRight 1s forwards;
+}
+.about .slider--enter--left {
+  animation: slideFromLeft 1s forwards;
 }
 .about .aboutMenu--down {
   animation: aboutMenuDown 1s forwards;
@@ -1031,6 +1070,7 @@ img {
   }
 }
 .about--enter {
+  pointer-events: none;
   animation: aboutSlideEnter 2s forwards;
 }
 .about--enter .menus {
@@ -1039,6 +1079,9 @@ img {
 .about--enter .submenu__active p::after {
   width: 100% !important;
 }
+.about--enter .red {
+  opacity: 0;
+}
 
 .about--inside {
   top: calc(-200dvh + (100dvh - 100px) / 6 + (100dvh - 100px) / 6);
@@ -1046,6 +1089,10 @@ img {
 .about--inside .aka {
   opacity: 1;
   animation: aboutAkas 1s;
+}
+.about--inside .red {
+  opacity: 0;
+  animation: rec 0.5s forwards;
 }
 .about--inside .submenu__active {
   color: #fcfbf5;
@@ -1301,6 +1348,14 @@ img {
   }
   100% {
     transform: translateY(100vh);
+  }
+}
+@keyframes aboutSlideToTop {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-20vh);
   }
 }
 @keyframes slideToTop {

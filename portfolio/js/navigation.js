@@ -447,7 +447,7 @@ function updateSlide(slideName, doubleNavigation) {
       setTimeout(() => {
         workSlide.classList.remove("work--enter");
         workSlide.classList.add("work--inside");
-      }, 4250);
+      }, 4000);
       break;
     case "about":
       displayedSlideName = "about";
@@ -483,13 +483,13 @@ function updateSlide(slideName, doubleNavigation) {
       homeSlide.classList.remove("front");
 
       // On nettoie la classe et on cache les akas pour préparer l'animation d'enter
-      document.querySelector(".contact").classList.remove("contact--exit");
+      contactSlide.classList.remove("contact--exit");
       contactAkas.forEach((aka) => {
         aka.classList.remove("hidden");
       });
       // On attend 1s pour que le aka disparaisse puis on lance l'animation d'enter
       setTimeout(() => {
-        document.querySelector(".contact").classList.add("contact--enter");
+        contactSlide.classList.add("contact--enter");
       }, 1000);
 
       // On fait slide HOME après l'enter pour préparer l'animation d'exit
@@ -500,9 +500,9 @@ function updateSlide(slideName, doubleNavigation) {
 
       // On attend la fin de l'enter puis on prépare les classes pour les animations de submenu dans CONTACT
       setTimeout(() => {
-        document.querySelector(".contact").classList.remove("contact--enter");
-        document.querySelector(".contact").classList.add("contact--inside");
-      }, 4250);
+        contactSlide.classList.remove("contact--enter");
+        contactSlide.classList.add("contact--inside");
+      }, 4000);
       break;
     default:
       break;

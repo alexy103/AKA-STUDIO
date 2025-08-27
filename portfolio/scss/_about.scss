@@ -143,6 +143,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
         i {
           font-size: 3rem;
           color: rgba(255, 255, 255, 0.418);
+          transition: 1s;
         }
       }
 

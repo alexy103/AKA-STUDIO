@@ -41,7 +41,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
         min-height: 10vh;
       }
       img {
-        max-width: 15vw;
+        width: $column;
       }
     }
 
