@@ -306,8 +306,8 @@ function updateSlideFromMenu(slideName) {
 
         homeSlide.classList.remove("right");
         homeSlide.classList.remove("down");
-        cleanOtherClasses(displayedSlideName);
-      }, 4000);
+      }, 3000);
+      cleanOtherClasses(displayedSlideName);
       break;
 
     case "about":
@@ -335,8 +335,8 @@ function updateSlideFromMenu(slideName) {
         // On nettoie toutes les autres classes pour la double navigation
         homeSlide.classList.remove("left");
         homeSlide.classList.remove("right");
-        cleanOtherClasses(displayedSlideName);
-      }, 3000);
+      }, 2900);
+      cleanOtherClasses(displayedSlideName);
       break;
 
     case "contact":
@@ -363,8 +363,8 @@ function updateSlideFromMenu(slideName) {
 
         homeSlide.classList.remove("left");
         homeSlide.classList.remove("down");
-        cleanOtherClasses(displayedSlideName);
-      }, 4000);
+      }, 3000);
+      cleanOtherClasses(displayedSlideName);
       break;
 
     default:

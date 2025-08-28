@@ -173,8 +173,10 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     animation: rec 0.5s forwards;
   }
 
-  .submenu__active::after {
-    width: 100%;
+  .submenu__active {
+    &::after {
+      width: 100%;
+    }
   }
 
   .contactMenu__link {

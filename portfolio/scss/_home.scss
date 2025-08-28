@@ -20,6 +20,59 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     }
   }
 
+  .opinions {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+
+    i {
+      position: absolute;
+      z-index: 3;
+      &.fa-chevron-left {
+        left: 10%;
+      }
+      &.fa-chevron-right {
+        right: 10%;
+      }
+    }
+
+    .content__wrapper {
+      display: flex;
+      overflow: hidden;
+      height: calc($row * 2);
+    }
+
+    .content {
+      min-width: 60%;
+      margin: 0 20%;
+      transition: transform 1s;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      padding-bottom: calc($row / 2);
+      gap: calc($row / 3);
+
+      h4 {
+        padding-top: 20px;
+        font-family: "Now Black", sans-serif;
+        font-size: 1.8rem;
+        text-align: center;
+      }
+      p {
+        text-align: center;
+        font-size: 1.1rem;
+        white-space: normal;
+      }
+    }
+  }
+
   .aka {
     top: calc(#{$row} * 3 + 80px);
     height: $row;

@@ -460,6 +460,54 @@ img {
   text-transform: uppercase;
   font-size: 1.7rem;
 }
+.home .opinions {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 2vw;
+}
+.home .opinions i {
+  position: absolute;
+  z-index: 3;
+}
+.home .opinions i.fa-chevron-left {
+  left: 10%;
+}
+.home .opinions i.fa-chevron-right {
+  right: 10%;
+}
+.home .opinions .content__wrapper {
+  display: flex;
+  overflow: hidden;
+  height: calc((100dvh - 100px) / 6 * 2);
+}
+.home .opinions .content {
+  min-width: 60%;
+  margin: 0 20%;
+  transition: transform 1s;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: calc((100dvh - 100px) / 6 / 2);
+  gap: calc((100dvh - 100px) / 6 / 3);
+}
+.home .opinions .content h4 {
+  padding-top: 20px;
+  font-family: "Now Black", sans-serif;
+  font-size: 1.8rem;
+  text-align: center;
+}
+.home .opinions .content p {
+  text-align: center;
+  font-size: 1.1rem;
+  white-space: normal;
+}
 .home .aka {
   top: calc(calc((100dvh - 100px) / 6) * 3 + 80px);
   height: calc((100dvh - 100px) / 6);
