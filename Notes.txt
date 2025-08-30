@@ -1,7 +1,3 @@
-work
-	le titre doit slide aussi quand on change de submenu ? sport, corporate... ?
-		-> faire fadeout et fadein sur le titre de work	
-
 about
 	le souligné du menu doit aussi slide entre chaque link ? (bizarre si les liens sont sur 2 lignes)
 		-> seulement la ligne du dessous si y'a 2 lignes, essayer pour voir le rendu visuel (UNIQUEMENT DESKTOP?)

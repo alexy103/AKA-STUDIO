@@ -7,6 +7,8 @@ const workContent = document.querySelectorAll(".work .projects");
 const workTitles = document.querySelectorAll(".work .category");
 let activeWorkTitle = document.querySelector(".work .category:not(.hidden)");
 
+const workTitlesSpan = document.querySelectorAll(".work .category span");
+
 const workState = {
   name: "work",
   activeContent: workContent[0],
@@ -19,13 +21,18 @@ const workState = {
 workMenuLinks.forEach((link, i) => {
   link.addEventListener("click", () => {
     let active = document.querySelector(".work .submenu__active");
-
+    workTitlesSpan.forEach((e) => {
+      e.classList.remove("category--enter");
+    });
     active.classList.remove("underline--enter");
 
     // On attend que la classe s'enlève pour commencer l'animation
     setTimeout(() => {
       active.classList.add("underline--exit");
       link.classList.add("underline--enter");
+      workTitlesSpan.forEach((e) => {
+        e.classList.add("category--exit");
+      });
     }, 1);
 
     updateContent(workState, workContent, workMenuLinks, i);
@@ -34,6 +41,10 @@ workMenuLinks.forEach((link, i) => {
     setTimeout(() => {
       workMenuLinks.forEach((link) => {
         link.classList.remove("underline--exit");
+      });
+      workTitlesSpan.forEach((e) => {
+        e.classList.add("category--enter");
+        e.classList.remove("category--exit");
       });
     }, 1000);
   });

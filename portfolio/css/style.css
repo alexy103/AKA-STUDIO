@@ -953,6 +953,12 @@ img {
 .work--inside .submenu__active::after {
   width: 100%;
 }
+.work--inside .category span.category--exit {
+  animation: fadeOut 1s forwards;
+}
+.work--inside .category span.category--enter {
+  animation: fadeIn 1.5s forwards;
+}
 .work--inside .workMenu__link::after {
   content: "";
   position: absolute;

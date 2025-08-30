@@ -19,7 +19,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     }
     .content__img {
       padding: calc($row / 3) 0;
-      height: $row; // TODO: voir avec lui s'il faut que la height fasse toujours 1R
+      height: $row;
     }
     &__title {
       text-transform: uppercase;
