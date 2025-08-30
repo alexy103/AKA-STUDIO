@@ -16,7 +16,8 @@ $column: calc((100dvw - (5 * 20px)) / 6);
 
     &__title {
       text-transform: uppercase;
-      font-size: 1.7rem;
+      font-size: 1.4rem;
+      font-family: "Stix Regular", sans-serif;
     }
   }
 
@@ -50,7 +51,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     .content {
       min-width: 60%;
       margin: 0 20%;
-      transition: transform 1s;
+      transition: transform 1s ease-in-out;
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
@@ -74,7 +75,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   }
 
   .aka {
-    top: calc(#{$row} * 3 + 80px);
+    top: calc($row * 3 + 80px);
     height: $row;
     &__cream {
       left: 0;

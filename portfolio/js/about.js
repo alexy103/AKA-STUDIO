@@ -13,6 +13,9 @@ aboutMenuLinks.forEach((link, i) => {
     let active = document.querySelector(".about .aboutMenu .submenu__active");
     active.classList.remove("underline--enter");
     link.classList.add("underline--enter");
+    document.querySelectorAll(".friend :is(img, .name, .text)").forEach((e) => {
+      e.classList.remove("friendlist--enter");
+    });
 
     // Si on vient de friends
     if (link !== aboutMenuLinks[2] && inFriends) {
@@ -62,6 +65,10 @@ activeFriendListFriends = document.querySelectorAll(
 // Gestion du submenu avec slider
 jobsMenu.forEach((link, i) => {
   link.addEventListener("click", () => {
+    let active = document.querySelector(".about .jobs .submenu__active");
+    active.classList.remove("underline--enter");
+    link.classList.remove("underline--exit");
+
     activeFriendListFriends.forEach((friend) => {
       friend.querySelectorAll("img, .name, .text").forEach((e) => {
         e.classList.remove("slider--exit--right");
@@ -71,18 +78,28 @@ jobsMenu.forEach((link, i) => {
       });
     });
 
-    updateContent(friendsState, friendLists, jobsMenu, i);
+    // animations
+    setTimeout(() => {
+      if (active) active.classList.add("underline--exit");
+      updateContent(friendsState, friendLists, jobsMenu, i);
+    }, 1);
 
     setTimeout(() => {
       activeFriendListFriends.forEach((friend) => {
         friend.classList.add("hidden");
       });
       activeFriendListFriends[0].classList.remove("hidden");
-
+      link.classList.add("underline--enter");
       // Actualiser le premier élément du nouveau friends pour préparer l'exit du slider
       activeFriend = activeFriendListFriends[0];
       currentIndex = 0;
     }, 500);
+
+    setTimeout(() => {
+      jobsMenu.forEach((link) => {
+        link.classList.remove("underline--exit");
+      });
+    }, 1000); // modifier ici pour le submenu d'ABOUT
     // On rend la flèche gauche non cliquable au début
     sliderLeftArrows.forEach((arrow) => {
       arrow.classList.add("unclickable");

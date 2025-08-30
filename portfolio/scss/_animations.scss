@@ -13,7 +13,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   }
 
   .workMenu {
-    animation: slideFromBottom 2s, smallGap 1s 1s;
+    animation: workSlideFromBottom 2s, smallGap 1s 1s;
   }
 
   .red {
@@ -108,11 +108,11 @@ $column: calc((100dvw - (5 * 20px)) / 6);
 .contact {
   .content__title {
     &--exit {
-      animation: slideToTop 0.5s forwards;
+      animation: slideToTop 1s forwards;
     }
 
     &--enter {
-      animation: slideFromBottom 0.5s forwards, fadeIn 1s forwards;
+      animation: contactSlideFromBottom 1s forwards, fadeIn 1s forwards;
     }
   }
 
@@ -122,8 +122,12 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     }
 
     &--enter {
-      animation: fadeIn 0.75s forwards;
+      animation: fadeIn 2.5s forwards;
     }
+  }
+
+  .content--form .content__title--exit {
+    animation: slideToTop 1s forwards, fadeOut 0.75s forwards;
   }
 }
 
@@ -141,7 +145,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   }
 
   .contactMenu {
-    animation: slideFromBottom 2s, mediumGap 1s 1s;
+    animation: workSlideFromBottom 2s, mediumGap 1s 1s;
   }
 
   .content {
@@ -243,7 +247,6 @@ $column: calc((100dvw - (5 * 20px)) / 6);
       &--left {
         animation: slideToLeft 1s forwards;
       }
-      // animation: aboutSlideToLeft 1s forwards;
     }
 
     &--enter {
@@ -277,10 +280,10 @@ $column: calc((100dvw - (5 * 20px)) / 6);
 
   .friendlist {
     &--exit {
-      animation: aboutSlideToTop 0.5s forwards, fadeOut 0.5s forwards;
+      animation: slideToTop 0.5s forwards, fadeOut 0.5s forwards;
     }
     &--enter {
-      animation: aboutSlideToTop 0.5s forwards reverse, fadeIn 0.5s forwards;
+      animation: slideToTop 0.5s forwards reverse, fadeIn 0.5s forwards;
     }
   }
 
@@ -313,6 +316,10 @@ $column: calc((100dvw - (5 * 20px)) / 6);
 
   .jobsMenu--enter {
     animation: fadeIn 1s forwards;
+
+    .submenu__active p::after {
+      animation: underline 0.5s forwards;
+    }
   }
 
   .jobsMenu--exit {
@@ -366,6 +373,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     p {
       &::after {
         animation: underline 0.75s forwards !important;
+        background-color: #1390e4;
       }
     }
   }
@@ -387,6 +395,23 @@ $column: calc((100dvw - (5 * 20px)) / 6);
         background-color: #e41313;
 
         animation: underline 0.75s forwards reverse;
+      }
+    }
+  }
+  .jobs {
+    .underline--enter {
+      animation: shineOut 0.5s forwards reverse;
+      p {
+        &::after {
+          animation: underline 1s forwards !important;
+          content: "";
+          position: absolute;
+          bottom: -2px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 100%;
+          height: 1px;
+        }
       }
     }
   }
@@ -630,9 +655,19 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   }
 }
 
-@keyframes slideFromBottom {
+@keyframes workSlideFromBottom {
   0% {
     transform: translateY(100vh);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes contactSlideFromBottom {
+  0% {
+    transform: translateY(40vh);
   }
 
   100% {
@@ -649,20 +684,12 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   }
 }
 
-@keyframes aboutSlideToTop {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-20vh);
-  }
-}
 @keyframes slideToTop {
   0% {
     transform: translateY(0);
   }
   100% {
-    transform: translateY(-50vh);
+    transform: translateY(-20vh);
   }
 }
 

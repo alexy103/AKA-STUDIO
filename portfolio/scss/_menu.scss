@@ -7,7 +7,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   width: 100vw;
   background-color: #e41313;
   color: #131412;
-  transition: 1s;
+  transition: 1s ease-in;
   text-transform: uppercase;
   font-size: 3rem;
   display: flex;
@@ -53,7 +53,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   }
 
   .mainColumn {
-    width: calc(#{$column} * 4 + 78px);
+    width: calc($column * 4 + 78px);
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -61,12 +61,12 @@ $column: calc((100dvw - (5 * 20px)) / 6);
 
     .menu__square {
       width: 100%;
-      height: calc(#{$row} + 20px);
+      height: calc($row + 20px);
       border-bottom: 3px double #131412;
 
       &:first-child {
         border-top: none;
-        height: calc(#{$row} / 2);
+        height: calc($row / 2);
       }
 
       &:last-child {
@@ -78,7 +78,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     .menu__link {
       display: flex;
       align-items: center;
-      transition: 0.5s all;
+      transition: 0.5s ease-in;
       overflow: hidden;
 
       h2 {
@@ -90,8 +90,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   }
 
   .thirdcol {
-    // Size - 2 * menu__border width
-    width: calc(#{$column} * 2 + 20px - 2 * 4px);
+    width: calc($column * 2 + 20px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -104,7 +103,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: calc(#{$row}/ 3) $column;
+  padding: calc($row/ 3) $column;
   height: $row;
   top: 0;
   left: 0;

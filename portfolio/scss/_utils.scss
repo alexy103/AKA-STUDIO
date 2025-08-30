@@ -43,14 +43,13 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   height: 100vh;
   width: 100vw;
   padding: 0 $column 5vh;
-  transition: 0.5s;
+  transition: 1s ease-in-out;
 
   &__close {
     font-family: "Bricolage Bold", sans-serif;
     position: absolute;
-    right: 50%;
-    top: 3vh;
-    transform: translateX(50%);
+    right: 12%;
+    top: calc($row / 4);
     font-size: 4rem;
   }
 
@@ -69,7 +68,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     .iframe__wrapper {
       display: flex;
       align-items: center;
-      height: calc(#{$row} * 2);
+      height: calc($row * 2);
     }
     iframe {
       width: 100%;
@@ -142,10 +141,10 @@ $column: calc((100dvw - (5 * 20px)) / 6);
 }
 
 .slide {
-  height: calc(#{$row} * 5 + 100px);
+  height: calc($row * 5 + 100px);
   width: 100dvw;
   position: relative;
-  transition: 2s;
+  transition: 2s ease-in-out;
   background-color: #131412;
 }
 

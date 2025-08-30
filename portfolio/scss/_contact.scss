@@ -6,19 +6,19 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   left: -100dvw;
 
   .content {
-    padding-inline: calc(#{$column} + 20px);
+    padding-inline: calc($column + 20px);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: calc(#{$row} * 3 + 60px);
+    height: calc($row * 3 + 60px);
 
     .text {
       display: flex;
       align-items: center;
       text-align: center;
       font-size: 1.3rem;
-      height: calc(#{$row} * 2 + 20px);
+      height: calc($row * 2 + 20px);
     }
     &--typeform {
       .subtitle {
@@ -52,8 +52,8 @@ $column: calc((100dvw - (5 * 20px)) / 6);
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-        gap: calc(#{$row} * 0.095);
-        width: calc(#{$column} * 4);
+        gap: calc($row * 0.095);
+        width: calc($column * 4);
         input,
         textarea {
           font-family: "Bricolage Bold", sans-serif;
@@ -64,7 +64,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
           font-size: 1.5rem;
         }
         input {
-          height: calc(#{$row} * 0.27);
+          height: calc($row * 0.27);
         }
         textarea {
           margin-top: calc(20px - #{$row} * 0.095);

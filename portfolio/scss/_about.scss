@@ -5,15 +5,20 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   top: calc(-300dvh + $row + $row);
   left: 0;
   .content {
-    height: calc(#{$row} * 3 + 80px);
+    height: calc($row * 3 + 80px);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    margin-inline: calc(#{$column} + 20px);
+    margin-inline: calc($column + 20px);
     gap: 20px;
-    img {
-      // max-height: $row;
+    &--second {
+      .content__img {
+        padding: 0 !important;
+      }
+    }
+    .content__img {
+      padding: calc($row / 3) 0;
       height: $row; // TODO: voir avec lui s'il faut que la height fasse toujours 1R
     }
     &__title {
@@ -24,7 +29,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     }
     &__text {
       text-align: center;
-      height: calc(#{$row} * 2 + 20px);
+      height: calc($row * 2 + 20px);
       font-size: 1.2rem;
       line-height: 1.4rem;
     }
@@ -46,11 +51,14 @@ $column: calc((100dvw - (5 * 20px)) / 6);
       .content__text {
         height: auto;
       }
+      .slider img {
+        height: $row;
+      }
     }
   }
 
   .menus {
-    margin: 20px calc(#{$column} + 20px) 0;
+    margin: 20px calc($column + 20px) 0;
     height: $row;
 
     &--double {
@@ -123,6 +131,31 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     }
   }
 
+  .jobs {
+    &__link {
+      &::after {
+        display: none;
+      }
+    }
+    .submenu__active {
+      p {
+        position: relative;
+        width: fit-content;
+        margin: 0 auto;
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: -2px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 100%;
+          height: 1px;
+          background-color: #e41313;
+        }
+      }
+    }
+  }
+
   .slideTitle {
     text-align: center;
   }
@@ -136,14 +169,15 @@ $column: calc((100dvw - (5 * 20px)) / 6);
       .slider {
         display: flex;
         height: $row;
-        width: calc(#{$column} * 4 + 60px);
+        width: calc($column * 4 + 60px);
         justify-content: space-between;
         align-items: center;
+        overflow: hidden;
 
         i {
           font-size: 3rem;
           color: rgba(255, 255, 255, 0.418);
-          transition: 1s;
+          transition: 1s ease-in-out;
         }
       }
 
@@ -160,7 +194,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
 
         .text {
           text-align: center;
-          height: calc(#{$row} / 2);
+          height: calc($row / 2);
           font-size: 1.2rem;
           line-height: 1.4rem;
           flex: 1;
@@ -174,7 +208,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   .aka {
     opacity: 0;
     bottom: 0;
-    height: calc(#{$row} / 2);
+    height: calc($row / 2);
     &__cream {
       left: 0%;
     }

@@ -1,4 +1,3 @@
-// TODO: passer le HTML au W3C
 function cleanUpClasses(cls) {
   cls.classList.remove("content__img--enter--left");
   cls.classList.remove("content__img--enter--right");
