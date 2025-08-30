@@ -184,3 +184,9 @@ $column: calc((100dvw - (5 * 20px)) / 6);
 .noOverflow {
   overflow: hidden;
 }
+
+@media screen and (min-width: 700px) {
+  .slideTitle {
+    font-size: 4rem;
+  }
+}

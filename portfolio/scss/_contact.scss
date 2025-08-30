@@ -113,3 +113,147 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     }
   }
 }
+
+@media screen and (min-width: 700px) {
+  .contact {
+    .content {
+      &.content--typeform,
+      &.content--medias {
+        .subtitle {
+          font-size: 4rem;
+        }
+
+        .text {
+          font-size: 1.6rem;
+        }
+      }
+    }
+    .contactMenu {
+      font-size: 1.6rem;
+    }
+
+    .content--medias {
+      img {
+        width: calc($column / 1.3);
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .contact {
+    .content {
+      &.content--typeform,
+      &.content--medias {
+        .subtitle {
+          font-size: 5rem;
+        }
+
+        .text {
+          font-size: 1.8rem;
+        }
+      }
+    }
+    .contactMenu {
+      font-size: 1.8rem;
+    }
+
+    .content--medias {
+      img {
+        width: calc($column / 1.8);
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  $row: calc((100dvh - (11 * 20px)) / 12);
+  $column: calc((100dvw - (11 * 20px)) / 12);
+  .contact {
+    display: flex;
+    justify-content: space-between;
+
+    .slideTitle {
+      margin: 0 0 $row auto;
+      width: fit-content;
+      font-size: 6rem;
+    }
+    .contactMenu__wrapper {
+      padding: calc($row + 20px) calc($column * 2 + 20px) 0 0;
+
+      .contactMenu {
+        gap: calc($row / 2);
+        margin-left: inherit;
+        align-items: flex-end;
+      }
+    }
+
+    .aka {
+      &__cream {
+        height: calc($row * 3);
+        top: auto;
+        bottom: calc($row * 4 + 80px);
+      }
+
+      &__red {
+        height: calc($row * 2);
+        top: auto;
+        bottom: calc($row + 20px);
+      }
+    }
+
+    .content {
+      &.content--typeform,
+      &.content--medias {
+        padding-top: calc($row * 3 + 60px);
+        padding-inline: inherit;
+        margin-left: calc($column + 20px);
+        gap: calc($row + 40px);
+        width: calc($column * 4 + 80px);
+        .subtitle {
+          font-size: 5rem;
+          min-height: inherit;
+        }
+
+        .text {
+          font-size: 1.8rem;
+        }
+      }
+      &.content--form {
+        padding-inline: inherit;
+        height: auto;
+        form {
+          margin-top: $row;
+          margin-left: calc($column + 20px);
+          width: calc($column * 4 + 60px);
+
+          input {
+            height: calc($row);
+          }
+
+          textarea {
+            height: calc($row * 3 + 40px);
+          }
+
+          input[type="submit"] {
+            width: calc($column * 2 + 20px);
+            padding-left: inherit;
+          }
+
+          ::placeholder {
+            left: 30px;
+          }
+        }
+      }
+    }
+    .contactMenu {
+      font-size: 1.8rem;
+    }
+
+    .content--medias {
+      img {
+        width: calc($column / 1.5);
+      }
+    }
+  }
+}

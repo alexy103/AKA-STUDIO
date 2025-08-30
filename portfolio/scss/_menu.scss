@@ -118,3 +118,34 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     font-size: 20px;
   }
 }
+
+.desktopNavigation {
+  display: none;
+}
+
+@media screen and (min-width: 1440px) {
+  $row: calc((100dvh - (11 * 20px)) / 12);
+  $column: calc((100dvw - (11 * 20px)) / 12);
+
+  .navigation {
+    display: none;
+  }
+  .desktopNavigation {
+    display: flex;
+    align-items: center;
+    margin-left: $column;
+    gap: calc($column / 2);
+    text-transform: none;
+    height: calc($row * 2 + 20px);
+
+    &__img {
+      width: calc($column + 40px);
+    }
+
+    &__links {
+      display: flex;
+      gap: 30px;
+      padding-inline: 20px;
+    }
+  }
+}
