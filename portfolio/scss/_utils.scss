@@ -189,4 +189,49 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   .slideTitle {
     font-size: 4rem;
   }
+  .submenu {
+    font-size: 1.6rem;
+  }
+  .black {
+    .title {
+      font-size: 1.6rem;
+    }
+    .video__description {
+      font-size: 1.6rem;
+    }
+    .infos {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .slideTitle {
+    font-size: 5rem;
+  }
+  .submenu {
+    font-size: 1.8rem;
+  }
+  .black {
+    .title {
+      font-size: 2rem;
+    }
+    .video__description {
+      font-size: 2rem;
+    }
+    .infos {
+      font-size: 1.8rem;
+    }
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  $row: calc((100dvh - (11 * 20px)) / 12);
+  $column: calc((100dvw - (11 * 20px)) / 12);
+  .slideTitle {
+    font-size: 6rem;
+  }
+  .slide {
+    height: 100dvh;
+  }
 }

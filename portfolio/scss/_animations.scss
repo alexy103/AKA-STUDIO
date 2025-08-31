@@ -4,9 +4,6 @@ $column: calc((100dvw - (5 * 20px)) / 6);
 .work--enter {
   pointer-events: none;
   animation: workSlideEnter 2s forwards;
-  .project {
-    animation: slideFromRight 2s forwards;
-  }
 
   .category span {
     animation: slideFromRight 2s;
@@ -26,6 +23,11 @@ $column: calc((100dvw - (5 * 20px)) / 6);
 
   .hidden-temp {
     visibility: hidden;
+  }
+  @media screen and (max-width: 1440px) {
+    .project {
+      animation: slideFromRight 2s forwards; //todo: ici qui fait bug le enter avec le -translateY
+    }
   }
 }
 
@@ -297,6 +299,25 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     }
   }
 
+  .opinions {
+    &--exit {
+      &--left {
+        animation: slideToLeft 1s forwards;
+      }
+      &--right {
+        animation: slideToRight 1s forwards;
+      }
+    }
+    &--enter {
+      &--left {
+        animation: slideFromLeft 1s forwards;
+      }
+      &--right {
+        animation: slideFromRight 1s forwards;
+      }
+    }
+  }
+
   .slider {
     &--exit {
       &--right {
@@ -308,7 +329,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     }
     &--enter {
       &--right {
-        animation: aboutSlideFromRight 1s forwards;
+        animation: slideFromRight 1s forwards;
       }
       &--left {
         animation: slideFromLeft 1s forwards;
@@ -481,6 +502,15 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   }
   100% {
     top: calc(-200dvh + $row + $row);
+  }
+}
+
+@keyframes aboutSlideEnterDesktop {
+  0% {
+    top: calc(-300dvh - $row);
+  }
+  100% {
+    top: calc(-200dvh - $row);
   }
 }
 
@@ -797,5 +827,15 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   100% {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .about--enter {
+    animation: aboutSlideEnterDesktop 2s forwards;
+  }
+
+  .about--inside {
+    top: calc(-200dvh - $row);
   }
 }

@@ -86,3 +86,11 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     }
   }
 }
+
+@media screen and (min-width: 1440px) {
+  $row: calc((100dvh - (11 * 20px)) / 12);
+  $column: calc((100dvw - (11 * 20px)) / 12);
+  .home {
+    top: calc(-1 * $row - $row - 20px);
+  }
+}

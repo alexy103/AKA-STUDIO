@@ -1,8 +1,22 @@
-function cleanUpClasses(cls) {
-  cls.classList.remove("content__img--enter--left");
-  cls.classList.remove("content__img--enter--right");
+function cleanUpFirstMenu(cls) {
   cls.classList.remove("content__img--exit--left");
   cls.classList.remove("content__img--exit--right");
+  cls.classList.remove("content__img--enter--left");
+  cls.classList.remove("content__img--enter--right");
+}
+
+function cleanUpSecondMenu(element) {
+  element.classList.remove("opinions--exit--left");
+  element.classList.remove("opinions--exit--right");
+  element.classList.remove("opinions--enter--left");
+  element.classList.remove("opinions--enter--right");
+}
+
+function cleanUpSlider(element) {
+  element.classList.remove("slider--exit--left");
+  element.classList.remove("slider--exit--right");
+  element.classList.remove("slider--enter--left");
+  element.classList.remove("slider--enter--right");
 }
 
 function handleWorkContent(state, contentArray, menuLinks, index) {
@@ -43,8 +57,10 @@ function handleContactContent(state, contentArray, menuLinks, index) {
   contactSlide.classList.remove("contact--enter");
 
   // On fait l'exit
+  // TODO: changer ici pour le TITLE
   activeContentTitle.classList.remove("content__title--enter");
   activeContentText?.classList.remove("content__text--enter");
+  // TODO: changer ici pour INDEX0->1
   activeContentTitle.classList.add("content__title--exit");
   activeContentText?.classList.add("content__text--exit");
 
@@ -66,101 +82,126 @@ function handleAboutContent(state, contentArray, menuLinks, index) {
   const aboutMenu = document.querySelector(".about .menus .aboutMenu");
   const activeContent = document.querySelector(".about .content:not(.hidden)");
   const activeContentImg = activeContent.children[0];
-  const activeContentTitle = activeContent.children[1];
-  const activeContentText = activeContent.children[2];
+  const activeContentTitle = activeContent.children[1].children[0];
+  const activeContentText = activeContent.children[1].children[1];
   const nextActiveContent = contentArray[index];
   const contentFriends = document.querySelector(".content--friends");
+  const allOpinions = document.querySelectorAll(".opinions .opinion");
+  const allFriends = document.querySelectorAll(".friendlist .friend");
 
   aboutSlide.classList.remove("about--enter");
 
   if (index === 0) {
+    // On nettoie les classes
+    cleanUpFirstMenu(nextActiveContent.children[0]);
+    cleanUpFirstMenu(nextActiveContent.children[1].children[1]);
+    cleanUpFirstMenu(activeContentImg);
+    cleanUpSecondMenu(activeContent.children[1]);
+    allOpinions.forEach((e) => {
+      cleanUpSlider(e.children[0].children[0]);
+      cleanUpSlider(e.children[1].children[1]);
+      cleanUpSlider(e.children[2]);
+    });
+    allFriends.forEach((e) => {
+      cleanUpSlider(e.children[0].children[1]);
+      cleanUpSlider(e.children[1].children[0]);
+      cleanUpSlider(e.children[1].children[1]);
+    });
     contentFriends.classList.remove("content--friends--enter");
-    contentFriends.classList.add("content--friends--exit");
 
-    // Si on vient de l'index 1
     if (activeContent.classList.contains("content--second")) {
-      // On nettoie les classes
-      cleanUpClasses(activeContentImg);
-      activeContentText?.classList.remove("content__text--enter");
-
-      // On fait l'exit
-      activeContentImg.classList.add("content__img--exit--right");
-      activeContentText?.classList.add("content__text--exit");
+      // Si on vient de l'index 1 on fait son exit
+      activeContent.children[1].classList.add("opinions--exit--right");
+    } else if (activeContent.classList.contains("content--friends")) {
+      // Si on vient de l'index 2 on fait son exit
+      contentFriends.classList.add("content--friends--exit");
+      aboutMenu.classList.remove("aboutMenu--down");
     }
 
-    setTimeout(() => {
-      nextActiveContent.children[0].classList.remove(
-        "content__img--exit--left"
-      );
-
-      nextActiveContent.children[0].classList.remove(
-        "content__img--exit--right"
-      );
-      nextActiveContent.children[0].classList.add("content__img--enter--left");
-      nextActiveContent.children[2]?.classList.remove("content__text--exit");
-      nextActiveContent.children[2]?.classList.add("content__text--enter");
-    }, 700);
-    aboutMenu.classList.remove("aboutMenu--down");
+    // On fait l'enter de l'index 0
+    nextActiveContent.children[0].classList.add("content__img--enter--left");
+    nextActiveContent.children[1].children[1]?.classList.add(
+      "content__text--enter"
+    );
   } else if (index === 1) {
+    // On nettoie les classes
+    cleanUpFirstMenu(activeContentImg);
+    cleanUpSecondMenu(nextActiveContent.children[1]);
+    allOpinions.forEach((e) => {
+      cleanUpSlider(e.children[0].children[0]);
+      cleanUpSlider(e.children[1].children[1]);
+      cleanUpSlider(e.children[2]);
+    });
+    allFriends.forEach((e) => {
+      cleanUpSlider(e.children[0].children[1]);
+      cleanUpSlider(e.children[1].children[0]);
+      cleanUpSlider(e.children[1].children[1]);
+    });
+    activeContentText?.classList.remove("content__text--enter");
     contentFriends.classList.remove("content--friends--enter");
-    contentFriends.classList.add("content--friends--exit");
 
-    // Si on vient de l'index 0
-    if (!activeContent.classList.contains("content--friends")) {
-      // On nettoie les classes
-      cleanUpClasses(activeContentImg);
-      activeContentText?.classList.remove("content__text--enter");
+    // On remet les flèches
+    sliderArrows.forEach((arrow) => {
+      arrow.classList.remove("unclickable");
+    });
 
-      // On fait l'exit
+    if (activeContent.classList.contains("content--first")) {
+      // Si on vient de l'index 0 on fait son exit
       activeContentImg.classList.add("content__img--exit--left");
       activeContentText?.classList.add("content__text--exit");
+    } else if (activeContent.classList.contains("content--friends")) {
+      // Si on vient de l'index 2 on fait son exit
+      contentFriends.classList.add("content--friends--exit");
     }
-    setTimeout(() => {
-      nextActiveContent.children[0].classList.remove(
-        "content__img--exit--left"
-      );
-      nextActiveContent.children[0].classList.remove(
-        "content__img--exit--right"
-      );
-      if (!activeContent.classList.contains("content--friends")) {
-        nextActiveContent.children[0].classList.add(
-          "content__img--enter--right"
-        );
-      } else {
-        nextActiveContent.children[0].classList.add(
-          "content__img--enter--left"
-        );
-      }
-      nextActiveContent.children[2]?.classList.remove("content__text--exit");
-      nextActiveContent.children[2]?.classList.add("content__text--enter");
-    }, 700);
+
+    if (!activeContent.classList.contains("content--friends")) {
+      // Si on vient de l'index 0 on fait l'enter par la droite
+      nextActiveContent.children[1].classList.add("opinions--enter--right");
+    } else {
+      // Si on vient de l'index 2 on fait l'enter par la gauche
+      nextActiveContent.children[1].classList.add("opinions--enter--left");
+    }
+
+    // Sécurité
     aboutMenu.classList.remove("aboutMenu--down");
   } else if (index === 2 || state.name === "friends") {
-    // Si on va ou si on est dans friends
+    // Si on va vers ou si on est dans l'index 2
 
     // On met le submenu en bas
     aboutMenu.classList.remove("aboutMenu--up");
     aboutMenu.classList.add("aboutMenu--down");
 
     // On nettoie les classes avant l'animation
-    cleanUpClasses(activeContentImg);
+    allOpinions.forEach((e) => {
+      cleanUpSlider(e.children[0].children[0]);
+      cleanUpSlider(e.children[1].children[1]);
+      cleanUpSlider(e.children[2]);
+    });
+    allFriends.forEach((e) => {
+      cleanUpSlider(e.children[0].children[1]);
+      cleanUpSlider(e.children[1].children[0]);
+      cleanUpSlider(e.children[1].children[1]);
+    });
+    cleanUpFirstMenu(activeContentImg);
+    cleanUpSecondMenu(activeContent.children[1]);
     activeContentText?.classList.remove("content__text--enter");
     nextActiveContent.classList.remove("content--friends--exit");
 
     // On lance l'animation d'exit
-    activeContentImg.classList.add("content__img--exit--left");
-    activeContentText?.classList.add("content__text--exit");
-    nextActiveContent.classList.add("content--friends--enter");
+    if (activeContent.classList.contains("content--first")) {
+      // Si on vient de l'index 0 on fait son exit
+      activeContent.children[0].classList.add("content__img--exit--left");
+      activeContent.children[1].children[1].classList.add(
+        "content__text--exit"
+      );
+    } else if (activeContent.classList.contains("content--second")) {
+      // Si on vient de l'index 1 on fait son exit
 
-    setTimeout(() => {
-      nextActiveContent.children[0].classList.remove(
-        "content__img--exit--left"
-      );
-      nextActiveContent.children[0].classList.remove(
-        "content__img--exit--right"
-      );
-      nextActiveContent.children[2]?.classList.remove("content__text--exit");
-    }, 700);
+      activeContent.children[1].classList.add("opinions--exit--left");
+    }
+
+    // On fait l'enter de l'index 2
+    nextActiveContent.classList.add("content--friends--enter");
   }
 
   // On attend que l'exit se fasse puis on fait l'enter
@@ -211,7 +252,7 @@ function handleFriendsMenuChange(state, contentArray, menuLinks, index, delay) {
     });
   } else {
     // Si on a plusieurs amis, on rend la flèche de droite cliquable
-    sliderRightArrows.forEach((arrow) => {
+    sliderArrows.forEach((arrow) => {
       arrow.classList.remove("unclickable");
     });
   }

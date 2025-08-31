@@ -131,6 +131,9 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     display: none;
   }
   .desktopNavigation {
+    position: relative;
+    z-index: 8;
+    width: fit-content;
     display: flex;
     align-items: center;
     margin-left: $column;

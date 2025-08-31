@@ -12,9 +12,57 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     justify-content: space-evenly;
     margin-inline: calc($column + 20px);
     gap: 20px;
+    &--first {
+      .content__title {
+        display: none;
+      }
+    }
+
     &--second {
-      .content__img {
-        padding: 0 !important;
+      .mainOpinion {
+        display: none;
+      }
+
+      .content__wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        .opinions {
+          .opinion {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 7vh;
+            &__text {
+              font-size: 1.1rem;
+              line-height: 1.5rem;
+              text-align: center;
+            }
+            &__title {
+              font-size: 2rem;
+              font-family: "Bricolage Bold", sans-serif;
+            }
+            .opinionSlider {
+              display: flex;
+              height: $row;
+              width: calc($column * 4 + 60px);
+              justify-content: space-between;
+              align-items: center;
+              // overflow: hidden;
+
+              i {
+                font-size: 3rem;
+                color: rgba(255, 255, 255, 0.418);
+                transition: 1s ease-in-out;
+              }
+
+              img {
+                height: $row;
+              }
+            }
+          }
+        }
       }
     }
     .content__img {
@@ -34,8 +82,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
       line-height: 1.4rem;
     }
 
-    &:nth-child(1) .content__text,
-    &:nth-child(2) .content__text {
+    &:nth-child(1) .content__text {
       overflow-y: scroll;
       mask-image: linear-gradient(#000 50%, transparent 100%);
       scrollbar-width: none;
@@ -172,7 +219,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
         width: calc($column * 4 + 60px);
         justify-content: space-between;
         align-items: center;
-        overflow: hidden;
+        // overflow: hidden;
 
         i {
           font-size: 3rem;
@@ -215,6 +262,83 @@ $column: calc((100dvw - (5 * 20px)) / 6);
 
     &__red {
       right: 0;
+    }
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .about {
+    .content {
+      .content__img {
+        padding: calc($row / 4) 0;
+      }
+    }
+    .content:nth-child(1) .content__text p {
+      font-size: 1.4rem;
+      line-height: 2rem;
+    }
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .about {
+    .content:nth-child(1) .content__text p {
+      font-size: 1.6rem;
+      line-height: 2.3rem;
+    }
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  $row: calc((100dvh - (11 * 20px)) / 12);
+  $column: calc((100dvw - (11 * 20px)) / 12);
+  .about {
+    top: calc(-300dvh - $row - $row - 20px);
+    .content {
+      height: calc($row * 8 + 140px);
+      padding-top: calc($row * 3 + 60px);
+      flex-wrap: wrap;
+      margin-inline: calc($column + 20px);
+      &__title {
+        display: block;
+        width: calc($column * 5 + 80px);
+        margin-bottom: calc($row + 20px);
+        font-size: 3.5rem;
+      }
+      &__text {
+        width: calc($column * 7 + 120px);
+        height: calc($row * 3 + 60px);
+
+        p {
+          padding: 0 0 10% !important;
+        }
+      }
+      .content__img {
+        padding: 0;
+        height: auto;
+        width: calc($row * 3);
+        // flex: 100%;
+      }
+    }
+    .menus {
+      height: $row;
+      margin-top: 20px;
+
+      .aboutMenu {
+      }
+    }
+    .slideTitle {
+      margin-top: 40px;
+    }
+
+    .aka {
+      &__cream {
+        left: calc($column * 4 + 80px);
+      }
+
+      &__red {
+        right: calc($column * 4 + 80px);
+      }
     }
   }
 }

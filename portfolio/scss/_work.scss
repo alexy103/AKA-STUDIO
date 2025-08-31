@@ -102,3 +102,116 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     }
   }
 }
+
+@media screen and (min-width: 700px) {
+  .work {
+    .projects {
+      .project {
+        &__image {
+          img {
+            object-position: 0 30%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .work {
+    .projects {
+      .project {
+        min-width: 40vw;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  $row: calc((100dvh - (11 * 20px)) / 12);
+  $column: calc((100dvw - (11 * 20px)) / 12);
+  .work {
+    top: calc(-100dvh - $row - $row - 20px);
+    height: 100dvh;
+    flex-direction: row;
+    align-items: inherit;
+
+    .presentation {
+      flex: 1;
+      margin: calc($row * 3 + 60px) 0 0 calc($column * 2 + 40px);
+      align-self: inherit;
+      align-items: flex-start;
+      gap: $row;
+
+      .workMenu {
+        align-items: flex-start;
+        gap: calc($row / 2);
+        // font-size: 1.8rem;
+      }
+    }
+
+    .aka {
+      &__red {
+        top: auto;
+        bottom: calc($row * 4 + 80px);
+        height: calc($row * 3);
+      }
+
+      &__cream {
+        top: auto;
+        bottom: calc($row + 20px);
+        height: calc($row * 2);
+      }
+    }
+
+    .projects {
+      height: 100dvh;
+      max-height: inherit;
+      width: calc($column * 5 + 80px);
+      overflow: hidden scroll;
+      flex-direction: row-reverse;
+      flex-wrap: wrap;
+      border-block: none;
+      border-inline: 1px solid #fcfbf5;
+
+      .project {
+        min-width: 50%;
+        height: fit-content;
+
+        &:first-of-type .project__text {
+          height: calc($row + 20px) !important;
+        }
+        &__text {
+          width: 100%;
+          height: calc($row * 4 + 60px);
+        }
+        &__image {
+          width: 100%;
+          height: calc($row * 3 + 80px);
+        }
+        &:nth-child(even) {
+          flex-direction: column;
+          .project__text {
+            border-top: none;
+            align-items: flex-end;
+            padding: 0 15px 15px;
+          }
+        }
+        &:nth-child(odd):not(:first-child) {
+          transform: translateY(calc(-1 * ($row * 3) - 41px));
+          background-color: rgb(33, 49, 44);
+        }
+      }
+    }
+
+    .category {
+      width: calc($column + 20px);
+      border-top: none;
+
+      span {
+        text-orientation: upright;
+        writing-mode: vertical-lr;
+      }
+    }
+  }
+}

@@ -50,10 +50,6 @@ const friendsState = {
   activeMenuLink: jobsMenu[0],
 };
 
-const sliderLeftArrows = document.querySelectorAll(".slider .fa-chevron-left");
-const sliderRightArrows = document.querySelectorAll(
-  ".slider .fa-chevron-right"
-);
 const sliderArrows = document.querySelectorAll(
   ".slider .fa-chevron-left, .slider .fa-chevron-right"
 );
@@ -69,13 +65,15 @@ jobsMenu.forEach((link, i) => {
     active.classList.remove("underline--enter");
     link.classList.remove("underline--exit");
 
-    activeFriendListFriends.forEach((friend) => {
-      friend.querySelectorAll("img, .name, .text").forEach((e) => {
-        e.classList.remove("slider--exit--right");
-        e.classList.remove("slider--exit--left");
-        e.classList.remove("slider--enter--right");
-        e.classList.remove("slider--enter--left");
-      });
+    allFriends.forEach((e) => {
+      e.classList.remove(
+        "friendlist--exit",
+        "friendlist--enter",
+        "slider--exit--right",
+        "slider--exit--left",
+        "slider--enter--right",
+        "slider--enter--left"
+      );
     });
 
     // animations
@@ -90,7 +88,11 @@ jobsMenu.forEach((link, i) => {
       });
       activeFriendListFriends[0].classList.remove("hidden");
       link.classList.add("underline--enter");
+
       // Actualiser le premier élément du nouveau friends pour préparer l'exit du slider
+      activeFriendListFriends = document.querySelectorAll(
+        ".about .friendlist:not(.hidden) .friend"
+      );
       activeFriend = activeFriendListFriends[0];
       currentIndex = 0;
     }, 500);
@@ -99,10 +101,9 @@ jobsMenu.forEach((link, i) => {
       jobsMenu.forEach((link) => {
         link.classList.remove("underline--exit");
       });
-    }, 1000); // modifier ici pour le submenu d'ABOUT
-    // On rend la flèche gauche non cliquable au début
-    sliderLeftArrows.forEach((arrow) => {
-      arrow.classList.add("unclickable");
-    });
+      allFriends.forEach((e) => {
+        e.classList.remove("friendlist--exit", "friendlist--enter");
+      });
+    }, 1000);
   });
 });
