@@ -63,6 +63,9 @@ $column: calc((100dvw - (5 * 20px)) / 6);
             }
           }
         }
+        .desktopOpinions {
+          display: none;
+        }
       }
     }
     .content__img {
@@ -298,7 +301,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
       height: calc($row * 8 + 140px);
       padding-top: calc($row * 3 + 60px);
       flex-wrap: wrap;
-      margin-inline: calc($column + 20px);
+      margin-inline: 0;
       &__title {
         display: block;
         width: calc($column * 5 + 80px);
@@ -320,9 +323,127 @@ $column: calc((100dvw - (5 * 20px)) / 6);
         // flex: 100%;
       }
     }
+
+    .content--first {
+      .content__title {
+        display: inherit;
+      }
+    }
+
+    .content--second {
+      padding-top: calc($row * 2 + 60px);
+
+      .content__wrapper {
+        .content__title {
+          margin-bottom: 0;
+          margin-left: calc($column * 2 + 20px);
+        }
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+
+        .opinions {
+          display: none;
+        }
+
+        .desktopOpinions-wrapper {
+          width: 100%;
+          overflow: hidden;
+        }
+
+        .desktopOpinions {
+          display: flex;
+          width: 100dvw;
+          gap: calc($column + 20px);
+          will-change: transform;
+          overflow: hidden;
+          padding-inline: calc($column + 20px);
+          transition: all 1s;
+
+          .opinion {
+            width: $column; // petit par défaut
+            margin-top: calc($row + 20px);
+            display: flex;
+            flex-direction: column;
+            gap: $row;
+            // transition: all 1s;
+
+            &__infos {
+              display: flex;
+              flex-direction: column;
+              gap: $row;
+              align-items: center;
+              opacity: 0;
+              pointer-events: none;
+
+              .opinion__title {
+                font-size: 3.5rem;
+                font-family: "Now Black", sans-serif;
+              }
+              .opinion__text {
+                text-align: center;
+                font-size: 1.6rem;
+                line-height: 2rem;
+              }
+            }
+
+            img {
+              max-height: calc($row * 4 + 100px);
+
+              &.big {
+                min-width: calc((100dvw - 220px) / 12 * 3);
+              }
+            }
+
+            &.active {
+              animation: activeIn 1s forwards;
+
+              min-width: calc($column * 3);
+              margin-top: 0;
+              pointer-events: none;
+              transition: all 1s;
+
+              .opinion__infos {
+                animation: opinionInfo 1s 1s forwards;
+              }
+
+              img {
+                max-height: calc($row * 5 + 120px);
+              }
+
+              @keyframes opinionInfo {
+                0% {
+                  transform: translateY(20px);
+                  opacity: 0;
+                }
+                100% {
+                  transform: translateY(0);
+                  opacity: 1;
+                }
+              }
+            }
+
+            @keyframes activeIn {
+              0% {
+                min-width: $column;
+                margin-top: calc($row + 20px);
+              }
+              100% {
+                min-width: calc($column * 3);
+                margin-top: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+
     .menus {
       height: $row;
+      width: calc($column * 4 + 60px);
       margin-top: 20px;
+      margin-inline: auto;
 
       .aboutMenu {
       }
