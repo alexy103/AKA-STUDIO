@@ -230,9 +230,6 @@ navigationLogoDesktop.addEventListener("click", () => {
     handleAkas(workAkas, "left");
     handleAkas(contactAkas, "right");
     handleAkas(aboutAkas, "down");
-    document.querySelector(".home").classList.remove("right");
-    document.querySelector(".home").classList.remove("left");
-    document.querySelector(".home").classList.add("down");
     updateSlide("home");
   }
 });
@@ -496,6 +493,10 @@ function cleanOtherClasses(slideName) {
 function updateSlide(slideName, doubleNavigation) {
   updateMenuLink(slideName);
   updateNavbarLink(slideName);
+  setTimeout(() => {
+    contactSlide.classList.remove("contact--inside");
+    workSlide.classList.remove("work--inside");
+  }, 3000);
 
   switch (slideName) {
     // Afficher HOME
@@ -538,6 +539,9 @@ function updateSlide(slideName, doubleNavigation) {
       }
 
       homeSlide.classList.remove("front");
+      homeSlide.classList.remove("left");
+      homeSlide.classList.remove("down");
+
       // On nettoie la classe et on cache les akas pour préparer l'animation d'enter
       workSlide.classList.remove("work--exit");
       workAkas.forEach((aka) => {
@@ -566,6 +570,8 @@ function updateSlide(slideName, doubleNavigation) {
     case "about":
       displayedSlideName = "about";
       homeSlide.classList.remove("front");
+      homeSlide.classList.remove("right");
+      homeSlide.classList.remove("left");
 
       // On nettoie la classe et on cache les akas pour préparer l'animation d'enter
       aboutAkas.forEach((aka) => {
@@ -594,6 +600,8 @@ function updateSlide(slideName, doubleNavigation) {
     case "contact":
       displayedSlideName = "contact";
       homeSlide.classList.remove("front");
+      homeSlide.classList.remove("down");
+      homeSlide.classList.remove("left");
 
       // On nettoie la classe et on cache les akas pour préparer l'animation d'enter
       contactSlide.classList.remove("contact--exit");
