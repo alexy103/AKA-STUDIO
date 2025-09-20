@@ -171,6 +171,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
       overflow: hidden scroll;
       flex-direction: row-reverse;
       flex-wrap: wrap;
+      scrollbar-width: none;
       border-block: none;
       border-inline: 1px solid #fcfbf5;
 
@@ -188,6 +189,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
         &__image {
           width: 100%;
           height: calc($row * 3 + 80px);
+          border-top: none !important;
         }
         &:nth-child(even) {
           flex-direction: column;
@@ -198,8 +200,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
           }
         }
         &:nth-child(odd):not(:first-child) {
-          transform: translateY(calc(-1 * ($row * 3) - 41px));
-          background-color: rgb(33, 49, 44);
+          transform: translateY(calc(-1 * (100dvh - 220px) / 12 * 3 - 80px));
         }
       }
     }
@@ -207,6 +208,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     .category {
       width: calc($column + 20px);
       border-top: none;
+      font-size: 7rem;
 
       span {
         text-orientation: upright;

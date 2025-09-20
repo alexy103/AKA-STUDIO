@@ -356,6 +356,18 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   .jobsMenu--exit {
     animation: fadeOut 1s forwards;
   }
+
+  .jobsMenuDesktop--enter {
+    animation: aboutSlideFromRight 1s forwards;
+
+    .submenu__active p::after {
+      animation: underline 0.5s forwards;
+    }
+  }
+
+  .jobsMenuDesktop--exit {
+    animation: slideToRight 1s forwards;
+  }
 }
 
 @keyframes aboutMenuDown {
@@ -404,7 +416,6 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     p {
       &::after {
         animation: underline 0.75s forwards !important;
-        background-color: #1390e4;
       }
     }
   }
@@ -429,7 +440,40 @@ $column: calc((100dvw - (5 * 20px)) / 6);
       }
     }
   }
+  .jobsDesktop .underline--exit p {
+    margin: 0;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      height: 1px;
+      background-color: #e41313;
+
+      animation: underline 0.75s forwards reverse;
+    }
+  }
   .jobs {
+    .underline--enter {
+      animation: shineOut 0.5s forwards reverse;
+      p {
+        &::after {
+          animation: underline 1s forwards !important;
+          content: "";
+          position: absolute;
+          bottom: -2px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 100%;
+          height: 1px;
+        }
+      }
+    }
+  }
+  .jobsDesktop {
     .underline--enter {
       animation: shineOut 0.5s forwards reverse;
       p {
@@ -837,5 +881,178 @@ $column: calc((100dvw - (5 * 20px)) / 6);
 
   .about--inside {
     top: calc(-200dvh - $row);
+  }
+
+  .friendlist {
+    &--enter {
+      animation: friendlistSlideFromBottom 0.5s forwards, fadeIn 1s forwards !important;
+    }
+  }
+
+  .about {
+    .content__text,
+    .content__title {
+      &--exit {
+        animation: slideToLeft 1s forwards !important;
+      }
+
+      &--enter {
+        animation: slideFromLeft 1s forwards !important;
+      }
+    }
+  }
+
+  .contactMenu {
+    animation: none !important;
+  }
+
+  .contact {
+    .content {
+      overflow: inherit;
+    }
+    .content__title {
+      &--exit {
+        animation: slideToTop 1s forwards, fadeOut 0.75s forwards;
+      }
+
+      &--enter {
+        animation: contactSlideFromBottom 1s forwards, fadeIn 1s forwards;
+      }
+    }
+
+    .content__text {
+      &--exit {
+        animation: slideToTop 1s forwards, fadeOut 0.75s forwards;
+      }
+
+      &--enter {
+        animation: contactSlideFromBottom 1s forwards, fadeIn 1s forwards;
+      }
+    }
+
+    .content--form .content__title--exit {
+      animation: slideToTop 1s forwards, fadeOut 0.75s forwards;
+    }
+  }
+
+  .work--enter {
+    .project {
+      transform: translateY(100vh);
+      animation: workSliderEnter 1s 1s forwards ease-out !important;
+
+      &:nth-child(odd):not(:first-child) {
+        opacity: 0;
+        animation: workSliderEnterOdd 1s 1s forwards ease-out !important;
+      }
+    }
+  }
+
+  .work--exit {
+    .project {
+      animation: none;
+    }
+
+    .category span {
+      animation: none;
+    }
+
+    .workMenu {
+      animation: none;
+    }
+
+    .submenu__active::after {
+      width: 100%;
+    }
+  }
+
+  .category span {
+    &.category--exit {
+      animation: categorySlideToRight 1s forwards ease-in-out !important;
+    }
+
+    &.category--enter {
+      animation: categorySlideToRight 1s forwards reverse ease-in-out !important;
+    }
+  }
+
+  .anim {
+    animation: workSliderExit 1s forwards ease-in;
+
+    &:nth-child(odd):not(:first-child) {
+      animation: workSliderExitOdd 1s forwards ease-in !important;
+    }
+  }
+
+  .anim__reverse {
+    animation: workSliderEnter 1s forwards ease-out;
+
+    &:nth-child(odd):not(:first-child) {
+      animation: workSliderEnterOdd 1s forwards ease-out !important;
+    }
+  }
+
+  @keyframes workSliderExit {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-100vh);
+    }
+  }
+
+  @keyframes workSliderEnter {
+    0% {
+      transform: translateY(100vh);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes workSliderEnterOdd {
+    0% {
+      opacity: 1;
+      transform: translateY(100vh);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(calc(-1 * (100dvh - 220px) / 12 * 3 - 80px));
+    }
+  }
+
+  @keyframes workSliderExitOdd {
+    0% {
+      transform: translateY(calc(-1 * (100dvh - 220px) / 12 * 3 - 80px));
+    }
+    100% {
+      transform: translateY(-100vh);
+    }
+  }
+
+  @keyframes friendlistSlideFromBottom {
+    0% {
+      transform: translateY(20vh);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes aboutMenuDown {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(calc($row / 6.2));
+    }
+  }
+
+  @keyframes categorySlideToRight {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(100px);
+    }
   }
 }

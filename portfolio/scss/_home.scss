@@ -85,6 +85,12 @@ $column: calc((100dvw - (5 * 20px)) / 6);
       right: 0;
     }
   }
+
+  .aka__cream--wrapper {
+    p {
+      display: none;
+    }
+  }
 }
 
 @media screen and (min-width: 1440px) {
@@ -92,5 +98,69 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   $column: calc((100dvw - (11 * 20px)) / 12);
   .home {
     top: calc(-1 * $row - $row - 20px);
+    .identity {
+      padding: 0 0 $row;
+      height: 100%;
+      gap: 30px;
+      justify-content: center;
+
+      .break {
+        display: inline;
+      }
+
+      &__logo {
+        height: calc($row * 3 + 40px);
+      }
+
+      &__title {
+        font-size: 1.6rem;
+      }
+    }
+
+    .aka--wrapper {
+      position: absolute;
+      top: auto;
+      bottom: calc($row * 4 + 80px);
+      height: calc($row * 3);
+      p {
+        position: absolute;
+        top: 0;
+        height: calc($row * 3);
+        display: flex;
+        justify-content: center;
+        font-size: 2.2rem;
+        text-orientation: upright;
+        writing-mode: vertical-lr;
+      }
+    }
+
+    .aka__cream--wrapper {
+      left: 0;
+      p {
+        left: 120%;
+        color: #e41313;
+      }
+    }
+
+    .aka__red--wrapper {
+      right: 0;
+      p {
+        right: 120%;
+      }
+    }
+
+    .aka {
+      position: static;
+      top: auto;
+      bottom: calc($row * 4 + 80px);
+      height: calc($row * 3);
+      &__cream {
+        left: 0;
+      }
+
+      &__red {
+        right: 0;
+      }
+    }
   }
 }

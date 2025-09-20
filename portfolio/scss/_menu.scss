@@ -133,10 +133,10 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   .desktopNavigation {
     position: relative;
     z-index: 8;
-    width: fit-content;
+    width: 100%;
     display: flex;
     align-items: center;
-    margin-left: $column;
+    padding-left: $column;
     gap: calc($column / 2);
     text-transform: none;
     height: calc($row * 2 + 20px);
@@ -149,6 +149,46 @@ $column: calc((100dvw - (5 * 20px)) / 6);
       display: flex;
       gap: 30px;
       padding-inline: 20px;
+      transition: 1s;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+
+      .desktopNavigation__link {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .underline {
+    position: absolute;
+    bottom: -5px;
+    height: 2px;
+    background-color: #e41313;
+    transition: left 0.3s, width 0.3s;
+    pointer-events: none;
+  }
+
+  .reduceNavbar--enter {
+    animation: reduceNavbar 2s forwards ease-in-out;
+  }
+
+  .reduceNavbar--exit {
+    animation: reduceNavbar 2s reverse forwards ease-in-out !important;
+  }
+  .reducedNavbar {
+    left: 20%;
+    transform: translateX(0);
+  }
+
+  @keyframes reduceNavbar {
+    0% {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    100% {
+      left: 20%;
+      transform: translateX(0);
     }
   }
 }

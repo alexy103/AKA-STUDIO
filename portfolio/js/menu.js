@@ -73,3 +73,37 @@ function updateMenuLink(slideName) {
   );
   activeLink.classList.add("activeLink");
 }
+
+desktopNavbar = document.querySelector(".desktopNavigation__links");
+
+const underline = document.getElementById("underline");
+const links = desktopNavbar.querySelectorAll("li");
+
+const setUnderline = (link) => {
+  const rect = link.getBoundingClientRect();
+  const menuRect = desktopNavbar.getBoundingClientRect();
+  underline.style.left = `${rect.left - menuRect.left}px`;
+  underline.style.width = `${rect.width}px`;
+};
+
+const activeNavbarLink = desktopNavbar.querySelector("li.active");
+if (activeNavbarLink) setUnderline(activeNavbarLink);
+
+desktopNavbar.addEventListener("mouseover", (e) => {
+  const link = e.target.closest("li");
+  if (link) setUnderline(link);
+});
+
+desktopNavbar.addEventListener("mouseleave", () => {
+  const current = desktopNavbar.querySelector("li.active");
+  if (current) setUnderline(current);
+});
+
+links.forEach((link) => {
+  link.addEventListener("click", (e) => {
+    e.preventDefault();
+    desktopNavbar.querySelector("li.active")?.classList.remove("active");
+    link.classList.add("active");
+    setUnderline(link);
+  });
+});

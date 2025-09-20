@@ -181,7 +181,8 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     }
   }
 
-  .jobs {
+  .jobs,
+  .jobsDesktop {
     &__link {
       &::after {
         display: none;
@@ -253,6 +254,10 @@ $column: calc((100dvw - (5 * 20px)) / 6);
         }
       }
     }
+  }
+
+  .friendlistDesktop {
+    display: none;
   }
 
   .aka {
@@ -436,6 +441,74 @@ $column: calc((100dvw - (5 * 20px)) / 6);
             }
           }
         }
+      }
+    }
+
+    .content--friends {
+      padding-top: calc($row * 3 + 60px);
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      margin-left: calc($column + 20px);
+      gap: 0;
+      .friendlist {
+        display: none;
+      }
+
+      .friendlistDesktop {
+        display: flex;
+        flex: 100%;
+        width: calc($column * 6 + 100px);
+        .friend {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: calc($column * 2 + 20px);
+
+          img {
+            // width: 100%;
+            height: calc($row * 2 + 20px);
+          }
+
+          &__description {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .name {
+              margin: 20px 0 40px;
+            }
+
+            .text {
+              text-align: center;
+            }
+          }
+        }
+      }
+      .content__title {
+        width: calc($column * 3 + 40px);
+        margin: 0 0 calc($row + 20px);
+        font-size: 4.5rem;
+      }
+      .content__text {
+        width: calc($column * 3 + 40px);
+        height: calc($row * 2 + 20px);
+        text-align: left;
+        font-size: 1.6rem;
+        line-height: 2.3rem;
+      }
+    }
+
+    .jobsDesktop {
+      position: absolute;
+      right: calc($column + 20px);
+      top: calc($row * 8 + 160px);
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+
+      &__link {
+        width: fit-content;
       }
     }
 

@@ -90,6 +90,11 @@ function handleAkas(akas, direction) {
 const menuLinks = document.querySelectorAll(".menu .menu__link");
 const navbar = document.querySelector(".navigation");
 const navigationLogo = document.querySelector(".navigation__logo");
+const navigationLogoDesktop = document.querySelector(".desktopNavigation__img");
+let desktopNavbar = document.querySelector(".desktopNavigation__links");
+let desktopNavbarLinks = document.querySelectorAll(
+  ".desktopNavigation__links .desktopNavigation__link"
+);
 
 // Mettre à jour la slide en cliquant sur un lien du menu
 menuLinks.forEach((link) => {
@@ -97,6 +102,7 @@ menuLinks.forEach((link) => {
     // On nettoie les classes pour la double navigation
     contactSlide.classList.remove("contact--inside");
     contactSlide.classList.remove("work--inside");
+    contactSlide.classList.remove("about--inside");
 
     let nextSlideName = link.textContent.toLowerCase().trim();
 
@@ -116,6 +122,84 @@ menuLinks.forEach((link) => {
   });
 });
 
+function updateNavbarLink(slideName) {
+  desktopNavbarLinks.forEach((link) => {
+    link.classList.remove("submenu__active", "active");
+  });
+
+  let newActiveLink = document.querySelector(
+    ".desktopNavigation__link--" + slideName.toLowerCase().trim()
+  );
+  newActiveLink.classList.add("submenu__active", "active");
+  setUnderline(newActiveLink);
+}
+
+desktopNavbarLinks.forEach((link, index) => {
+  link.addEventListener("click", () => {
+    // On nettoie les classes pour la double navigation
+    menu.classList.remove("front");
+    menu.classList.add("behind");
+
+    let nextSlideName = link.textContent.toLowerCase().trim();
+    if (nextSlideName !== "contact" && nextSlideName !== "about") {
+      setTimeout(() => {
+        document.querySelector("." + nextSlideName).classList.add("front");
+      }, 1000);
+    }
+    console.log("next: " + nextSlideName);
+    console.log("actual: " + displayedSlideName);
+    document.querySelector("." + displayedSlideName).classList.remove("front");
+
+    switch (displayedSlideName) {
+      case "home":
+        let homeAkas = document.querySelectorAll(".home .aka");
+        handleAkas(homeAkas, "left");
+        updateSlide(nextSlideName);
+
+        break;
+      case "work":
+        updateSlide(nextSlideName);
+        handleAkas(workAkas, "left");
+        setTimeout(() => {
+          workSlide.classList.remove("work--inside");
+        }, 2500);
+
+        break;
+      case "contact":
+        if (nextSlideName === "about") {
+          aboutSlide.classList.add("front");
+        }
+        updateSlide(nextSlideName);
+        handleAkas(contactAkas, "right");
+        setTimeout(() => {
+          contactSlide.classList.remove("contact--inside");
+        }, 2500);
+
+        break;
+      case "about":
+        document.querySelector(".home").classList.remove("right");
+        document.querySelector(".home").classList.remove("left");
+        document.querySelector(".home").classList.add("down");
+        updateSlide(nextSlideName);
+        handleAkas(aboutAkas, "down");
+        setTimeout(() => {
+          aboutSlide.classList.remove("about--inside");
+        }, 2500);
+
+        break;
+
+      default:
+        break;
+    }
+    updateNavbarLink(nextSlideName);
+
+    // On cache les akas de HOME
+    document.querySelectorAll(".home .aka").forEach((aka) => {
+      aka.classList.add("hidden");
+    });
+  });
+});
+
 // Afficher HOME en cliquant sur le logo de la navbar
 navigationLogo.addEventListener("click", () => {
   if (displayedSlideName != "home") {
@@ -129,6 +213,26 @@ navigationLogo.addEventListener("click", () => {
     handleAkas(workAkas, "left");
     handleAkas(contactAkas, "right");
     handleAkas(aboutAkas, "down");
+    updateSlide("home");
+  }
+});
+
+// Afficher HOME en cliquant sur le logo de la navbar
+navigationLogoDesktop.addEventListener("click", () => {
+  if (displayedSlideName != "home") {
+    navbar.classList.add("front");
+    navbar.classList.remove(
+      "navigation--enter--right",
+      "navigation--enter--left",
+      "navigation--enter--down",
+      "navigation--enter--up"
+    );
+    handleAkas(workAkas, "left");
+    handleAkas(contactAkas, "right");
+    handleAkas(aboutAkas, "down");
+    document.querySelector(".home").classList.remove("right");
+    document.querySelector(".home").classList.remove("left");
+    document.querySelector(".home").classList.add("down");
     updateSlide("home");
   }
 });
@@ -247,6 +351,8 @@ function exitDisplayedSlide() {
 
 function updateSlideFromMenu(slideName) {
   updateMenuLink(slideName);
+  updateNavbarLink(slideName);
+
   switch (slideName) {
     case "home":
       // On fait l'enter de HOME
@@ -389,10 +495,14 @@ function cleanOtherClasses(slideName) {
 
 function updateSlide(slideName, doubleNavigation) {
   updateMenuLink(slideName);
+  updateNavbarLink(slideName);
+
   switch (slideName) {
     // Afficher HOME
     case "home":
+      displayedSlideName = "work";
       aboutSlide.classList.remove("front");
+      desktopNavbar.classList.remove("reduceNavbar--enter");
       // On attend 1s pour que le aka de l'ancienne slide disparaisse puis on centre HOME
       setTimeout(() => {
         homeSlide.classList.add("front");
@@ -400,6 +510,7 @@ function updateSlide(slideName, doubleNavigation) {
         homeSlide.classList.remove("right");
         homeSlide.classList.remove("down");
         exitDisplayedSlide();
+        desktopNavbar.classList.add("reduceNavbar--exit");
       }, 1000);
 
       // On enlève hidden des akas de HOME
@@ -413,7 +524,9 @@ function updateSlide(slideName, doubleNavigation) {
       setTimeout(() => {
         homeAkaRed.classList.remove("aka--right");
         homeAkaCream.classList.remove("aka--left");
-      }, 2800);
+        desktopNavbar.classList.remove("reducedNavbar");
+        desktopNavbar.classList.remove("reduceNavbar--exit");
+      }, 3000);
       break;
 
     // Afficher WORK
@@ -434,6 +547,7 @@ function updateSlide(slideName, doubleNavigation) {
       // On attend 1s pour que le aka disparaisse puis on lance l'animation d'enter
       setTimeout(() => {
         workSlide.classList.add("work--enter");
+        desktopNavbar.classList.add("reduceNavbar--enter");
       }, 1000);
 
       // On fait slide HOME après l'enter pour préparer l'animation d'exit
@@ -445,6 +559,7 @@ function updateSlide(slideName, doubleNavigation) {
       // On attend la fin de l'enter puis on prépare les classes pour les animations de submenu dans WORK
       setTimeout(() => {
         workSlide.classList.remove("work--enter");
+        desktopNavbar.classList.add("reducedNavbar");
         workSlide.classList.add("work--inside");
       }, 4000);
       break;
@@ -460,6 +575,7 @@ function updateSlide(slideName, doubleNavigation) {
       // On attend 1s pour que le aka disparaisse puis on lance l'animation d'enter
       navbar.classList.add("front", "navigation--enter--up");
       aboutSlide.classList.add("about--enter");
+      desktopNavbar.classList.add("reduceNavbar--enter");
 
       // On fait slide HOME après l'enter pour préparer l'animation d'exit
       setTimeout(() => {
@@ -469,6 +585,7 @@ function updateSlide(slideName, doubleNavigation) {
       // On attend la fin de l'enter puis on prépare les classes pour les animations de submenu dans WORK
       setTimeout(() => {
         aboutSlide.classList.remove("about--enter");
+        desktopNavbar.classList.add("reducedNavbar");
         aboutSlide.classList.add("about--inside");
       }, 2200);
       break;
@@ -476,7 +593,6 @@ function updateSlide(slideName, doubleNavigation) {
     // Afficher CONTACT
     case "contact":
       displayedSlideName = "contact";
-
       homeSlide.classList.remove("front");
 
       // On nettoie la classe et on cache les akas pour préparer l'animation d'enter
@@ -487,6 +603,7 @@ function updateSlide(slideName, doubleNavigation) {
       // On attend 1s pour que le aka disparaisse puis on lance l'animation d'enter
       setTimeout(() => {
         contactSlide.classList.add("contact--enter");
+        desktopNavbar.classList.add("reduceNavbar--enter");
       }, 1000);
 
       // On fait slide HOME après l'enter pour préparer l'animation d'exit
@@ -498,6 +615,7 @@ function updateSlide(slideName, doubleNavigation) {
       // On attend la fin de l'enter puis on prépare les classes pour les animations de submenu dans CONTACT
       setTimeout(() => {
         contactSlide.classList.remove("contact--enter");
+        desktopNavbar.classList.add("reducedNavbar");
         contactSlide.classList.add("contact--inside");
       }, 4000);
       break;

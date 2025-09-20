@@ -57,10 +57,8 @@ function handleContactContent(state, contentArray, menuLinks, index) {
   contactSlide.classList.remove("contact--enter");
 
   // On fait l'exit
-  // TODO: changer ici pour le TITLE
   activeContentTitle.classList.remove("content__title--enter");
   activeContentText?.classList.remove("content__text--enter");
-  // TODO: changer ici pour INDEX0->1
   activeContentTitle.classList.add("content__title--exit");
   activeContentText?.classList.add("content__text--exit");
 
@@ -88,6 +86,7 @@ function handleAboutContent(state, contentArray, menuLinks, index) {
   const contentFriends = document.querySelector(".content--friends");
   const allOpinions = document.querySelectorAll(".opinions .opinion");
   const allFriends = document.querySelectorAll(".friendlist .friend");
+  const jobsMenuDesktop = document.querySelector(".about .jobsDesktop");
 
   aboutSlide.classList.remove("about--enter");
 
@@ -115,11 +114,19 @@ function handleAboutContent(state, contentArray, menuLinks, index) {
     } else if (activeContent.classList.contains("content--friends")) {
       // Si on vient de l'index 2 on fait son exit
       contentFriends.classList.add("content--friends--exit");
+      jobsMenuDesktop.classList.add("jobsMenuDesktop--exit");
+
       aboutMenu.classList.remove("aboutMenu--down");
+      document.querySelectorAll(".friendlistDesktop").forEach((e) => {
+        e.classList.remove("friendlist--enter");
+      });
     }
 
     // On fait l'enter de l'index 0
     nextActiveContent.children[0].classList.add("content__img--enter--left");
+    nextActiveContent.children[1].children[0]?.classList.add(
+      "content__title--enter"
+    );
     nextActiveContent.children[1].children[1]?.classList.add(
       "content__text--enter"
     );
@@ -137,6 +144,7 @@ function handleAboutContent(state, contentArray, menuLinks, index) {
       cleanUpSlider(e.children[1].children[0]);
       cleanUpSlider(e.children[1].children[1]);
     });
+    activeContentTitle?.classList.remove("content__title--enter");
     activeContentText?.classList.remove("content__text--enter");
     contentFriends.classList.remove("content--friends--enter");
 
@@ -149,9 +157,11 @@ function handleAboutContent(state, contentArray, menuLinks, index) {
       // Si on vient de l'index 0 on fait son exit
       activeContentImg.classList.add("content__img--exit--left");
       activeContentText?.classList.add("content__text--exit");
+      activeContentTitle?.classList.add("content__title--exit");
     } else if (activeContent.classList.contains("content--friends")) {
       // Si on vient de l'index 2 on fait son exit
       contentFriends.classList.add("content--friends--exit");
+      jobsMenuDesktop.classList.add("jobsMenuDesktop--exit");
     }
 
     if (!activeContent.classList.contains("content--friends")) {
@@ -160,6 +170,9 @@ function handleAboutContent(state, contentArray, menuLinks, index) {
     } else {
       // Si on vient de l'index 2 on fait l'enter par la gauche
       nextActiveContent.children[1].classList.add("opinions--enter--left");
+      document.querySelectorAll(".friendlistDesktop").forEach((e) => {
+        e.classList.remove("friendlist--enter");
+      });
     }
 
     // Sécurité
@@ -168,8 +181,10 @@ function handleAboutContent(state, contentArray, menuLinks, index) {
     // Si on va vers ou si on est dans l'index 2
 
     // On met le submenu en bas
-    aboutMenu.classList.remove("aboutMenu--up");
-    aboutMenu.classList.add("aboutMenu--down");
+    if (window.innerWidth < 1440) {
+      aboutMenu.classList.remove("aboutMenu--up");
+      aboutMenu.classList.add("aboutMenu--down");
+    }
 
     // On nettoie les classes avant l'animation
     allOpinions.forEach((e) => {
@@ -185,7 +200,9 @@ function handleAboutContent(state, contentArray, menuLinks, index) {
     cleanUpFirstMenu(activeContentImg);
     cleanUpSecondMenu(activeContent.children[1]);
     activeContentText?.classList.remove("content__text--enter");
+    activeContentTitle?.classList.remove("content__title--enter");
     nextActiveContent.classList.remove("content--friends--exit");
+    jobsMenuDesktop.classList.remove("jobsMenuDesktop--exit");
 
     // On lance l'animation d'exit
     if (activeContent.classList.contains("content--first")) {
@@ -217,13 +234,16 @@ function handleFriendsContent(state, contentArray, menuLinks, index) {
 }
 
 function handleFriendsMenuChange(state, contentArray, menuLinks, index, delay) {
-  const allActiveContent = document.querySelectorAll(
-    ".friendlist:not(.hidden) .friend img, .name, .text"
-  );
-
-  const allFriendlistFriends = document.querySelectorAll(
-    ".friendlist:not(.hidden) .friend :is(img, .name, .text)"
-  );
+  let allFriendlistFriends;
+  if (window.innerWidth < 1440) {
+    allFriendlistFriends = document.querySelectorAll(
+      ".friendlist:not(.hidden) .friend :is(img, .name, .text)"
+    );
+  } else {
+    allFriendlistFriends = document.querySelectorAll(
+      ".friendlistDesktop:not(.hidden) .friend"
+    );
+  }
 
   const nextActiveContent =
     contentArray[index].querySelectorAll("img, .name, .text");
@@ -274,6 +294,10 @@ function handleFriendsMenuChange(state, contentArray, menuLinks, index, delay) {
     nextActiveContentFirstFriend.forEach((e) => {
       e.classList.add("friendlist--enter");
     });
+    let activeFriendListDesktop = document.querySelectorAll(
+      ".about .friendlistDesktop"
+    );
+    activeFriendListDesktop[index].classList.add("friendlist--enter");
   }, delay);
 }
 
@@ -336,6 +360,7 @@ function executeContentUpdate(state, contentArray, menuLinks, index) {
   }
 
   const jobsMenu = document.querySelector(".about .menus .jobs");
+  const jobsMenuDesktop = document.querySelector(".about .jobsDesktop");
   const aboutMenu = document.querySelector(".about .menus .aboutMenu");
   const menus = document.querySelector(".menus");
 
@@ -344,27 +369,56 @@ function executeContentUpdate(state, contentArray, menuLinks, index) {
   if ((state.name === "about" && index === 2) || state.name === "friends") {
     // Si on va vers friends mais qu'on est pas dedans
     if (state.name === "about" && index === 2) {
-      jobsMenu.classList.add("jobsMenu--enter");
+      if (window.innerWidth < 1440) {
+        jobsMenu.classList.add("jobsMenu--enter");
+      } else {
+        jobsMenuDesktop.classList.add("jobsMenuDesktop--enter");
+      }
     }
     aboutMenu.classList.remove("aboutMenu--down");
-    jobsMenu.classList.remove("hidden");
-    menus.classList.remove("menus--single");
-    menus.classList.add("menus--double");
+    if (window.innerWidth < 1440) {
+      menus.classList.remove("menus--single");
+      jobsMenu.classList.remove("hidden");
+      menus.classList.add("menus--double");
+    } else {
+      jobsMenuDesktop.classList.remove("hidden");
+    }
     activeFriendListFriends = document.querySelectorAll(
       ".about .friendlist:not(.hidden) .friend"
     );
-    inFriends = true;
 
+    if (inFriends) {
+      let activeFriendListDesktop = document.querySelectorAll(
+        ".about .friendlistDesktop"
+      );
+
+      activeFriendListDesktop.forEach((friendlist) => {
+        friendlist.classList.add("hidden");
+      });
+
+      activeFriendListDesktop[index].classList.remove("hidden");
+    }
+
+    inFriends = true;
     setTimeout(() => {
       jobsMenu.classList.remove("jobsMenu--enter");
+      jobsMenuDesktop.classList.remove("jobsMenuDesktop--enter");
     }, 1000);
   } else if (state.activeMenuLink !== menuLinks[2] && inFriends) {
     // Si on quitte friends
-    jobsMenu.classList.remove("jobsMenu--exit");
-    aboutMenu.classList.add("aboutMenu--up");
+    if (window.innerWidth < 1440) {
+      jobsMenu.classList.remove("jobsMenu--exit");
+      aboutMenu.classList.add("aboutMenu--up");
+    } else {
+      jobsMenuDesktop.classList.remove("jobsMenuDesktop--enter");
+      jobsMenuDesktop.classList.add("jobsMenuDesktop--exit");
+    }
+
     jobsMenu.classList.add("hidden");
+    jobsMenuDesktop.classList.add("hidden");
 
     setTimeout(() => {
+      jobsMenuDesktop.classList.remove("jobsMenuDesktop--exit");
       aboutMenu.classList.remove("aboutMenu--up");
       inFriends = false;
       menus.classList.remove("menus--double");

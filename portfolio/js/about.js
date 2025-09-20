@@ -38,7 +38,13 @@ aboutMenuLinks.forEach((link, i) => {
   });
 });
 
-const jobsMenu = document.querySelectorAll(".about .jobs__link");
+let jobsMenu;
+
+if (window.innerWidth < 1440) {
+  jobsMenu = document.querySelectorAll(".about .jobs__link");
+} else {
+  jobsMenu = document.querySelectorAll(".about .jobsDesktop__link");
+}
 const friendLists = document.querySelectorAll(".about .friendlist");
 let activeFriendList = document.querySelectorAll(
   ".about .friendlist:not(.hidden)"
@@ -61,7 +67,12 @@ activeFriendListFriends = document.querySelectorAll(
 // Gestion du submenu avec slider
 jobsMenu.forEach((link, i) => {
   link.addEventListener("click", () => {
-    let active = document.querySelector(".about .jobs .submenu__active");
+    let active;
+    if (window.innerWidth < 1440) {
+      active = document.querySelector(".about .jobs .submenu__active");
+    } else {
+      active = document.querySelector(".about .jobsDesktop .submenu__active");
+    }
     active.classList.remove("underline--enter");
     link.classList.remove("underline--exit");
 

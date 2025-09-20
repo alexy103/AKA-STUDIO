@@ -132,17 +132,11 @@ if (window.innerWidth >= 1440) {
 
     // le nouvel élément devient active, et on met .active sur ceux entre 0 et idx
     clicked.classList.add("active");
-    wrapper
-      .querySelectorAll(".opinion img")
-      .forEach((img) => img.classList.remove("big"));
-    for (let i = 1; i < idx; i++) {
-      originals[i].classList.add("active");
-    }
 
-    // ✅ Shift adapté : comme les éléments 0..idx-1 sont en "active" pendant l'anim,
-    // leur largeur est activeWidth -> le décalage = somme des (width+gap) de 0..idx-1
-    // = idx * (activeWidth + gap)
-    let shift = idx * (activeWidth + gap);
+    // ✅ Shift exact basé sur la position réelle à l'écran (avant toute réorganisation)
+    const firstRect = originals[0].getBoundingClientRect();
+    const clickedRect = clicked.getBoundingClientRect();
+    let shift = clickedRect.left - firstRect.left;
 
     // Slide smooth
     isAnimating = true;
