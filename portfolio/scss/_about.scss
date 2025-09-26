@@ -2,15 +2,15 @@ $row: calc((100dvh - (5 * 20px)) / 6);
 $column: calc((100dvw - (5 * 20px)) / 6);
 
 .about {
-  top: calc(-300dvh + $row + $row);
+  top: calc(-300dvh + #{$row} + #{$row});
   left: 0;
   .content {
-    height: calc($row * 3 + 80px);
+    height: calc(#{$row} * 3 + 80px);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    margin-inline: calc($column + 20px);
+    margin-inline: calc(#{$column} + 20px);
     gap: 20px;
     &--first {
       .content__title {
@@ -45,8 +45,8 @@ $column: calc((100dvw - (5 * 20px)) / 6);
             }
             .opinionSlider {
               display: flex;
-              height: $row;
-              width: calc($column * 4 + 60px);
+              height: #{$row};
+              width: calc(#{$column} * 4 + 60px);
               justify-content: space-between;
               align-items: center;
               // overflow: hidden;
@@ -58,7 +58,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
               }
 
               img {
-                height: $row;
+                height: #{$row};
               }
             }
           }
@@ -69,8 +69,8 @@ $column: calc((100dvw - (5 * 20px)) / 6);
       }
     }
     .content__img {
-      padding: calc($row / 3) 0;
-      height: $row;
+      padding: calc(#{$row} / 3) 0;
+      height: #{$row};
     }
     &__title {
       text-transform: uppercase;
@@ -80,7 +80,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     }
     &__text {
       text-align: center;
-      height: calc($row * 2 + 20px);
+      height: calc(#{$row} * 2 + 20px);
       font-size: 1.2rem;
       line-height: 1.4rem;
     }
@@ -102,14 +102,14 @@ $column: calc((100dvw - (5 * 20px)) / 6);
         height: auto;
       }
       .slider img {
-        height: $row;
+        height: #{$row};
       }
     }
   }
 
   .menus {
-    margin: 20px calc($column + 20px) 0;
-    height: $row;
+    margin: 20px calc(#{$column} + 20px) 0;
+    height: #{$row};
 
     &--double {
       display: flex;
@@ -219,8 +219,8 @@ $column: calc((100dvw - (5 * 20px)) / 6);
 
       .slider {
         display: flex;
-        height: $row;
-        width: calc($column * 4 + 60px);
+        height: #{$row};
+        width: calc(#{$column} * 4 + 60px);
         justify-content: space-between;
         align-items: center;
         // overflow: hidden;
@@ -233,7 +233,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
       }
 
       &__description {
-        height: $row;
+        height: #{$row};
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -245,7 +245,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
 
         .text {
           text-align: center;
-          height: calc($row / 2);
+          height: calc(#{$row} / 2);
           font-size: 1.2rem;
           line-height: 1.4rem;
           flex: 1;
@@ -263,7 +263,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   .aka {
     opacity: 0;
     bottom: 0;
-    height: calc($row / 2);
+    height: calc(#{$row} / 2);
     &__cream {
       left: 0%;
     }
@@ -278,7 +278,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   .about {
     .content {
       .content__img {
-        padding: calc($row / 4) 0;
+        padding: calc(#{$row} / 4) 0;
       }
     }
     .content:nth-child(1) .content__text p {
@@ -301,21 +301,21 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   $row: calc((100dvh - (11 * 20px)) / 12);
   $column: calc((100dvw - (11 * 20px)) / 12);
   .about {
-    top: calc(-300dvh - $row - $row - 20px);
+    top: calc(-300dvh - #{$row} - #{$row} - 20px);
     .content {
-      height: calc($row * 8 + 140px);
-      padding-top: calc($row * 3 + 60px);
+      height: calc(#{$row} * 8 + 140px);
+      padding-top: calc(#{$row} * 3 + 60px);
       flex-wrap: wrap;
       margin-inline: 0;
       &__title {
         display: block;
-        width: calc($column * 5 + 80px);
-        margin-bottom: calc($row + 20px);
+        width: calc(#{$column} * 5 + 80px);
+        margin-bottom: calc(#{$row} + 20px);
         font-size: 3.5rem;
       }
       &__text {
-        width: calc($column * 7 + 120px);
-        height: calc($row * 3 + 60px);
+        width: calc(#{$column} * 7 + 120px);
+        height: calc(#{$row} * 3 + 60px);
 
         p {
           padding: 0 0 10% !important;
@@ -324,7 +324,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
       .content__img {
         padding: 0;
         height: auto;
-        width: calc($row * 3);
+        width: calc(#{$row} * 3);
         // flex: 100%;
       }
     }
@@ -336,12 +336,12 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     }
 
     .content--second {
-      padding-top: calc($row * 2 + 60px);
+      padding-top: calc(#{$row} * 2 + 60px);
 
       .content__wrapper {
         .content__title {
           margin-bottom: 0;
-          margin-left: calc($column * 2 + 20px);
+          margin-left: calc(#{$column} * 2 + 20px);
         }
         display: flex;
         flex-direction: column;
@@ -360,24 +360,24 @@ $column: calc((100dvw - (5 * 20px)) / 6);
         .desktopOpinions {
           display: flex;
           width: 100dvw;
-          gap: calc($column + 20px);
+          gap: calc(#{$column} + 20px);
           will-change: transform;
           overflow: hidden;
-          padding-inline: calc($column + 20px);
+          padding-inline: calc(#{$column} + 20px);
           transition: all 1s;
 
           .opinion {
-            width: $column; // petit par défaut
-            margin-top: calc($row + 20px);
+            width: #{$column}; // petit par défaut
+            margin-top: calc(#{$row} + 20px);
             display: flex;
             flex-direction: column;
-            gap: $row;
+            gap: #{$row};
             // transition: all 1s;
 
             &__infos {
               display: flex;
               flex-direction: column;
-              gap: $row;
+              gap: #{$row};
               align-items: center;
               opacity: 0;
               pointer-events: none;
@@ -394,7 +394,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
             }
 
             img {
-              max-height: calc($row * 4 + 100px);
+              max-height: calc(#{$row} * 4 + 100px);
 
               &.big {
                 min-width: calc((100dvw - 220px) / 12 * 3);
@@ -404,7 +404,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
             &.active {
               animation: activeIn 1s forwards;
 
-              min-width: calc($column * 3);
+              min-width: calc(#{$column} * 3);
               margin-top: 0;
               pointer-events: none;
               transition: all 1s;
@@ -414,7 +414,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
               }
 
               img {
-                max-height: calc($row * 5 + 120px);
+                max-height: calc(#{$row} * 5 + 120px);
               }
 
               @keyframes opinionInfo {
@@ -431,11 +431,11 @@ $column: calc((100dvw - (5 * 20px)) / 6);
 
             @keyframes activeIn {
               0% {
-                min-width: $column;
-                margin-top: calc($row + 20px);
+                min-width: #{$column};
+                margin-top: calc(#{$row} + 20px);
               }
               100% {
-                min-width: calc($column * 3);
+                min-width: calc(#{$column} * 3);
                 margin-top: 0;
               }
             }
@@ -445,11 +445,11 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     }
 
     .content--friends {
-      padding-top: calc($row * 3 + 60px);
+      padding-top: calc(#{$row} * 3 + 60px);
       display: flex;
       align-items: flex-start;
       justify-content: flex-start;
-      margin-left: calc($column + 20px);
+      margin-left: calc(#{$column} + 20px);
       gap: 0;
       .friendlist {
         display: none;
@@ -458,16 +458,16 @@ $column: calc((100dvw - (5 * 20px)) / 6);
       .friendlistDesktop {
         display: flex;
         flex: 100%;
-        width: calc($column * 6 + 100px);
+        width: calc(#{$column} * 6 + 100px);
         .friend {
           display: flex;
           flex-direction: column;
           align-items: center;
-          width: calc($column * 2 + 20px);
+          width: calc(#{$column} * 2 + 20px);
 
           img {
             // width: 100%;
-            height: calc($row * 2 + 20px);
+            height: calc(#{$row} * 2 + 20px);
           }
 
           &__description {
@@ -486,13 +486,13 @@ $column: calc((100dvw - (5 * 20px)) / 6);
         }
       }
       .content__title {
-        width: calc($column * 3 + 40px);
-        margin: 0 0 calc($row + 20px);
+        width: calc(#{$column} * 3 + 40px);
+        margin: 0 0 calc(#{$row} + 20px);
         font-size: 4.5rem;
       }
       .content__text {
-        width: calc($column * 3 + 40px);
-        height: calc($row * 2 + 20px);
+        width: calc(#{$column} * 3 + 40px);
+        height: calc(#{$row} * 2 + 20px);
         text-align: left;
         font-size: 1.6rem;
         line-height: 2.3rem;
@@ -501,8 +501,8 @@ $column: calc((100dvw - (5 * 20px)) / 6);
 
     .jobsDesktop {
       position: absolute;
-      right: calc($column + 20px);
-      top: calc($row * 8 + 160px);
+      right: calc(#{$column} + 20px);
+      top: calc(#{$row} * 8 + 160px);
       display: flex;
       flex-direction: column;
       gap: 30px;
@@ -513,8 +513,8 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     }
 
     .menus {
-      height: $row;
-      width: calc($column * 4 + 60px);
+      height: #{$row};
+      width: calc(#{$column} * 4 + 60px);
       margin-top: 20px;
       margin-inline: auto;
 
@@ -527,11 +527,11 @@ $column: calc((100dvw - (5 * 20px)) / 6);
 
     .aka {
       &__cream {
-        left: calc($column * 4 + 80px);
+        left: calc(#{$column} * 4 + 80px);
       }
 
       &__red {
-        right: calc($column * 4 + 80px);
+        right: calc(#{$column} * 4 + 80px);
       }
     }
   }

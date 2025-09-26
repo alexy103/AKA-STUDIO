@@ -8,50 +8,82 @@
   </head>
   <body>
     <header>
-      <nav class="menu">
-        <div class="gridSquare"></div>
-        <div class="gridSquare"></div>
-        <div class="gridSquare"></div>
-        <div class="menu__home menu__link gridSquare activeLink">
-          <h2>Home</h2>
+      <nav class="menu unclickable front">
+        <div class="menu__border"></div>
+        <div class="mainColumn">
+          <div class="menu__square"></div>
+          <div class="menu__home menu__link menu__square activeLink">
+            <h2>Home</h2>
+          </div>
+          <div class="menu__work menu__link menu__square">
+            <h2>Work</h2>
+          </div>
+          <div class="menu__about menu__link menu__square">
+            <h2>About</h2>
+          </div>
+          <div class="menu__contact menu__link menu__square">
+            <h2>Contact</h2>
+          </div>
+          <div class="menu__square"></div>
         </div>
-        <div class="gridSquare"></div>
-        <div class="menu__work menu__link gridSquare">
-          <h2>Work</h2>
-        </div>
-        <div class="gridSquare"></div>
-        <div class="menu__about menu__link gridSquare">
-          <h2>About</h2>
-        </div>
-        <div class="gridSquare"></div>
-        <div class="menu__contact menu__link gridSquare">
-          <h2>Contact</h2>
-        </div>
-        <div class="gridSquare"></div>
-        <div class="gridSquare"></div>
-        <div class="gridSquare">
+
+        <div class="menu__border"></div>
+
+        <div class="thirdcol">
           <span class="menu__close">x</span>
+          <p class="menu__text">MENU</p>
+          <img
+            class="menu__img"
+            src="images/logo/Logo mark/Logo mark blanc site .png"
+            alt="AKA STUDIO Logo Mark"
+          />
         </div>
       </nav>
       <nav class="navigation">
         <img
-          src="images/logo/Logo mark/Logo mark rouge site .png"
-          alt=""
+          src="images/logo/Logo mark/Logo mark rouge site.png"
+          alt="AKA STUDIO Logo Mark"
           class="navigation__logo"
         />
         <i class="fa-solid fa-bars navigation__burger"></i>
       </nav>
-      <div class="black hidden">
+      <nav class="desktopNavigation submenu front">
+        <img
+          src="images/logo/Logo Principal/Aka_RB_site.png"
+          alt=""
+          class="desktopNavigation__img"
+        />
+        <ul class="desktopNavigation__links">
+          <li
+            class="desktopNavigation__link desktopNavigation__link--home submenu__active active"
+          >
+            Home
+          </li>
+          <li class="desktopNavigation__link desktopNavigation__link--work">
+            Work
+          </li>
+          <li class="desktopNavigation__link desktopNavigation__link--about">
+            About
+          </li>
+          <li class="desktopNavigation__link desktopNavigation__link--contact">
+            Contact
+          </li>
+          <div class="underline" id="underline"></div>
+        </ul>
+      </nav>
+      <div class="black unclickable">
         <span class="black__close">x</span>
-        <h4 class="title">Égérie Fitness Park Rémy</h4>
         <figure class="video">
-          <iframe
-            src=""
-            title="Eiffel 65 - Blue (Da Ba Dee) [Gabry Ponte Ice Pop Mix] (Original Video with subtitles)"
-            allow="clipboard-write; picture-in-picture"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
-          ></iframe>
+          <h4 class="title">Égérie Fitness Park Rémy</h4>
+          <div class="iframe__wrapper">
+            <iframe
+              src=""
+              title=""
+              allow="clipboard-write; picture-in-picture"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
           <figcaption class="video__description">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ex mi,
             posuere in velit nec, auctor sagittis purus. Praesent vitae mattis
@@ -61,19 +93,21 @@
           </figcaption>
         </figure>
         <div class="infos">
-          <div class="info">
-            <p class="info__title">Client :</p>
-            <p class="info__text">Rémy Dasilva Novais</p>
+          <div class="infos__wrapper">
+            <div class="info">
+              <p class="info__title">Client :</p>
+              <p class="info__text">Rémy Dasilva Novais</p>
+            </div>
+            <div class="info">
+              <p class="info__title">Date :</p>
+              <p class="info__text">02 juillet 2024</p>
+            </div>
           </div>
-          <div class="info">
+          <div class="info info--fonction">
             <p class="info__title">Fonction :</p>
             <p class="info__text">
               réalisation, captation, montage, étalonnage, motion design
             </p>
-          </div>
-          <div class="info">
-            <p class="info__title">Date :</p>
-            <p class="info__text">02 juillet 2024</p>
           </div>
         </div>
       </div>
@@ -82,29 +116,157 @@
       <section class="home slide">
         <div class="identity">
           <img
-            src="images/logo/Logo Secondaire/Logo secondaire RW Site.png"
-            alt=""
+            src="images/logo/Logo Secondaire/AKA STUDIO LOGO SECONDAIRE VARIATION.png"
+            alt="AKA STUDIO Logo"
             class="identity__logo"
           />
           <h1 class="identity__title">
             Studio de création <span class="break">audiovisuelle</span>
           </h1>
         </div>
-        <img src="images/aka_cream.png" alt="" class="aka aka__cream" />
-        <img src="images/aka_red.png" alt="" class="aka aka__red" />
+        <div class="aka__cream--wrapper aka--wrapper">
+          <img
+            src="images/logo/Kanji/DEMI white.png"
+            alt="Cream Kanji"
+            class="aka aka__cream"
+          />
+          <p>CONTACT</p>
+        </div>
+        <div class="aka__red--wrapper aka--wrapper">
+          <img
+            src="images/logo/Kanji/demi red 2.png"
+            alt="Red Kanji"
+            class="aka aka__red"
+          />
+          <p>WORK</p>
+        </div>
       </section>
       <section class="work slide">
         <div class="presentation">
           <h2 class="slideTitle">WORK<span class="red">.</span></h2>
           <ul class="workMenu submenu">
-            <li class="workMenu__link submenu__active">Swohreel</li>
+            <li class="workMenu__link submenu__active">Showreel</li>
             <li class="workMenu__link">Sport</li>
             <li class="workMenu__link">Corporate</li>
             <li class="workMenu__link">Fiction</li>
           </ul>
         </div>
 
-        <div class="projects projects--swohreel">
+        <div class="projects projects--showreel">
+          <figure class="project">
+            <figcaption class="project__text">
+              <p class="title">BNTH - League 1</p>
+              <p class="number">1</p>
+            </figcaption>
+            <div class="project__image">
+              <img
+                src="images/BNTH.png"
+                alt=""
+                class="thumbnail"
+                data-title="Égérie Fitness Park Rémy"
+                data-src=""
+                data-description="Lorem ipsum dolor sit amet..."
+                data-client="Rémy Dasilva Novais"
+                data-fonction="réalisation, captation, montage, étalonnage, motion design"
+                data-date="02 juillet 2024"
+              />
+            </div>
+          </figure>
+          <figure class="project">
+            <figcaption class="project__text">
+              <p class="title">BNTH - League 1</p>
+              <p class="number">1</p>
+            </figcaption>
+            <div class="project__image">
+              <img
+                src="images/BNTH.png"
+                alt=""
+                class="thumbnail"
+                data-title="Égérie Fitness Park Rémy"
+                data-src=""
+                data-description="Lorem ipsum dolor sit amet..."
+                data-client="Rémy Dasilva Novais"
+                data-fonction="réalisation, captation, montage, étalonnage, motion design"
+                data-date="02 juillet 2024"
+              />
+            </div>
+          </figure>
+          <figure class="project">
+            <figcaption class="project__text">
+              <p class="title">BNTH - League 1</p>
+              <p class="number">1</p>
+            </figcaption>
+            <div class="project__image">
+              <img
+                src="images/BNTH.png"
+                alt=""
+                class="thumbnail"
+                data-title="Égérie Fitness Park Rémy"
+                data-src=""
+                data-description="Lorem ipsum dolor sit amet..."
+                data-client="Rémy Dasilva Novais"
+                data-fonction="réalisation, captation, montage, étalonnage, motion design"
+                data-date="02 juillet 2024"
+              />
+            </div>
+          </figure>
+          <figure class="project">
+            <figcaption class="project__text">
+              <p class="title">BNTH - League 1</p>
+              <p class="number">1</p>
+            </figcaption>
+            <div class="project__image">
+              <img
+                src="images/BNTH.png"
+                alt=""
+                class="thumbnail"
+                data-title="Égérie Fitness Park Rémy"
+                data-src=""
+                data-description="Lorem ipsum dolor sit amet..."
+                data-client="Rémy Dasilva Novais"
+                data-fonction="réalisation, captation, montage, étalonnage, motion design"
+                data-date="02 juillet 2024"
+              />
+            </div>
+          </figure>
+          <figure class="project">
+            <figcaption class="project__text">
+              <p class="title">BNTH - League 1</p>
+              <p class="number">1</p>
+            </figcaption>
+            <div class="project__image">
+              <img
+                src="images/BNTH.png"
+                alt=""
+                class="thumbnail"
+                data-title="Égérie Fitness Park Rémy"
+                data-src=""
+                data-description="Lorem ipsum dolor sit amet..."
+                data-client="Rémy Dasilva Novais"
+                data-fonction="réalisation, captation, montage, étalonnage, motion design"
+                data-date="02 juillet 2024"
+              />
+            </div>
+          </figure>
+          <figure class="project">
+            <figcaption class="project__text">
+              <p class="title">BNTH - League 1</p>
+              <p class="number">1</p>
+            </figcaption>
+            <div class="project__image">
+              <img
+                src="images/BNTH.png"
+                alt=""
+                class="thumbnail"
+                data-title="Égérie Fitness Park Rémy"
+                data-src=""
+                data-description="Lorem ipsum dolor sit amet..."
+                data-client="Rémy Dasilva Novais"
+                data-fonction="réalisation, captation, montage, étalonnage, motion design"
+                data-date="02 juillet 2024"
+              />
+            </div>
+          </figure>
           <figure class="project">
             <figcaption class="project__text">
               <p class="title">BNTH - League 1</p>
@@ -264,53 +426,169 @@
             </div>
           </figure>
         </div>
-        <h3 class="category category--swohreel">Swohreel</h3>
-        <h3 class="category category--sport hidden">Sport</h3>
-        <h3 class="category category--corporate hidden">Corporate</h3>
-        <h3 class="category category--fiction hidden">Fiction</h3>
-        <img src="images/aka_cream.png" alt="" class="aka aka__cream" />
-        <img src="images/aka_red.png" alt="" class="aka aka__red" />
+        <h3 class="category category--showreel">
+          <span>Showreel</span>
+        </h3>
+        <h3 class="category category--sport hidden">
+          <span>Sport</span>
+        </h3>
+        <h3 class="category category--corporate hidden">
+          <span>Corporate</span>
+        </h3>
+        <h3 class="category category--fiction hidden"><span>Fiction</span></h3>
+        <img
+          src="images/logo/Kanji/DEMI white.png"
+          alt="Cream Kanji"
+          class="aka aka__cream hidden"
+        />
+        <img
+          src="images/logo/Kanji/Demi_Red.png"
+          alt="Red Kanji"
+          class="aka aka__red hidden"
+        />
       </section>
       <section class="about slide">
-        <div class="content">
-          <img src="images/logo/Logo mark/Logo mark rouge site .png" alt="" />
-          <h3 class="content__title hidden">Titre présentation</h3>
-          <p class="content__text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ex mi,
-            posuere in velit nec, auctor sagittis purus. Praesent vitae mattis
-            diam, eget sodales dui. Mauris efficitur quam vitae malesuada
-            rutrum. In orci elit, consequat non malesuada sit amet, iaculis eget
-            enim. Integer suscipit sagittis augue sit amet placerat. Suspendisse
-            mattis pellentesque augue eget pharetra. Integer vel vulputate
-            tortor, in blandit felis. Integer vel quam eu nisi ultricies
-            interdum. Suspendisse ultrices nibh sed lacus ornare, id efficitur
-            orci aliquet.
-          </p>
+        <div class="content content--first">
+          <img
+            src="images/logo/Logo Principal/Aka_RB_site.png"
+            alt="AKA STUDIO Main Logo"
+            class="content__img"
+          />
+          <div>
+            <h3 class="content__title">Titre présentation</h3>
+            <div class="content__text">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ex
+                mi, posuere in velit nec, auctor sagittis purus. Praesent vitae
+                mattis diam, eget sodales dui. Mauris efficitur quam vitae
+                malesuada rutrum. In orci elit, consequat non malesuada sit
+                amet, iaculis eget enim. Integer suscipit sagittis augue sit
+                amet placerat. Suspendisse mattis pellentesque augue eget
+                pharetra. Integer vel vulputate tortor, in blandit felis.
+                Integer vel quam eu nisi ultricies interdum. Suspendisse
+                ultrices nibh sed lacus ornare, id efficitur orci aliquet. Lorem
+                ipsum dolsor sit amet, consectetur adipiscing elit. Cras ex mi,
+                posuere in velit nec, auctor sagittis purus. Praesent vitae
+                mattis diam, eget sodales dui. Mauris efficitur quam vitae
+                malesuada rutrum. In orci elit, consequat non malesuada sit
+                amet, iaculis eget enim. Integer suscipit sagittis augue sit
+                amet placerat. Suspendisse mattis pellentesque augue eget
+                pharetra. Integer vel vulputate tortor, in blandit felis.
+                Integer vel quam eu nisi ultricies interdum. Suspendisse
+                ultrices nibh sed lacus ornare, id efficitur orci aliquet.
+              </p>
+            </div>
+          </div>
         </div>
-        <div class="content hidden">
-          <img src="images/about2.png" alt="" />
-          <h3 class="content__title hidden">Titre présentation</h3>
-          <p class="content__text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ex mi,
-            posuere in velit nec, auctor sagittis purus. Praesent vitae mattis
-            diam, eget sodales dui. Mauris efficitur quam vitae malesuada
-            rutrum. In orci elit, consequat non malesuada sit amet, iaculis eget
-            enim. Integer suscipit sagittis augue sit amet placerat. Suspendisse
-            mattis pellentesque augue eget pharetra. Integer vel vulputate
-            tortor, in blandit felis. Integer vel quam eu nisi ultricies
-            interdum. Suspendisse ultrices nibh sed lacus ornare, id efficitur
-            orci aliquet.
-          </p>
+        <div class="content hidden content--second">
+          <figure class="mainOpinion">
+            <!-- TODO: caché en mobile et visible en desktop -->
+            <img src="" alt="" class="mainOpinion__img" />
+            <figcaption class="mainOpinion__infos">
+              <h4 class="mainOpinion__title">TEAM VITALITY</h4>
+              <p class="mainOpinion__text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ex
+                mi, posuere in velit nec, auctor sagittis purus. Praesent vitae
+                mattis diam, eget sodales dui. Mauris efficitur quam vitae
+                malesuada rutrum. In orci elit.
+              </p>
+            </figcaption>
+          </figure>
+          <div class="content__wrapper">
+            <h3 class="content__title">
+              Ils nous font confiance <span class="red">!</span>
+            </h3>
+
+            <div class="opinions">
+              <figure class="opinion">
+                <figcaption class="opinion__infos">
+                  <p class="opinion__text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Cras ex mi, posuere in velit nec, auctor sagittis purus.
+                    Praesent vitae mattis diam, eget sodales dui. Mauris
+                    efficitur quam vitae malesuada rutrum. In orci elit.
+                  </p>
+                </figcaption>
+                <div class="opinionSlider slider">
+                  <i class="fa-solid fa-chevron-left"></i>
+                  <img src="images/forty.png" alt="" />
+                  <i class="fa-solid fa-chevron-right"></i>
+                </div>
+                <h4 class="opinion__title">TEAM VITALITY</h4>
+              </figure>
+              <figure class="opinion hidden">
+                <figcaption class="opinion__infos">
+                  <p class="opinion__text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Cras ex mi, posuere in velit nec, auctor sagittis purus.
+                    Praesent vitae mattis diam, eget sodales dui. Mauris
+                    efficitur quam vitae malesuada rutrum. In orci elit.
+                  </p>
+                </figcaption>
+                <div class="opinionSlider slider">
+                  <i class="fa-solid fa-chevron-left"></i>
+                  <img src="images/forty.png" alt="" />
+                  <i class="fa-solid fa-chevron-right"></i>
+                </div>
+                <h4 class="opinion__title">TEAM</h4>
+              </figure>
+            </div>
+
+            <div class="desktopOpinions">
+              <figure class="opinion active activeIn">
+                <img src="images/forty.png" alt="" />
+                <figcaption class="opinion__infos">
+                  <h4 class="opinion__title">TEAM VITALITY</h4>
+                  <p class="opinion__text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Cras ex mi, posuere in velit nec, auctor sagittis purus.
+                    Praesent vitae mattis diam, eget sodales dui. Mauris
+                    efficitur quam vitae malesuada rutrum. In orci elit.
+                  </p>
+                </figcaption>
+              </figure>
+              <figure class="opinion">
+                <img src="images/Carré_rouge.svg.png" alt="" />
+                <figcaption class="opinion__infos">
+                  <h4 class="opinion__title">ROUGE</h4>
+                  <p class="opinion__text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Cras ex mi, posuere in velit nec, auctor sagittis purus.
+                    Praesent vitae mattis diam, eget sodales dui. Mauris
+                    efficitur quam vitae malesuada rutrum. In orci elit.
+                  </p>
+                </figcaption>
+              </figure>
+              <figure class="opinion">
+                <img src="images/carre-blanc-vide-sac-de-sport.jpg" alt="" />
+                <figcaption class="opinion__infos">
+                  <h4 class="opinion__title">BLANC</h4>
+                  <p class="opinion__text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Cras ex mi, posuere in velit nec, auctor sagittis purus.
+                    Praesent vitae mattis diam, eget sodales dui. Mauris
+                    efficitur quam vitae malesuada rutrum. In orci elit.
+                  </p>
+                </figcaption>
+              </figure>
+              <figure class="opinion">
+                <img
+                  src="images/smiley-carre-vert-simple-face-magnetique.jpg"
+                />
+                <figcaption class="opinion__infos">
+                  <h4 class="opinion__title">VERT</h4>
+                  <p class="opinion__text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Cras ex mi, posuere in velit nec, auctor sagittis purus.
+                    Praesent vitae mattis diam, eget sodales dui. Mauris
+                    efficitur quam vitae malesuada rutrum. In orci elit.
+                  </p>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
         </div>
         <div class="content hidden content--friends">
-          <ul class="jobs submenu">
-            <li class="jobs__link submenu__active">Photographe</li>
-            <li class="jobs__link">Son</li>
-            <li class="jobs__link">
-              Designer<span class="break">graphique</span>
-            </li>
-            <li class="jobs__link">Rédaction</li>
-          </ul>
           <h3 class="content__title">
             Indépendant mais pas solitaire <span class="red">!</span>
           </h3>
@@ -322,12 +600,12 @@
           <div class="friendlist">
             <figure class="friend">
               <div class="slider">
-                <i class="fa-solid fa-chevron-left left"></i>
+                <i class="fa-solid fa-chevron-left"></i>
                 <img src="images/forty.png" alt="" />
-                <i class="fa-solid fa-chevron-right right"></i>
+                <i class="fa-solid fa-chevron-right"></i>
               </div>
               <figcaption class="friend__description">
-                <h4 class="name">FORTY</h4>
+                <h4 class="name">1</h4>
                 <p class="text">
                   Lorem 40 dolor sit amet, consectetur adipiscing elit. Cras ex
                   mi, posuere in velit nec, auctor sagittis purus.
@@ -336,12 +614,12 @@
             </figure>
             <figure class="friend hidden">
               <div class="slider">
-                <i class="fa-solid fa-chevron-left left"></i>
+                <i class="fa-solid fa-chevron-left"></i>
                 <img src="images/sevenonethree.png" alt="" />
-                <i class="fa-solid fa-chevron-right right"></i>
+                <i class="fa-solid fa-chevron-right"></i>
               </div>
               <figcaption class="friend__description">
-                <h4 class="name">SevenOneThree</h4>
+                <h4 class="name">11</h4>
                 <p class="text">
                   Lorem 713 dolor sit amet, consectetur adipiscing elit. Cras ex
                   mi, posuere in velit nec, auctor sagittis purus.
@@ -350,12 +628,12 @@
             </figure>
             <figure class="friend hidden">
               <div class="slider">
-                <i class="fa-solid fa-chevron-left left"></i>
+                <i class="fa-solid fa-chevron-left"></i>
                 <img src="images/skies.png" alt="" />
-                <i class="fa-solid fa-chevron-right right"></i>
+                <i class="fa-solid fa-chevron-right"></i>
               </div>
               <figcaption class="friend__description">
-                <h4 class="name">Skies</h4>
+                <h4 class="name">111</h4>
                 <p class="text">
                   Lorem Skies dolor sit amet, consectetur adipiscing elit. Cras
                   ex mi, posuere in velit nec, auctor sagittis purus.
@@ -366,9 +644,9 @@
           <div class="friendlist hidden">
             <figure class="friend">
               <div class="slider">
-                <i class="fa-solid fa-chevron-left left"></i>
+                <i class="fa-solid fa-chevron-left"></i>
                 <img src="images/forty.png" alt="" />
-                <i class="fa-solid fa-chevron-right right"></i>
+                <i class="fa-solid fa-chevron-right"></i>
               </div>
               <figcaption class="friend__description">
                 <h4 class="name">2</h4>
@@ -380,9 +658,9 @@
             </figure>
             <figure class="friend hidden">
               <div class="slider">
-                <i class="fa-solid fa-chevron-left left"></i>
+                <i class="fa-solid fa-chevron-left"></i>
                 <img src="images/forty.png" alt="" />
-                <i class="fa-solid fa-chevron-right right"></i>
+                <i class="fa-solid fa-chevron-right"></i>
               </div>
               <figcaption class="friend__description">
                 <h4 class="name">22</h4>
@@ -396,9 +674,9 @@
           <div class="friendlist hidden">
             <figure class="friend">
               <div class="slider">
-                <i class="fa-solid fa-chevron-left left"></i>
+                <i class="fa-solid fa-chevron-left"></i>
                 <img src="images/forty.png" alt="" />
-                <i class="fa-solid fa-chevron-right right"></i>
+                <i class="fa-solid fa-chevron-right"></i>
               </div>
               <figcaption class="friend__description">
                 <h4 class="name">3</h4>
@@ -409,15 +687,95 @@
               </figcaption>
             </figure>
           </div>
-          <div class="friendlist hidden">
+          <div class="friendlistDesktop">
             <figure class="friend">
-              <div class="slider">
-                <i class="fa-solid fa-chevron-left left"></i>
-                <img src="images/forty.png" alt="" />
-                <i class="fa-solid fa-chevron-right right"></i>
-              </div>
+              <img src="images/forty.png" alt="" />
               <figcaption class="friend__description">
-                <h4 class="name">4</h4>
+                <h4 class="name">3</h4>
+                <p class="text">
+                  Lorem 40 dolor sit amet, consectetur adipiscing elit. Cras ex
+                  mi, posuere in velit nec, auctor sagittis purus.
+                </p>
+              </figcaption>
+            </figure>
+            <figure class="friend">
+              <img src="images/forty.png" alt="" />
+              <figcaption class="friend__description">
+                <h4 class="name">3</h4>
+                <p class="text">
+                  Lorem 40 dolor sit amet, consectetur adipiscing elit. Cras ex
+                  mi, posuere in velit nec, auctor sagittis purus.
+                </p>
+              </figcaption>
+            </figure>
+            <figure class="friend">
+              <img src="images/forty.png" alt="" />
+              <figcaption class="friend__description">
+                <h4 class="name">3</h4>
+                <p class="text">
+                  Lorem 40 dolor sit amet, consectetur adipiscing elit. Cras ex
+                  mi, posuere in velit nec, auctor sagittis purus.
+                </p>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="friendlistDesktop hidden">
+            <figure class="friend">
+              <img src="images/forty.png" alt="" />
+              <figcaption class="friend__description">
+                <h4 class="name">2</h4>
+                <p class="text">
+                  Lorem 40 dolor sit amet, consectetur adipiscing elit. Cras ex
+                  mi, posuere in velit nec, auctor sagittis purus.
+                </p>
+              </figcaption>
+            </figure>
+            <figure class="friend">
+              <img src="images/forty.png" alt="" />
+              <figcaption class="friend__description">
+                <h4 class="name">2</h4>
+                <p class="text">
+                  Lorem 40 dolor sit amet, consectetur adipiscing elit. Cras ex
+                  mi, posuere in velit nec, auctor sagittis purus.
+                </p>
+              </figcaption>
+            </figure>
+            <figure class="friend">
+              <img src="images/forty.png" alt="" />
+              <figcaption class="friend__description">
+                <h4 class="name">2</h4>
+                <p class="text">
+                  Lorem 40 dolor sit amet, consectetur adipiscing elit. Cras ex
+                  mi, posuere in velit nec, auctor sagittis purus.
+                </p>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="friendlistDesktop hidden">
+            <figure class="friend">
+              <img src="images/forty.png" alt="" />
+              <figcaption class="friend__description">
+                <h4 class="name">1</h4>
+                <p class="text">
+                  Lorem 40 dolor sit amet, consectetur adipiscing elit. Cras ex
+                  mi, posuere in velit nec, auctor sagittis purus.
+                </p>
+              </figcaption>
+            </figure>
+            <figure class="friend">
+              <img src="images/forty.png" alt="" />
+              <figcaption class="friend__description">
+                <h4 class="name">1</h4>
+                <p class="text">
+                  Lorem 40 dolor sit amet, consectetur adipiscing elit. Cras ex
+                  mi, posuere in velit nec, auctor sagittis purus.
+                </p>
+              </figcaption>
+            </figure>
+            <figure class="friend">
+              <img src="images/forty.png" alt="" />
+              <figcaption class="friend__description">
+                <h4 class="name">1</h4>
                 <p class="text">
                   Lorem 40 dolor sit amet, consectetur adipiscing elit. Cras ex
                   mi, posuere in velit nec, auctor sagittis purus.
@@ -426,16 +784,52 @@
             </figure>
           </div>
         </div>
-        <ul class="aboutMenu submenu">
-          <li class="aboutMenu__link submenu__active">
-            AKA <span class="break">Studio</span>
+        <div class="menus menus--single">
+          <ul class="jobs submenu hidden">
+            <li class="jobs__link submenu__active">
+              <p>Photo</p>
+            </li>
+            <li class="jobs__link">
+              <p>Son</p>
+            </li>
+            <li class="jobs__link">
+              <p>Designer<span class="break">graphique</span></p>
+            </li>
+          </ul>
+          <ul class="aboutMenu submenu">
+            <li class="aboutMenu__link submenu__active">
+              <p>AKA <span class="break">Studio</span></p>
+            </li>
+            <li class="aboutMenu__link">
+              <p>Avis</p>
+            </li>
+            <li class="aboutMenu__link">
+              <p>Réseau</p>
+            </li>
+          </ul>
+        </div>
+        <ul class="jobsDesktop submenu hidden">
+          <li class="jobsDesktop__link submenu__active">
+            <p>Photo</p>
           </li>
-          <li class="aboutMenu__link">H.AKA.I</li>
-          <li class="aboutMenu__link">Réseau</li>
+          <li class="jobsDesktop__link">
+            <p>Son</p>
+          </li>
+          <li class="jobsDesktop__link">
+            <p>Designer graphique</p>
+          </li>
         </ul>
         <h2 class="slideTitle">ABOUT<span class="red">.</span></h2>
-        <img src="images/aka_cream.png" alt="" class="aka aka__cream" />
-        <img src="images/aka_red.png" alt="" class="aka aka__red" />
+        <img
+          src="images/logo/Kanji/Demi white 3.png"
+          alt="Cream Kanji"
+          class="aka aka__cream hidden"
+        />
+        <img
+          src="images/logo/Kanji/Demi red 3.png"
+          alt="Red Kanji"
+          class="aka aka__red hidden"
+        />
       </section>
 
       <section class="contact slide">
@@ -451,13 +845,13 @@
         <div class="content content--medias hidden">
           <ul class="medias">
             <li class="media">
-              <img src="images/insta.png" alt="" />
+              <img src="images/icons/insta.png" alt="Instagram logo" />
             </li>
             <li class="media">
-              <img src="images/behance.png" alt="" />
+              <img src="images/icons/be.png" alt="Behance logo" />
             </li>
             <li class="media">
-              <img src="images/linkedin.png " alt="" />
+              <img src="images/icons/in.png " alt="Linkedin logo" />
             </li>
           </ul>
           <p class="text">
@@ -469,34 +863,60 @@
         </div>
         <div class="content content--form hidden">
           <form action="">
-            <input type="text" placeholder="NOM" />
-            <input type="text" placeholder="ADRESSE MAIL" />
-            <input type="text" placeholder="SUJET" />
-            <textarea name="" id="" placeholder="MESSAGE"></textarea>
-            <input type="submit" value="Envoyer" />
+            <input
+              type="text"
+              name="name"
+              placeholder="NOM*"
+              autocomplete="on"
+            />
+            <input
+              type="text"
+              name="mail"
+              placeholder="ADRESSE MAIL*"
+              autocomplete="on"
+            />
+            <input
+              type="text"
+              name="subject"
+              placeholder="SUJET*"
+              autocomplete="on"
+            />
+            <textarea name="message" placeholder="MESSAGE*"></textarea>
+            <input type="submit" value="ENVOYER" />
           </form>
           <!-- <p>Merci pour votre message !</p> -->
         </div>
-        <h2 class="title">Contact<span class="red">.</span></h2>
-        <ul class="contactMenu submenu">
-          <li class="contactMenu__link submenu__active">Typeform</li>
-          <li class="contactMenu__link">Réseaux sociaux</li>
-          <li class="contactMenu__link">Mail</li>
-        </ul>
-        <img src="images/aka_cream.png" alt="" class="aka aka__cream" />
-        <img src="images/aka_red.png" alt="" class="aka aka__red" />
+        <div class="contactMenu__wrapper">
+          <h2 class="slideTitle">Contact<span class="red">.</span></h2>
+          <ul class="contactMenu submenu">
+            <li class="contactMenu__link submenu__active">Typeform</li>
+            <li class="contactMenu__link">Réseaux sociaux</li>
+            <li class="contactMenu__link">Mail</li>
+          </ul>
+        </div>
+        <img
+          src="images/logo/Kanji/Demi white 2.png"
+          alt="Cream Kanji"
+          class="aka aka__cream hidden"
+        />
+        <img
+          src="images/logo/Kanji/demi red 2.png"
+          alt="Red Kanji"
+          class="aka aka__red hidden"
+        />
       </section>
     </main>
+    <script
+      src="https://kit.fontawesome.com/6839368886.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/index.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/about.js"></script>
+    <script src="js/work.js"></script>
+    <script src="js/contact.js"></script>
+    <script src="js/friendSlider.js"></script>
+    <script src="js/opinionSlider.js"></script>
   </body>
-  <script
-    src="https://kit.fontawesome.com/6839368886.js"
-    crossorigin="anonymous"
-  ></script>
-  <script src="js/index.js"></script>
-  <script src="js/menu.js"></script>
-  <script src="js/navigation.js"></script>
-  <script src="js/about.js"></script>
-  <script src="js/work.js"></script>
-  <script src="js/contact.js"></script>
-  <script src="js/slider.js"></script>
 </html>

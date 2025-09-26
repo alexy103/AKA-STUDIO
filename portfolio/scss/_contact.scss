@@ -2,23 +2,23 @@ $row: calc((100dvh - (5 * 20px)) / 6);
 $column: calc((100dvw - (5 * 20px)) / 6);
 
 .contact {
-  top: calc(-300dvh + $row + $row + $row);
+  top: calc(-300dvh + #{$row} + #{$row} + #{$row});
   left: -100dvw;
 
   .content {
-    padding-inline: calc($column + 20px);
+    padding-inline: calc(#{$column} + 20px);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: calc($row * 3 + 60px);
+    height: calc(#{$row} * 3 + 60px);
 
     .text {
       display: flex;
       align-items: center;
       text-align: center;
       font-size: 1.3rem;
-      height: calc($row * 2 + 20px);
+      height: calc(#{$row} * 2 + 20px);
     }
     &--typeform {
       .subtitle {
@@ -41,7 +41,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
         min-height: 10vh;
       }
       img {
-        width: $column;
+        width: #{$column};
       }
     }
 
@@ -52,8 +52,8 @@ $column: calc((100dvw - (5 * 20px)) / 6);
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-        gap: calc($row * 0.095);
-        width: calc($column * 4);
+        gap: calc(#{$row} * 0.095);
+        width: calc(#{$column} * 4);
         input,
         textarea {
           font-family: "Bricolage Bold", sans-serif;
@@ -64,10 +64,10 @@ $column: calc((100dvw - (5 * 20px)) / 6);
           font-size: 1.5rem;
         }
         input {
-          height: calc($row * 0.27);
+          height: calc(#{$row} * 0.27);
         }
         textarea {
-          margin-top: calc(20px - #{$row} * 0.095);
+          margin-top: calc(20px - #{#{$row}} * 0.095);
           height: calc(100dvh / 6);
           padding-top: 1vh;
           resize: none;
@@ -85,12 +85,12 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   }
 
   .slideTitle {
-    margin: 0 0 35px $column;
+    margin: 0 0 35px #{$column};
   }
 
   .contactMenu {
     font-family: "Bricolage Bold", sans-serif;
-    margin-left: $column;
+    margin-left: #{$column};
     display: flex;
     flex-direction: column;
     gap: 18px;
@@ -103,13 +103,13 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     opacity: 0;
     right: 0;
     &__cream {
-      height: $row;
-      top: calc($row * 3 + 80px);
+      height: #{$row};
+      top: calc(#{$row} * 3 + 80px);
     }
 
     &__red {
-      height: calc($row/ 2);
-      top: calc($row * 4 + $row / 3 + 80px);
+      height: calc(#{$row}/ 2);
+      top: calc(#{$row} * 4 + #{$row} / 3 + 80px);
     }
   }
 }
@@ -131,7 +131,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
 
     .content--medias {
       img {
-        width: calc($column / 1.3);
+        width: calc(#{$column} / 1.3);
       }
     }
   }
@@ -154,7 +154,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
 
     .content--medias {
       img {
-        width: calc($column / 1.8);
+        width: calc(#{$column} / 1.8);
       }
     }
   }
@@ -164,19 +164,19 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   $row: calc((100dvh - (11 * 20px)) / 12);
   $column: calc((100dvw - (11 * 20px)) / 12);
   .contact {
-    top: calc(-300dvh - $row - $row - 20px);
+    top: calc(-300dvh - #{$row} - #{$row} - 20px);
     display: flex;
     justify-content: space-between;
 
     .slideTitle {
-      margin: 0 0 $row auto;
+      margin: 0 0 #{$row} auto;
       width: fit-content;
     }
     .contactMenu__wrapper {
-      padding: calc($row * 3 + 60px) calc($column * 2 + 20px) 0 0;
+      padding: calc(#{$row} * 3 + 60px) calc(#{$column} * 2 + 20px) 0 0;
 
       .contactMenu {
-        gap: calc($row / 2);
+        gap: calc(#{$row} / 2);
         margin-left: inherit;
         align-items: flex-end;
         // font-size: 1.8rem;
@@ -185,26 +185,26 @@ $column: calc((100dvw - (5 * 20px)) / 6);
 
     .aka {
       &__cream {
-        height: calc($row * 3);
+        height: calc(#{$row} * 3);
         top: auto;
-        bottom: calc($row * 4 + 80px);
+        bottom: calc(#{$row} * 4 + 80px);
       }
 
       &__red {
-        height: calc($row * 2);
+        height: calc(#{$row} * 2);
         top: auto;
-        bottom: calc($row + 20px);
+        bottom: calc(#{$row} + 20px);
       }
     }
 
     .content {
       &.content--typeform,
       &.content--medias {
-        padding-top: calc($row * 5 + 100px);
+        padding-top: calc(#{$row} * 5 + 100px);
         padding-inline: inherit;
-        margin-left: calc($column + 20px);
-        gap: calc($row + 40px);
-        width: calc($column * 4 + 60px);
+        margin-left: calc(#{$column} + 20px);
+        gap: calc(#{$row} + 40px);
+        width: calc(#{$column} * 4 + 60px);
         height: fit-content;
         .subtitle {
           font-size: 5rem;
@@ -220,22 +220,22 @@ $column: calc((100dvw - (5 * 20px)) / 6);
         padding-inline: inherit;
         height: auto;
         form {
-          margin-top: calc($row * 3 + 60px);
-          margin-left: calc($column + 20px);
-          width: calc($column * 4 + 60px);
+          margin-top: calc(#{$row} * 3 + 60px);
+          margin-left: calc(#{$column} + 20px);
+          width: calc(#{$column} * 4 + 60px);
 
           input {
-            height: calc($row);
+            height: calc(#{$row});
             padding-left: 30px;
           }
 
           textarea {
-            height: calc($row * 3 + 40px);
+            height: calc(#{$row} * 3 + 40px);
             padding-left: 30px;
           }
 
           input[type="submit"] {
-            width: calc($column * 2 + 20px);
+            width: calc(#{$column} * 2 + 20px);
             padding-left: inherit;
           }
 
@@ -248,7 +248,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
 
     .content--medias {
       img {
-        width: calc($column / 1.5);
+        width: calc(#{$column} / 1.5);
       }
     }
   }

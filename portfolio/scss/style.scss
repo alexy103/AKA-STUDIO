@@ -8,6 +8,9 @@
 @import "contact";
 @import "animations";
 
+$row: calc((100dvh - (5 * 20px)) / 6);
+$column: calc((100dvw - (5 * 20px)) / 6);
+
 @font-face {
   font-family: "Now Black";
   src: url("../fonts/Now-Black.otf");

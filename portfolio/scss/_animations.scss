@@ -375,7 +375,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     transform: translateY(0);
   }
   100% {
-    transform: translateY(calc($row / 3.9));
+    transform: translateY(calc(#{$row} / 3.9));
   }
 }
 
@@ -396,7 +396,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
 }
 
 .about--inside {
-  top: calc(-200dvh + $row + $row);
+  top: calc(-200dvh + #{$row} + #{$row});
   .aka {
     opacity: 1;
     animation: aboutAkas 1s;
@@ -542,19 +542,19 @@ $column: calc((100dvw - (5 * 20px)) / 6);
 
 @keyframes aboutSlideEnter {
   0% {
-    top: calc(-300dvh + $row + $row);
+    top: calc(-300dvh + #{$row} + #{$row});
   }
   100% {
-    top: calc(-200dvh + $row + $row);
+    top: calc(-200dvh + #{$row} + #{$row});
   }
 }
 
 @keyframes aboutSlideEnterDesktop {
   0% {
-    top: calc(-300dvh - $row);
+    top: calc(-300dvh - #{$row});
   }
   100% {
-    top: calc(-200dvh - $row);
+    top: calc(-200dvh - #{$row});
   }
 }
 
@@ -880,7 +880,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   }
 
   .about--inside {
-    top: calc(-200dvh - $row);
+    top: calc(-200dvh - #{$row});
   }
 
   .friendlist {
@@ -1043,7 +1043,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
       transform: translateY(0);
     }
     100% {
-      transform: translateY(calc($row / 6.2));
+      transform: translateY(calc(#{$row} / 6.2));
     }
   }
 

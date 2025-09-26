@@ -45,15 +45,15 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     position: absolute;
 
     &:nth-child(1) {
-      left: $column;
+      left: #{$column};
     }
     &:nth-child(3) {
-      right: calc($column * 2 + 20px);
+      right: calc(#{$column} * 2 + 20px);
     }
   }
 
   .mainColumn {
-    width: calc($column * 4 + 78px);
+    width: calc(#{$column} * 4 + 78px);
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -61,12 +61,12 @@ $column: calc((100dvw - (5 * 20px)) / 6);
 
     .menu__square {
       width: 100%;
-      height: calc($row + 20px);
+      height: calc(#{$row} + 20px);
       border-bottom: 3px double #131412;
 
       &:first-child {
         border-top: none;
-        height: calc($row / 2);
+        height: calc(#{$row} / 2);
       }
 
       &:last-child {
@@ -82,7 +82,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
       overflow: hidden;
 
       h2 {
-        margin-left: calc($column + 20px);
+        margin-left: calc(#{$column} + 20px);
         flex: 1;
         transform: translateX(100vw);
       }
@@ -90,7 +90,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   }
 
   .thirdcol {
-    width: calc($column * 2 + 20px);
+    width: calc(#{$column} * 2 + 20px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -103,8 +103,8 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: calc($row/ 3) $column;
-  height: $row;
+  padding: calc(#{$row}/ 3) #{$column};
+  height: #{$row};
   top: 0;
   left: 0;
   width: 100vw;
@@ -136,13 +136,13 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     width: 100%;
     display: flex;
     align-items: center;
-    padding-left: $column;
-    gap: calc($column / 2);
+    padding-left: #{$column};
+    gap: calc(#{$column} / 2);
     text-transform: none;
-    height: calc($row * 2 + 20px);
+    height: calc(#{$row} * 2 + 20px);
 
     &__img {
-      width: calc($column + 40px);
+      width: calc(#{$column} + 40px);
     }
 
     &__links {

@@ -2,7 +2,7 @@ $row: calc((100dvh - (5 * 20px)) / 6);
 $column: calc((100dvw - (5 * 20px)) / 6);
 
 .work {
-  top: calc(-100dvh + $row);
+  top: calc(-100dvh + #{$row});
   left: 100dvw;
   display: flex;
   flex-direction: column-reverse;
@@ -11,7 +11,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
 
   .presentation {
     align-self: flex-end;
-    margin: calc($row / 3 + 20px) $column 0 0;
+    margin: calc(#{$row} / 3 + 20px) #{$column} 0 0;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -31,7 +31,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     width: 100vw;
     white-space: nowrap;
     overflow: scroll hidden;
-    max-height: calc((#{$row} + 40px) * 2);
+    max-height: calc((#{#{$row}} + 40px) * 2);
 
     .project {
       min-width: 60vw;
@@ -83,7 +83,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     font-size: 3rem;
     text-transform: uppercase;
     border-top: 1px solid #fcfbf5;
-    min-height: calc($row / 2);
+    min-height: calc(#{$row} / 2);
     width: 100dvw;
     font-family: "Now Black", sans-serif;
   }
@@ -92,13 +92,13 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     opacity: 0;
     left: 0;
     &__red {
-      height: $row;
-      top: calc($row * 3 + 80px);
+      height: #{$row};
+      top: calc(#{$row} * 3 + 80px);
     }
 
     &__cream {
-      height: calc($row/ 2);
-      top: calc($row * 4 + $row / 3 + 80px);
+      height: calc(#{$row}/ 2);
+      top: calc(#{$row} * 4 + #{$row} / 3 + 80px);
     }
   }
 }
@@ -131,21 +131,21 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   $row: calc((100dvh - (11 * 20px)) / 12);
   $column: calc((100dvw - (11 * 20px)) / 12);
   .work {
-    top: calc(-100dvh - $row - $row - 20px);
+    top: calc(-100dvh - #{$row} - #{$row} - 20px);
     height: 100dvh;
     flex-direction: row;
     align-items: inherit;
 
     .presentation {
       flex: 1;
-      margin: calc($row * 3 + 60px) 0 0 calc($column * 2 + 40px);
+      margin: calc(#{$row} * 3 + 60px) 0 0 calc(#{$column} * 2 + 40px);
       align-self: inherit;
       align-items: flex-start;
-      gap: $row;
+      gap: #{$row};
 
       .workMenu {
         align-items: flex-start;
-        gap: calc($row / 2);
+        gap: calc(#{$row} / 2);
         // font-size: 1.8rem;
       }
     }
@@ -153,21 +153,21 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     .aka {
       &__red {
         top: auto;
-        bottom: calc($row * 4 + 80px);
-        height: calc($row * 3);
+        bottom: calc(#{$row} * 4 + 80px);
+        height: calc(#{$row} * 3);
       }
 
       &__cream {
         top: auto;
-        bottom: calc($row + 20px);
-        height: calc($row * 2);
+        bottom: calc(#{$row} + 20px);
+        height: calc(#{$row} * 2);
       }
     }
 
     .projects {
       height: 100dvh;
       max-height: inherit;
-      width: calc($column * 5 + 80px);
+      width: calc(#{$column} * 5 + 80px);
       overflow: hidden scroll;
       flex-direction: row-reverse;
       flex-wrap: wrap;
@@ -180,15 +180,15 @@ $column: calc((100dvw - (5 * 20px)) / 6);
         height: fit-content;
 
         &:first-of-type .project__text {
-          height: calc($row + 20px) !important;
+          height: calc(#{$row} + 20px) !important;
         }
         &__text {
           width: 100%;
-          height: calc($row * 4 + 60px);
+          height: calc(#{$row} * 4 + 60px);
         }
         &__image {
           width: 100%;
-          height: calc($row * 3 + 80px);
+          height: calc(#{$row} * 3 + 80px);
           border-top: none !important;
         }
         &:nth-child(even) {
@@ -206,7 +206,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     }
 
     .category {
-      width: calc($column + 20px);
+      width: calc(#{$column} + 20px);
       border-top: none;
       font-size: 7rem;
 

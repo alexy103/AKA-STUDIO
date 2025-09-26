@@ -5,13 +5,13 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   position: relative;
 
   .identity {
-    padding: calc($row + 20px) 0 0 0;
+    padding: calc(#{$row} + 20px) 0 0 0;
     display: flex;
-    gap: calc($row / 3);
+    gap: calc(#{$row} / 3);
     flex-direction: column;
     align-items: center;
     &__logo {
-      height: calc($row + 40px);
+      height: calc(#{$row} + 40px);
     }
 
     &__title {
@@ -45,7 +45,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     .content__wrapper {
       display: flex;
       overflow: hidden;
-      height: calc($row * 2);
+      height: calc(#{$row} * 2);
     }
 
     .content {
@@ -57,8 +57,8 @@ $column: calc((100dvw - (5 * 20px)) / 6);
       background-position: center;
       display: flex;
       flex-direction: column;
-      padding-bottom: calc($row / 2);
-      gap: calc($row / 3);
+      padding-bottom: calc(#{$row} / 2);
+      gap: calc(#{$row} / 3);
 
       h4 {
         padding-top: 20px;
@@ -75,8 +75,8 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   }
 
   .aka {
-    top: calc($row * 3 + 80px);
-    height: $row;
+    top: calc(#{$row} * 3 + 80px);
+    height: #{$row};
     &__cream {
       left: 0;
     }
@@ -97,9 +97,9 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   $row: calc((100dvh - (11 * 20px)) / 12);
   $column: calc((100dvw - (11 * 20px)) / 12);
   .home {
-    top: calc(-1 * $row - $row - 20px);
+    top: calc(-1 * #{$row} - #{$row} - 20px);
     .identity {
-      padding: 0 0 $row;
+      padding: 0 0 #{$row};
       height: 100%;
       gap: 30px;
       justify-content: center;
@@ -109,7 +109,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
       }
 
       &__logo {
-        height: calc($row * 3 + 40px);
+        height: calc(#{$row} * 3 + 40px);
       }
 
       &__title {
@@ -120,12 +120,12 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     .aka--wrapper {
       position: absolute;
       top: auto;
-      bottom: calc($row * 4 + 80px);
-      height: calc($row * 3);
+      bottom: calc(#{$row} * 4 + 80px);
+      height: calc(#{$row} * 3);
       p {
         position: absolute;
         top: 0;
-        height: calc($row * 3);
+        height: calc(#{$row} * 3);
         display: flex;
         justify-content: center;
         font-size: 2.2rem;
@@ -152,8 +152,8 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     .aka {
       position: static;
       top: auto;
-      bottom: calc($row * 4 + 80px);
-      height: calc($row * 3);
+      bottom: calc(#{$row} * 4 + 80px);
+      height: calc(#{$row} * 3);
       &__cream {
         left: 0;
       }
