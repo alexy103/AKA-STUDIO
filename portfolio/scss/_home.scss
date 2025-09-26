@@ -12,6 +12,11 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     align-items: center;
     &__logo {
       height: calc(#{$row} + 40px);
+      cursor: pointer;
+
+      img {
+        height: 100%;
+      }
     }
 
     &__title {
@@ -74,21 +79,41 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     }
   }
 
-  .aka {
+  .aka--wrapper {
+    position: absolute;
     top: calc(#{$row} * 3 + 80px);
+    bottom: auto;
     height: #{$row};
+    p {
+      display: none;
+    }
+  }
+
+  .aka__cream--wrapper {
+    left: 0;
+    p {
+      left: 120%;
+      color: #e41313;
+    }
+  }
+
+  .aka__red--wrapper {
+    right: 0;
+    p {
+      right: 120%;
+    }
+  }
+
+  .aka {
+    position: static;
+    top: auto;
+    height: 100%;
     &__cream {
       left: 0;
     }
 
     &__red {
       right: 0;
-    }
-  }
-
-  .aka__cream--wrapper {
-    p {
-      display: none;
     }
   }
 }
@@ -105,11 +130,57 @@ $column: calc((100dvw - (5 * 20px)) / 6);
       justify-content: center;
 
       .break {
-        display: inline;
+        // display: inline;
       }
 
       &__logo {
         height: calc(#{$row} * 3 + 40px);
+        position: relative;
+
+        img {
+          height: 100%;
+        }
+
+        &::after,
+        &::before {
+          opacity: 0;
+          transition: 0.5s;
+          position: absolute;
+        }
+
+        &::after {
+          content: "ABOUT";
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          top: -55px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: calc((100dvw - (11 * 20px)) / 12);
+          border-radius: 14px;
+          font-size: 22px;
+          height: 35px;
+          color: rgba(255, 255, 255, 0.58);
+          background-color: #343434;
+        }
+
+        /* le triangle de la bulle */
+        &::before {
+          content: "";
+          top: -20px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 0;
+          height: 0;
+          border-left: 10px solid transparent;
+          border-right: 10px solid transparent;
+          border-top: 8px solid #343434;
+        }
+
+        &:hover::after,
+        &:hover::before {
+          opacity: 1;
+        }
       }
 
       &__title {

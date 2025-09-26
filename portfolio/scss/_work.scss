@@ -21,6 +21,9 @@ $column: calc((100dvw - (5 * 20px)) / 6);
       flex-direction: column;
       align-items: flex-end;
       gap: 12px;
+      &__link {
+        cursor: pointer;
+      }
     }
   }
 
@@ -50,6 +53,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
         }
       }
       &__image {
+        cursor: pointer;
         height: 50%;
         img {
           object-fit: cover;

@@ -51,6 +51,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
     right: 12%;
     top: calc(#{$row} / 4);
     font-size: 4rem;
+    cursor: pointer;
   }
 
   .video {
@@ -157,6 +158,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
 .aka {
   position: absolute;
   transition: 2s;
+  cursor: pointer;
 
   &.aka--left {
     transform: translateX(-20vw);
@@ -166,6 +168,22 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   }
   &.aka--down {
     transform: translateY(10vh);
+  }
+}
+
+.aka--wrapper {
+  transition: 2s;
+  &.aka--left {
+    transform: translateX(-20vw);
+  }
+  &.aka--right {
+    transform: translateX(20vw);
+  }
+  &.aka--down {
+    transform: translateY(10vh);
+  }
+  p {
+    user-select: none;
   }
 }
 

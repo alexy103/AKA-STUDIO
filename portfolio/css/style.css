@@ -211,6 +211,7 @@ img {
   right: 12%;
   top: calc(calc((100dvh - (5 * 20px)) / 6) / 4);
   font-size: 4rem;
+  cursor: pointer;
 }
 
 .black .video {
@@ -321,6 +322,7 @@ img {
 .aka {
   position: absolute;
   transition: 2s;
+  cursor: pointer;
 }
 
 .aka.aka--left {
@@ -333,6 +335,26 @@ img {
 
 .aka.aka--down {
   transform: translateY(10vh);
+}
+
+.aka--wrapper {
+  transition: 2s;
+}
+
+.aka--wrapper.aka--left {
+  transform: translateX(-20vw);
+}
+
+.aka--wrapper.aka--right {
+  transform: translateX(20vw);
+}
+
+.aka--wrapper.aka--down {
+  transform: translateY(10vh);
+}
+
+.aka--wrapper p {
+  user-select: none;
 }
 
 .left {
@@ -537,6 +559,7 @@ img {
   }
   .desktopNavigation__img {
     width: calc(calc((100dvw - (11 * 20px)) / 12) + 40px);
+    cursor: pointer;
   }
   .desktopNavigation__links {
     display: flex;
@@ -594,6 +617,11 @@ img {
 
 .home .identity__logo {
   height: calc(calc((100dvh - (5 * 20px)) / 6) + 40px);
+  cursor: pointer;
+}
+
+.home .identity__logo img {
+  height: 100%;
 }
 
 .home .identity__title {
@@ -658,9 +686,38 @@ img {
   white-space: normal;
 }
 
-.home .aka {
+.home .aka--wrapper {
+  position: absolute;
   top: calc(calc((100dvh - (5 * 20px)) / 6) * 3 + 80px);
+  bottom: auto;
   height: calc((100dvh - (5 * 20px)) / 6);
+}
+
+.home .aka--wrapper p {
+  display: none;
+}
+
+.home .aka__cream--wrapper {
+  left: 0;
+}
+
+.home .aka__cream--wrapper p {
+  left: 120%;
+  color: #e41313;
+}
+
+.home .aka__red--wrapper {
+  right: 0;
+}
+
+.home .aka__red--wrapper p {
+  right: 120%;
+}
+
+.home .aka {
+  position: static;
+  top: auto;
+  height: 100%;
 }
 
 .home .aka__cream {
@@ -669,10 +726,6 @@ img {
 
 .home .aka__red {
   right: 0;
-}
-
-.home .aka__cream--wrapper p {
-  display: none;
 }
 
 @media screen and (min-width: 1440px) {
@@ -685,11 +738,47 @@ img {
     gap: 30px;
     justify-content: center;
   }
-  .home .identity .break {
-    display: inline;
-  }
   .home .identity__logo {
     height: calc(calc((100dvh - (11 * 20px)) / 12) * 3 + 40px);
+    position: relative;
+    /* le triangle de la bulle */
+  }
+  .home .identity__logo img {
+    height: 100%;
+  }
+  .home .identity__logo::after, .home .identity__logo::before {
+    opacity: 0;
+    transition: 0.5s;
+    position: absolute;
+  }
+  .home .identity__logo::after {
+    content: "ABOUT";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -55px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc((100dvw - (11 * 20px)) / 12);
+    border-radius: 14px;
+    font-size: 22px;
+    height: 35px;
+    color: rgba(255, 255, 255, 0.58);
+    background-color: #343434;
+  }
+  .home .identity__logo::before {
+    content: "";
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 8px solid #343434;
+  }
+  .home .identity__logo:hover::after, .home .identity__logo:hover::before {
+    opacity: 1;
   }
   .home .identity__title {
     font-size: 1.6rem;
@@ -762,6 +851,10 @@ img {
   gap: 12px;
 }
 
+.work .presentation .workMenu__link {
+  cursor: pointer;
+}
+
 .work .projects {
   display: flex;
   border-top: 1px solid #fcfbf5;
@@ -792,6 +885,7 @@ img {
 }
 
 .work .projects .project__image {
+  cursor: pointer;
   height: 50%;
 }
 
@@ -1099,6 +1193,12 @@ img {
   display: none;
 }
 
+.about .aboutMenu__link p {
+  width: fit-content;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
 .about .aboutMenu .submenu__active p {
   position: relative;
   width: fit-content;
@@ -1114,6 +1214,11 @@ img {
   width: 100%;
   height: 1px;
   background-color: #e41313;
+}
+
+.about .jobs__link,
+.about .jobsDesktop__link {
+  cursor: pointer;
 }
 
 .about .jobs__link::after,
@@ -1443,6 +1548,7 @@ img {
 }
 
 .contact .content--typeform .subtitle {
+  cursor: pointer;
   color: #fcfbf5;
   text-transform: uppercase;
   font-size: 3rem;
@@ -1461,6 +1567,7 @@ img {
 }
 
 .contact .content--medias img {
+  cursor: pointer;
   width: calc((100dvw - (5 * 20px)) / 6);
 }
 
@@ -1505,6 +1612,7 @@ img {
 
 .contact .content--form form input[type="submit"] {
   width: 60%;
+  cursor: pointer;
 }
 
 .contact .slideTitle {
@@ -1521,6 +1629,7 @@ img {
 
 .contact .contactMenu__link {
   width: fit-content;
+  cursor: pointer;
 }
 
 .contact .aka {

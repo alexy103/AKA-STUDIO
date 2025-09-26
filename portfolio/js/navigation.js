@@ -112,7 +112,7 @@ menuLinks.forEach((link) => {
     updateSlideFromMenu(nextSlideName);
 
     // On cache les akas de HOME
-    document.querySelectorAll(".home .aka").forEach((aka) => {
+    document.querySelectorAll(".home .aka--wrapper").forEach((aka) => {
       aka.classList.add("hidden");
     });
 
@@ -152,7 +152,7 @@ desktopNavbarLinks.forEach((link, index) => {
 
     switch (displayedSlideName) {
       case "home":
-        let homeAkas = document.querySelectorAll(".home .aka");
+        let homeAkas = document.querySelectorAll(".home .aka--wrapper");
         handleAkas(homeAkas, "left");
         updateSlide(nextSlideName);
 
@@ -194,7 +194,7 @@ desktopNavbarLinks.forEach((link, index) => {
     updateNavbarLink(nextSlideName);
 
     // On cache les akas de HOME
-    document.querySelectorAll(".home .aka").forEach((aka) => {
+    document.querySelectorAll(".home .aka--wrapper").forEach((aka) => {
       aka.classList.add("hidden");
     });
   });
@@ -238,9 +238,9 @@ navigationLogoDesktop.addEventListener("click", () => {
 const homeSlide = document.querySelector(".home");
 
 const mainLogo = document.querySelector(".identity__logo");
-const homeAkaRed = document.querySelector(".home .aka__red");
-const homeAkaCream = document.querySelector(".home .aka__cream");
-const homeAkas = document.querySelectorAll(".home .aka");
+const homeAkaRed = document.querySelector(".home .aka__red--wrapper");
+const homeAkaCream = document.querySelector(".home .aka__cream--wrapper");
+const homeAkas = document.querySelectorAll(".home .aka--wrapper");
 // Afficher ABOUT en cliquant sur le logo de home
 mainLogo.addEventListener("click", () => {
   handleHomeAkas("about", homeAkaRed, homeAkaCream, "right", "left", true);
@@ -519,7 +519,7 @@ function updateSlide(slideName, doubleNavigation) {
         homeAkas.forEach((aka) => {
           aka.classList.remove("hidden");
         });
-      }, 2500);
+      }, 2900);
 
       // On fait le enter des akas de HOME après l'animation de l'ancienne slide
       setTimeout(() => {

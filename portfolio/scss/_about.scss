@@ -161,6 +161,11 @@ $column: calc((100dvw - (5 * 20px)) / 6);
       &::after {
         display: none;
       }
+      p {
+        width: fit-content;
+        margin: 0 auto;
+        cursor: pointer;
+      }
     }
     .submenu__active {
       p {
@@ -184,6 +189,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   .jobs,
   .jobsDesktop {
     &__link {
+      cursor: pointer;
       &::after {
         display: none;
       }
