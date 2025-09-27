@@ -274,6 +274,7 @@ aboutAkaRed.addEventListener("click", () => {
 aboutAkaCream.addEventListener("click", () => {
   handleAkasDelayed(aboutAkaCream, "down", aboutAkaRed);
   updateSlide("contact", true);
+  aboutSlide.classList.remove("front");
 
   setTimeout(() => {
     aboutSlide.classList.remove("about--inside");
