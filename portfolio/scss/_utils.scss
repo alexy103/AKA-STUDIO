@@ -252,4 +252,46 @@ $column: calc((100dvw - (5 * 20px)) / 6);
   .slide {
     height: 100dvh;
   }
+
+  .black {
+    padding: calc(#{$row} + 20px) 0 0 calc(#{$column}* 3 + 60px);
+    display: flex;
+    gap: #{$column};
+
+    .video {
+      width: calc(#{$column} * 6 + 100px);
+      margin-top: 0;
+      .title {
+        margin-right: auto;
+      }
+      .iframe__wrapper {
+        width: 100%;
+        height: calc(#{$row} * 6 + 100px);
+      }
+      iframe {
+        height: 100%;
+        width: 100%;
+      }
+      &__description {
+        text-align: justify;
+      }
+    }
+
+    .infos {
+      flex-wrap: nowrap;
+      flex-direction: column;
+      height: fit-content;
+      margin-top: calc(#{$row} * 2 + 20px);
+      font-size: 1.6rem;
+      justify-content: inherit;
+      align-items: inherit;
+
+      .info {
+        margin-bottom: 20px;
+        &--fonction {
+          text-align: inherit;
+        }
+      }
+    }
+  }
 }

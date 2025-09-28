@@ -181,6 +181,7 @@ $column: calc((100dvw - (5 * 20px)) / 6);
 
       .project {
         min-width: 50%;
+        width: 50%;
         height: fit-content;
 
         &:first-of-type .project__text {
